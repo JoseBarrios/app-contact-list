@@ -1,0 +1,2 @@
+# demo-emergency-contact-list
+An administrative assistant uses an excel spreadsheet to track the office emergency contact list.  This list is prone to data entry errors, which could cause a problem during an emergency.  The list contains employee name, employee phone, emergency contact name, and emergency contact phone.  Create an application that allows the administrative assistant to maintain this list.
