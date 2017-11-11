@@ -11,36 +11,59 @@ html(lang='en')
     link(href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css')
 
-  body(style="background-color:white;padding:0px;margin:0px;font-family: 'Roboto', sans-serif;")
-    //-h1 #{sortPrimary}
-    //-button(onclick="window.location.href='/person/create'") ADD +
-    div(onclick="window.location.href='/?sort=givenName'" style="width:calc(50% - 1px);background-color:gray;display:inline-block;border-right:1px solid #efefef;cursor:pointer")
-      p(style="color:white;text-align:center;vertical-align: middle;line-height:22px;") First name
-    div(onclick="window.location.href='/?sort=familyName'" style="width:50%;background-color:gray;display:inline-block;cursor:pointer")
-      p(style="color:white;text-align:center;vertical-align: middle;line-height:22px;") Last Name
-    div(style="height:11px;width:100%;")
-      if sortPrimary === 'givenName'
-        div(style="margin-left:calc(25% - 10px);width:0;height:0;border-left:10px solid transparent;border-right: 10px solid transparent;border-top: 10px solid gray;")
-      if sortPrimary === 'familyName'
-        div(style="margin-left:calc(75% - 10px);width:0;height:0;border-left:10px solid transparent;border-right: 10px solid transparent;border-top: 10px solid gray;")
-    div(style="width:calc(100% - 22px);height:44px;padding-left:22px;padding-top:15px; padding-bottom:22px")
-      span(class="fa fa-search" aria-hidden="true" style="position:absolute;padding:13px;color:#757575")
-      input(id='searchInput' placeholder='Search contacts' style="padding:11px;padding-left:40px;width:calc(100% - 80px);border-radius:10px; border: 1px solid #e4e0e1;font-size:1em")
-      span(id='deleteQueryButton' class="fa fa-times-circle" aria-hidden="true" style="position:absolute;margin-left:-25px;padding-top:13px;color:#757579")
+  body(style="background-color:#e8ebf2;padding:0px;margin:0px;font-family: 'Roboto', sans-serif;")
 
-    div(id='allResultsContainer')
-      each person in people
-        - let firstLetter = person[sortPrimary].charAt(0).toUpperCase();
-        if alphabet.includes(firstLetter)
-          - let charIndex = alphabet.indexOf(firstLetter);
-          - let char = alphabet.splice(charIndex, 1);
-          - alphabet = alphabet.filter(item => item !== char)
-          p(style="font-weight:700;background-color:#f3f3f3;color:#000;padding:0.25em;padding-left:22px;width:calc(100% - 22px - 0.25em);font-size:1.5em;margin:0px;") #{char}
-        div(id=person._id style="width:100%;background-color:white;border-bottom:1px solid #f3f3f3;cursor:pointer" class="person")
-          span
-            p(style="display:inline-block;font-size:1.5em;padding-left:22px;font-weight:700;") #{person[sortPrimary]}
-            p(style="display:inline-block;font-size:1.5em;padding-left:10px;font-weight:300") #{person[sortSecondary]}
-    div(id='filteredResultsContainer')
+    //------
+    //-ROLADEX PANNEL
+    //-------
+    div(style="width:50%;min-width:320px;max-width:500px;height:100vh;border-right:1px solid #d7d8e1;display:inline-block;overflow:scroll")
+
+      //------
+      //-HEADER
+      //-------
+      div(style="color:black;background-color:white;padding:11px;margin:0px;height:44px;font-weight:600")
+        span(style="display:inline")
+          button(id="addContactButton" style="color:#1679f4;height:44px;font-size:2em;font-weight:500;background-color:white;border:0px solid black;float:right;margin-right:15px") +
+          p(style="text-align:center;vertical-align:middle;font-size:2em;line-height:44px;position:static;margin:0px;margin-left:44px") Contacts
+
+      //------
+      //-TABS
+      //-------
+      if sortPrimary === 'givenName'
+        div(onclick="window.location.href='/?sort=givenName'" style="width:calc(50%);background-color:white;display:inline-block;border-bottom:3px solid #1679f4;cursor:pointer")
+          p(style="color:white;text-align:center;vertical-align: middle;line-height:11px;background-color:white;color:#1679f4") First name
+        div(onclick="window.location.href='/?sort=familyName'" style="width:calc(50%);background-color:white;display:inline-block;border-bottom:3px solid lightGray; cursor:pointer")
+          p(style="color:white;text-align:center;vertical-align: middle;line-height:11px;color:gray;") Last Name
+      if sortPrimary === 'familyName'
+        div(onclick="window.location.href='/?sort=givenName'" style="width:calc(50%);background-color:white;display:inline-block;border-bottom:3px solid lightGray;cursor:pointer")
+          p(style="color:white;text-align:center;vertical-align: middle;line-height:11px;background-color:white;color:gray") First name
+        div(onclick="window.location.href='/?sort=familyName'" style="width:calc(50%);background-color:white;display:inline-block;border-bottom:3px solid #1679f4; cursor:pointer")
+          p(style="color:white;text-align:center;vertical-align: middle;line-height:11px;color:#1679f4;") Last Name
+
+      //------
+      //-SEARCH
+      //-------
+      div(style="width:calc(100% - 22px);height:44px;padding-left:22px;padding-top:15px; padding-bottom:22px;background-color:white;position:relative")
+        span(class="fa fa-search" aria-hidden="true" style="position:absolute;top:28px;left:40px;color:#757575")
+        input(id='searchInput' placeholder='Search contacts' style="padding:11px;text-indent:40px;width:calc(100% - 80px);border-radius:10px; border: 1px solid #e4e0e1;font-size:1em")
+        span(id='deleteQueryButton' class="fa fa-times-circle" aria-hidden="true" style="position:absolute;right:66px;top:28px;color:#757579")
+
+      //------
+      //-LIST
+      //-------
+      div(id='allResultsContainer')
+        each person in people
+          - let firstLetter = person[sortPrimary].charAt(0).toUpperCase();
+          if alphabet.includes(firstLetter)
+            - let charIndex = alphabet.indexOf(firstLetter);
+            - let char = alphabet.splice(charIndex, 1);
+            - alphabet = alphabet.filter(item => item !== char)
+            p(style="font-weight:700;background-color:#f3f3f3;color:#000;padding:0.25em;padding-left:22px;width:calc(100% - 22px - 0.25em);font-size:1.5em;margin:0px;") #{char}
+          div(id=person._id style="width:100%;background-color:white;border-bottom:1px solid #f3f3f3;cursor:pointer" class="person")
+            span
+              p(style="display:inline-block;font-size:1.5em;padding-left:22px;font-weight:700;") #{person[sortPrimary]}
+              p(style="display:inline-block;font-size:1.5em;padding-left:10px;font-weight:300") #{person[sortSecondary]}
+      div(id='filteredResultsContainer')
 
 
 script.
