@@ -11,19 +11,20 @@ html(lang='en')
     link(href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' async)
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css' async)
 
-  body(style="background-color:#e8ebf2;padding:0px;margin:0px;font-family: 'Roboto', sans-serif;")
+  body(style="background-color:#e8ebf2;padding:0px;margin:0px;font-family:'Roboto',sans-serif;")
+
 
     //------
     //-ROLADEX PANNEL
     //-------
-    div(style="width:100%;min-width:320px;max-width:414px;height:100vh;border-right:1px solid #d7d8e1;display:inline-block;overflow:scroll")
+    //-div(style="display:inline-block;width:30%;min-width:320px;max-width:414px;height:100vh;border-right:1px solid #d7d8e1;overflow:scroll")
 
       //------
       //-HEADER
       //-------
       div(style="color:black;background-color:white;padding:11px;margin:0px;height:44px;font-weight:600")
         span(style="display:inline")
-          button(id="addContactButton" style="color:#1679f4;height:44px;font-size:2em;font-weight:500;background-color:white;border:0px solid black;float:right;margin-right:15px") +
+          button(id="addContactButton" style="color:#1679f4;font-size:2em;font-weight:500;background-color:white;border:0px solid black;float:right;margin-right:15px;") +
           p(style="text-align:center;vertical-align:middle;font-size:2em;line-height:44px;position:static;margin:0px;margin-left:44px") Contacts
 
       //------
@@ -43,9 +44,9 @@ html(lang='en')
       //------
       //-SEARCH
       //-------
-      div(style="width:calc(100%);height:44px;padding-left:22px;padding-top:15px; padding-bottom:22px;background-color:white;position:relative")
+      div(style="width:calc(100% - 22px);height:44px;padding-left:22px;padding-top:15px; padding-bottom:22px;background-color:white;position:relative")
         span(class="fa fa-search" aria-hidden="true" style="position:absolute;top:28px;left:40px;color:#757575")
-        input(id='searchInput' placeholder='Search contacts' style="padding:11px;text-indent:30px;width:calc(100% - 70px);border-radius:10px; border: 1px solid #e4e0e1;font-size:1em")
+        input(id='searchInput' placeholder='Search contacts' style="padding:11px;text-indent:30px;width:calc(100% - 50px);border-radius:10px; border: 1px solid #e4e0e1;font-size:1em")
         span(id='deleteQueryButton' class="fa fa-times-circle" aria-hidden="true" style="position:absolute;right:60px;top:28px;color:#757579")
 
       //------
@@ -64,6 +65,43 @@ html(lang='en')
               p(style="display:inline-block;font-size:1.5em;padding-left:22px;font-weight:700;") #{person[sortPrimary]}
               p(style="display:inline-block;font-size:1.5em;padding-left:10px;font-weight:300") #{person[sortSecondary]}
       div(id='filteredResultsContainer')
+
+    //------
+    //-CONTACT CARD
+    //-------
+    - let contact = people[0];
+    div(style="display:inline-block;width:60%;margin-left:20%;margin-top:10%;padding-top:0px;border: 1px solid #d7d8e1;background-color:white")
+
+      ////////
+      //CONTACT
+      /////////
+      div(style="width:100%;padding:0px;margin:0px;background:#fbfaff;border-bottom:1px solid #f3f3f5")
+        p(style="float:left;padding-top:33px;padding-left:44px;margin:0px;font-size:1.25em;color:#1c7ef8;") Done
+        p(style="float:right;padding-top:33px;padding-right:44px;margin:0px;font-size:1.25em;color:#1c7ef8;") Edit
+        h1(style="text-align:center;padding-top:66px;margin:0px;font-size:3em") #{people[0][sortPrimary]} #{people[0][sortSecondary]}
+        p(style="text-align:center;padding-top:5px;margin:0px;font-size:1em;color:#6d6d6f;padding-bottom:11px;font-weight:300;") Updated 3 days ago
+        //ACTIONS
+        div(style="display: flex; justify-content: center;padding-bottom:66px;padding-top:11px;margin-left:4px")
+          div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:22px")
+            span( class="fa fa-phone fa-2x" style="color:white;width:75%;height:75%;margin-top:0.55em;margin-left:0.62em;")
+            p(style="text-align:center;padding:0px;margin-top:10px;color:#1c7ef8;font-family:'Roboto',sans-serif") home
+          div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:22px")
+            span( class="fa fa-mobile fa-3x" style="color:white;width:75%;height:75%;margin-top:0.16em;margin-left:0.455em;")
+            p(style="text-align:center;padding-left:5px;margin-top:20px;color:#1c7ef8;font-family:'Roboto',sans-serif") mobile
+          div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:18px")
+            span( class="fa fa-envelope fa-2x" style="color:white;width:75%;height:75%;margin-top:0.5em;margin-left:0.5em;")
+            p(style="text-align:center;padding-left:4px;margin-top:12px;color:#1c7ef8;font-family:'Roboto',sans-serif") email
+      ////////
+      //EMERGENCY
+      ////////
+      div(style="width:100%;padding:0px;margin:0px;background:white;")
+        //-p Telephone: #{person.telephone}
+        //-p Email: #{person.email}
+        //-for contact in person.knows
+          p Emergency Contact: #{contact.givenName} #{contact.familyName}
+          p Telephone: #{contact.telephone}
+          p Email: #{contact.email}
+
 
 
 script.
