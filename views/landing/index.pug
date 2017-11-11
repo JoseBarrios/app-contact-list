@@ -8,30 +8,58 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
     meta(http-equiv='x-ua-compatible', content='ie=edge')
+    link(href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css')
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css')
 
-  body(style="padding:0px;margin:0px")
-    h1 #{sortPrimary} - #{sortSecondary}
-    input(id='searchInput' placeholder='search here')
-    button(onclick="window.location.href='/person/create'") ADD +
-    button(onclick="window.location.href='/?sort=givenName'") FIRST NAME
-    button(onclick="window.location.href='/?sort=familyName'") LAST NAME
+  body(style="background-color:white;padding:0px;margin:0px;font-family: 'Roboto', sans-serif;")
+    //-h1 #{sortPrimary}
+    //-button(onclick="window.location.href='/person/create'") ADD +
+    div(onclick="window.location.href='/?sort=givenName'" style="width:calc(50% - 1px);background-color:gray;display:inline-block;border-right:1px solid #efefef;cursor:pointer")
+      p(style="color:white;text-align:center;vertical-align: middle;line-height:22px;") First name
+    div(onclick="window.location.href='/?sort=familyName'" style="width:50%;background-color:gray;display:inline-block;cursor:pointer")
+      p(style="color:white;text-align:center;vertical-align: middle;line-height:22px;") Last Name
+    div(style="height:11px;width:100%;")
+      if sortPrimary === 'givenName'
+        div(style="margin-left:calc(25% - 10px);width:0;height:0;border-left:10px solid transparent;border-right: 10px solid transparent;border-top: 10px solid gray;")
+      if sortPrimary === 'familyName'
+        div(style="margin-left:calc(75% - 10px);width:0;height:0;border-left:10px solid transparent;border-right: 10px solid transparent;border-top: 10px solid gray;")
+    div(style="width:calc(100% - 22px);height:44px;padding-left:22px;padding-top:15px; padding-bottom:22px")
+      span(class="fa fa-search" aria-hidden="true" style="position:absolute;padding:13px;color:#757575")
+      input(id='searchInput' placeholder='Search contacts' style="padding:11px;padding-left:40px;width:calc(100% - 80px);border-radius:10px; border: 1px solid #e4e0e1;font-size:1em")
+      span(id='deleteQueryButton' class="fa fa-times-circle" aria-hidden="true" style="position:absolute;margin-left:-25px;padding-top:13px;color:#757579")
 
     div(id='allResultsContainer')
       each person in people
-        if person[sortPrimary].charAt(0) === alphabet[0]
-          - const char = alphabet[0];
+        - let firstLetter = person[sortPrimary].charAt(0).toUpperCase();
+        if alphabet.includes(firstLetter)
+          - let charIndex = alphabet.indexOf(firstLetter);
+          - let char = alphabet.splice(charIndex, 1);
           - alphabet = alphabet.filter(item => item !== char)
-          p(style="background-color:darkGray;color:black;width:100%;height:1em;font-size:2em;padding:0.5em;margin:0px;") #{char}
-        div(id=person._id style="width:100%;padding:0px;margin:0px;background-color:red;")
-          p(style="padding:22px;margin:0px;width:calc(100%-88px);height:88ppx;background-color:green;border-top: 1px solid #fff;") #{person[sortPrimary]}, #{person[sortSecondary]}
+          p(style="font-weight:700;background-color:#f3f3f3;color:#000;padding:0.25em;padding-left:22px;width:calc(100% - 22px - 0.25em);font-size:1.5em;margin:0px;") #{char}
+        div(id=person._id style="width:100%;background-color:white;border-bottom:1px solid #f3f3f3;cursor:pointer" class="person")
+          span
+            p(style="display:inline-block;font-size:1.5em;padding-left:22px;font-weight:700;") #{person[sortPrimary]}
+            p(style="display:inline-block;font-size:1.5em;padding-left:10px;font-weight:300") #{person[sortSecondary]}
     div(id='filteredResultsContainer')
+
 
 script.
   var people = !{JSON.stringify(people)}
   var search = !{JSON.stringify(search)}
+  var person = document.querySelector('.person');
   var searchInput = document.querySelector('#searchInput');
+  var deleteQueryButton = document.querySelector('#deleteQueryButton');
   var allResultsContainer = document.querySelector('#allResultsContainer');
   var filteredResultsContainer = document.querySelector('#filteredResultsContainer');
+
+  console.log(person);
+
+  deleteQueryButton.addEventListener('click', function(e){
+    searchInput.value = '';
+    var event = document.createEvent('Event');
+    event.initEvent('input', true, true);
+    searchInput.dispatchEvent(event);
+  })
 
   //////////
   //SEARCH//
