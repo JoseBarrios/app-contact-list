@@ -1,0 +1,330 @@
+{
+	"title":"Person",
+	"description":"A person (alive, dead, undead, or fictional).",
+
+	"anyOf": [
+		{ "type": "object" }
+	],
+
+
+	"properties": {
+		"additionalName":{
+			"description": "An additional name for a Person, can be used for a middle name.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"address":{
+			"description": "Physical address of the item.",
+			"anyOf": [
+				{"$ref": "#/definitions/postalAddress"},
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"affiliation":{
+			"description": "An organization that this person is affiliated with. For example, a school/university, a club, or a team.",
+			"anyOf": [
+				{"$ref": "#/definitions/organization"}
+			]
+		},
+		"alumniOf":{
+			"description": "An organization that the person is an alumni of. Inverse property: alumni.",
+			"anyOf": [
+				{"$ref": "#/definitions/educationalOrganization"},
+				{"$ref": "#/definitions/organization"}
+			]
+		},
+		"award":{
+			"description": "An award won by or for this item. Supersedes awards.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"birthDate":{
+			"description": "Date of birth.",
+			"anyOf": [
+				{"$ref": "#/definitions/date"}
+			]
+		},
+		"birthPlace":{
+			"description": "The place where the person was born.",
+			"anyOf": [
+				{"$ref": "#/definitions/place"}
+			]
+		},
+		"brand":{
+			"description": "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.",
+			"anyOf": [
+				{"$ref": "#/definitions/brand"},
+				{"$ref": "#/definitions/organization"}
+			]
+		},
+		"children":{
+			"description": "A child of the person.",
+			"anyOf": [
+				{"$ref": "#/definitions/person"}
+			]
+		},
+		"colleague":{
+			"description": "A colleague of the person. Supersedes colleagues.",
+			"anyOf": [
+				{"$ref": "#/definitions/person"},
+				{"$ref": "#/definitions/url"}
+			]
+		},
+		"contactPoint":{
+			"description": "A contact point for a person or organization. Supersedes contactPoints.",
+			"anyOf": [
+				{"$ref": "#/definitions/contactPoint"}
+			]
+		},
+		"deathDate":{
+			"description": "Date of death.",
+			"anyOf": [
+				{"$ref": "#/definitions/date"}
+			]
+		},
+		"deathPlace":{
+			"description": "The place where the person died.",
+			"anyOf": [
+				{"$ref": "#/definitions/place"}
+			]
+		},
+		"duns":{
+			"description": "The Dun & Bradstreet DUNS number for identifying an organization or business person.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"email":{
+			"description": "Email address.",
+			"format":"email"
+		},
+		"familyName":{
+			"description": "Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"faxNumber":{
+			"description": "The fax number.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"follows":{
+			"description": "The most generic uni-directional social relation.",
+			"anyOf": [
+				{"$ref": "#/definitions/person"}
+			]
+		},
+		"funder":{
+			"description": "A person or organization that supports (sponsors) something through some kind of financial contribution.",
+			"anyOf": [
+				{"$ref": "#/definitions/organization"},
+				{"$ref": "#/definitions/person"}
+			]
+		},
+		"gender":{
+			"description": "Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.",
+			"anyOf": [
+				{"$ref": "#/definitions/genderType"},
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"givenName":{
+			"description": "Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"globalLocationNumber":{
+			"description": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"hasOfferCatalog":{
+			"description": "Indicates an OfferCatalog listing for this Organization, Person, or Service.",
+			"anyOf": [
+				{"$ref": "#/definitions/offerCatalog"}
+			]
+		},
+		"hasPOS":{
+			"description": "Points-of-Sales operated by the organization or person.",
+			"anyOf": [
+				{"$ref": "#/definitions/place"}
+			]
+		},
+		"height":{
+			"description": "The height of the item.",
+			"anyOf": [
+				{"$ref": "#/definitions/distance"},
+				{"$ref": "#/definitions/quantitativeValue"}
+			]
+		},
+		"homeLocation":{
+			"description": "A contact location for a person's residence.",
+			"anyOf": [
+				{"$ref": "#/definitions/contactPoint"},
+				{"$ref": "#/definitions/place"}
+			]
+		},
+		"honorificPrefix":{
+			"description": "An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"honorificSuffix":{
+			"description": "An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"isicV4":{
+			"description": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"jobTitle":{
+			"description": "The job title of the person (for example, Financial Manager).",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"knows":{
+			"description": "The most generic bi-directional social/work relation.",
+			"anyOf": [
+				{"$ref": "#/definitions/person"}
+			]
+		},
+		"makesOffer":{
+			"description": "A pointer to products or services offered by the organization or person.  Inverse property: offeredBy.",
+			"anyOf": [
+				{"$ref": "#/definitions/offer"}
+			]
+		},
+		"memberOf":{
+			"description": "An Organization (or ProgramMembership) to which this Person or Organization belongs. Inverse property: member.",
+			"anyOf": [
+				{"$ref": "#/definitions/organization"},
+				{"$ref": "#/definitions/programMembership"}
+			]
+		},
+		"naics":{
+			"description": "The North American Industry Classification System (NAICS) code for a particular organization or business person.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"nationality":{
+			"description": "Nationality of the person.",
+			"anyOf": [
+				{"$ref": "#/definitions/country"}
+			]
+		},
+		"netWorth":{
+			"description": "The total financial value of the person as calculated by subtracting assets from liabilities.",
+			"anyOf": [
+				{"$ref": "#/definitions/monetaryAmount"},
+				{"$ref": "#/definitions/priceSpecification"}
+			]
+		},
+		"owns":{
+			"description": "Products owned by the organization or person.",
+			"anyOf": [
+				{"$ref": "#/definitions/ownershipInfo"},
+				{"$ref": "#/definitions/product"}
+			]
+		},
+		"parent":{
+			"description": "A parent of this person. Supersedes parents.",
+			"anyOf": [
+				{"$ref": "#/definitions/person"}
+			]
+		},
+		"performerIn":{
+			"description": "Event that this person is a performer or participant in.",
+			"anyOf": [
+				{"$ref": "#/definitions/event"}
+			]
+		},
+		"publishingPrinciples":{
+			"description": "The publishingPrinciples property indicates (typically via URL) a document describing the editorial principles of an Organization (or individual e.g. a Person writing a blog) that relate to their activities as a publisher, e.g. ethics or diversity policies. When applied to a CreativeWork (e.g. NewsArticle) the principles are those of the party primarily responsible for the creation of the CreativeWork.",
+			"anyOf": [
+				{"$ref": "#/definitions/creativeWork"},
+				{"$ref": "#/definitions/url"}
+			]
+		},
+		"relatedTo":{
+			"description": "The most generic familial relation.",
+			"anyOf": [
+				{"$ref": "#/definitions/person"}
+			]
+		},
+		"seeks":{
+			"description": "A pointer to products or services sought by the organization or person (demand).",
+			"anyOf": [
+				{"$ref": "#/definitions/demand"}
+			]
+		},
+		"sibling":{
+			"description": "A sibling of the person. Supersedes siblings.",
+			"anyOf": [
+				{"$ref": "#/definitions/person"}
+			]
+		},
+		"sponsor":{
+			"description": "A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event.",
+			"anyOf": [
+				{"$ref": "#/definitions/organization"},
+				{"$ref": "#/definitions/person"}
+			]
+		},
+		"spouse":{
+			"description": "The person's spouse.",
+			"anyOf": [
+				{"$ref": "#/definitions/person"}
+			]
+		},
+		"taxID":{
+			"description": "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"telephone":{
+			"description": "The telephone number.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"vatID":{
+			"description": "The Value-added Tax ID of the organization or person.",
+			"anyOf": [
+				{"$ref": "#/definitions/text"}
+			]
+		},
+		"weight":{
+			"description": "The weight of the product or person.",
+			"anyOf": [
+				{"$ref": "#/definitions/quantitativeValue"}
+			]
+		},
+		"workLocation":{
+			"description": "A contact location for a person's place of work.",
+			"anyOf": [
+				{"$ref": "#/definitions/contactPoint"},
+				{"$ref": "#/definitions/place"}
+			]
+		},
+		"worksFor":{
+			"description": "Organizations that the person works for.",
+			"anyOf": [
+				{"$ref": "#/definitions/organization"}
+			]
+		}
+	}
+}

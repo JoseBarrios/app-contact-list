@@ -1,0 +1,83 @@
+doctype html
+html(lang='en')
+
+  head
+    title xxx | xxx
+    meta(name='description', content='xxx')
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+
+  body(style="padding:0px;margin:0px")
+    h1 #{sortPrimary} - #{sortSecondary}
+    input(id='searchInput' placeholder='search here')
+    button(onclick="window.location.href='/person/create'") ADD +
+    button(onclick="window.location.href='/?sort=givenName'") FIRST NAME
+    button(onclick="window.location.href='/?sort=familyName'") LAST NAME
+
+    div(id='allResultsContainer')
+      each person in people
+        if person[sortPrimary].charAt(0) === alphabet[0]
+          - const char = alphabet[0];
+          - alphabet = alphabet.filter(item => item !== char)
+          p(style="background-color:darkGray;color:black;width:100%;height:1em;font-size:2em;padding:0.5em;margin:0px;") #{char}
+        div(id=person._id style="width:100%;padding:0px;margin:0px;background-color:red;")
+          p(style="padding:22px;margin:0px;width:calc(100%-88px);height:88ppx;background-color:green;border-top: 1px solid #fff;") #{person[sortPrimary]}, #{person[sortSecondary]}
+    div(id='filteredResultsContainer')
+
+script.
+  var people = !{JSON.stringify(people)}
+  var search = !{JSON.stringify(search)}
+  var searchInput = document.querySelector('#searchInput');
+  var allResultsContainer = document.querySelector('#allResultsContainer');
+  var filteredResultsContainer = document.querySelector('#filteredResultsContainer');
+
+  //////////
+  //SEARCH//
+  //////////
+  searchInput.addEventListener('input', function(e){
+    filteredResultsContainer.innerHTML = null;
+
+    if(e.target.value){
+      allResultsContainer.style.display = 'none';
+      filteredResultsContainer.style.display = 'initial';
+    } else{
+      allResultsContainer.style.display = 'initial';
+      filteredResultsContainer.style.display = 'none';
+    }
+
+    let found = [];
+    people.forEach(person => {
+      var givenName = person.givenName.toLowerCase();
+      var familyName = person.familyName.toLowerCase();
+      let query = e.target.value.toLowerCase();
+      let fullName = `${givenName} ${familyName}`;
+      if(fullName.includes(query)){
+        found.push(person)
+      }
+    })
+
+    ///////////
+    //RENDER//
+    //////////
+    if(found.length){
+      found.forEach(result => {
+        var pElem = document.createElement("P");
+        var textNode = document.createTextNode(result.givenName+result.familyName);
+        pElem.appendChild(textNode);
+        filteredResultsContainer.appendChild(pElem);
+      })
+    }
+    else{
+      var pElem = document.createElement("P");
+      var textNode = document.createTextNode('None found');
+      pElem.appendChild(textNode);
+      filteredResultsContainer.appendChild(pElem);
+    }
+  })
+
+  searchInput.value = search;
+  var event = document.createEvent('Event');
+  event.initEvent('input', true, true);
+  searchInput.dispatchEvent(event);

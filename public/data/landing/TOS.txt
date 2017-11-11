@@ -1,0 +1,129 @@
+SOFTWARE-AS-A-SERVICE (SAAS) AGREEMENT
+ 
+IMPORTANT-READ THIS SOFTWARE-AS-A-SERVICE AGREEMENT (THIS “AGREEMENT”) CAREFULLY BEFORE CONTINUING TO SIGN UP. BY CLICKING THE "I ACCEPT" BUTTON OR OTHERWISE ACCEPTING THIS AGREEMENT, USERS AGREE TO FOLLOW AND BE BOUND BY THE TERMS AND CONDITIONS OF THIS AGREEMENT. IF USERS ARE ENTERING INTO THIS AGREEMENT ON BEHALF OF A COMPANY OR OTHER LEGAL ENTITY, THE USER REPRESENTS THAT THE USER HAS THE AUTHORITY TO BIND SUCH ENTITY TO THE TERMS AND CONDITIONS OF THIS AGREEMENT AND, IF THE USER DOES NOT HAVE SUCH AUTHORITY, OR IF THE USER DOES NOT AGREE TO ALL THE TERMS AND CONDITIONS IN THIS AGREEMENT, THE USER MUST SELECT THE "I DECLINE" BUTTON AND MAY NOT USE THE SERVICES.
+ 
+This software-as-a-service agreement (the “Agreement”) is an agreement between the individual or entity that has signed up for a trial or account and ordered services (the “User”) and Cognilab Technologies Incorporated (“Cognilab”). Cognilab provides Users with access to use the Cognilab experiment builder platform (the “Platform”) and certain Materials (as defined below) to help Users create, design, conduct and analyze social science research experiments by providing general and personalized content, templates, communication tools and forums and services (collectively, the “Services”) directly and through the website and associated domains of www.cognilab.com (the “Site”). 
+ 
+A. Rights Granted and Provision of Services
+Subject to the terms and conditions set out in this Agreement, the User has the nonexclusive, non-assignable, royalty free, worldwide limited right to use the Services solely to create, design, conduct and analyze social science research experiments for User’s internal research and business operations through a user identification reference provided by Cognilab (“User ID”). Users may allow their experiment participants (the “Participants”) to use the Services for this purpose but Users are responsible for their Participants’ compliance with this Agreement.
+ 
+Cognilab will provide Users one User ID for each account held by Users, thereby permitting Users access to the Materials on one computer at a time through the Site.  Users agree to fully and accurately provide the information requested by Cognilab when setting up User accounts and to regularly update such information.  A User’s failure to do so may result in the cancellation of the User account and loss of Services. Users further agree (a) not to provide User IDs to anyone who is not their employee, and (b) to ensure all individuals permitted to use the User IDs are aware of and have agreed in writing to comply with the terms of this Agreement. 
+ 
+B. Term
+The term (“Term”) of this Agreement will start when a User signs up to become a user and will continue until it expires in accordance with the plan type subscribed for by the User or until this Agreement terminated in accordance with the terms of this Agreement. 
+ 
+C. Payments 
+All applications, features, functionality and support provided by Cognilab are provided for the fees described for each plan type and Service on the Site (“Fees”) and Users are liable for such Fees. All Fees are non-cancelable and the sums paid non-refundable. Fees listed on the Site are exclusive of sales taxes. Only Services and features clearly indicated as "free" or "no charge" are free or without charge. It is not the responsibility of Cognilab to provide free support for Users in the use and operation of the Platform.
+ 
+Users agree that they have not relied on the future availability of any Services, programs or updates in entering into the payment obligations described on the Site; however, the preceding does not relieve Cognilab of its obligation to deliver Services that Users have paid for in accordance with the terms of this Agreement.
+ 
+Users can opt to upgrade or downgrade their service agreement to any other contract agreement that Cognilab offers for sale at any time during the Term.
+ 
+At the end of the Term, User contracts will automatically renew for an additional Term until explicitly cancelled by Users.
+ 
+If a User registered for a trial use of the Services ("Trial Period"), the User must decide to purchase the Services within the Trial Period in order to retain any Content that Users have posted or uploaded during the Trial Period. If Users do not purchase the Services by the end of the Trial Period, User Content will no longer be available to Users. To be very clear, after using the Services during the Trial Period, if Users decide not to purchase the full version of the Services, Users will not be able to access or retrieve any of the data Users added/created during the Trial Period. 
+ 
+If Users purchase any Services that Cognilab offers for a Fee, Users agree to Cognilab, or our third party service providers, storing User payment card information.  Users expressly agree that Cognilab is authorized to charge Users (i) a monthly Fee for any applicable Services billed on a monthly basis, (ii) any other Fees for Services Users may purchase, and (iii) any applicable taxes in connection with User use of the Services to the payment card Users provide and to reimburse Cognilab for all collection costs and interest for any overdue amounts.  If the payment card Users provide expires and Users do not provide new payment card information or cancel User account, Users authorize Cognilab to continue billing Users and Users agree to remain responsible for any uncollected Fees.
+ 
+D. Ownership, Rules and Restrictions
+All material and services available on the Site, all data collected on the Platform from Users or Participants, and all material and services provided by or through Cognilab, its affiliates, subsidiaries, employees, agents, licensors or other commercial partners including, but not limited to, software, all informational text, software documentation, design of and "look and feel," layout, photographs, graphics, audio, video, messages, interactive and instant messaging, design and functions, files, documents, images, or other materials, whether publicly posted or privately transmitted as well as all derivative works thereof (collectively, the "Materials"), are owned by Cognilab or other parties that have licensed their material or provided services to Cognilab, and are protected by copyright, trademark, trade secret and other intellectual property laws.  All Cognilab trademarks and service marks, logos, slogans and taglines are the property of Cognilab.  All other trademarks, service marks, logos, slogans and taglines are the property of their respective owners.  Except as otherwise specifically provided herein, nothing should be construed as granting any license or right to use any trademarks, service marks, logos, slogans or taglines displayed on Cognilab without our express written permission, or the express written permission of such third-party that may own the trademark, service mark, logo, slogan or tagline.
+ 
+For greater clarity, unless a User pays additional fees as described on the Site, Cognilab owns all research data (“Research Data”) collected on the Platform from Users or Participants. Cognilab may at its sole discretion compile, index, package, license and sell Research Data to the public or third parties, provided that such information does not incorporate User data and/or identify User confidential information or include User company’s name, without further or additional consent from Users or Participants. Cognilab retains all intellectual property rights in such information.
+ 
+This Agreement does not permit Users, and Users agree not to, directly or indirectly: store, copy, reproduce, republish, modify, manipulate, upload, post, translate, scrape, rent, lease, loan, sell, distribute, transfer, transmit, display, decompile, reverse engineer, reverse assemble, decipher or otherwise attempt to discover any programming code or any source code used in or with the Materials, distribute the Materials in such a manner as to allow a third party to do any of the foregoing, or otherwise distribute in any way the Materials other than as specifically permitted in this Agreement.  Users may not sell, assign, sublicense, grant a security interest in or otherwise attempt to transfer any right in the Materials, create derivative works based on or in any manner commercially exploit the Materials, in whole or in part, other than as expressly permitted in this Agreement.  Any use of the Materials for any purpose other than as specifically permitted herein or without our prior consent or the prior written consent of Cognilab is expressly prohibited. Cognilab reserves all rights not expressly granted in this Agreement.
+ 
+Third party technology that may be appropriate or necessary for use on the Platform are described on the Site [https://www.mturk.com/mturk/conditionsofuse] User’s right to use such third party technology is governed by the terms of the third party technology terms of service specified by Cognilab and not under this Agreement.
+ 
+Users agree to all of the following: 
+ 
+1. If the User is an individual, Users hereby certify that Users are at least 18 years of age. If the User is an entity, Users hereby certify that they are validly incorporated or constituted and able to enter into this Agreement and be bound by it. 
+ 
+2. Users will ensure the email address provided in User account registration is valid at all times and will keep User contact information accurate and up-to-date.
+ 
+3. Users will not use the Services or Materials for any unlawful purposes or to conduct any unlawful activity, including, but not limited to, fraud, embezzlement, money laundering or insider trading.
+ 
+4. Users will not imply or state, directly or indirectly, that Users are affiliated with or endorsed by Cognilab without our express written permission.
+ 
+5. Users may not send unsolicited messages (also known as junk mail or SPAM) to promote any experiment created on the Site.
+ 
+6. Users may not upload, post, email, transmit or otherwise make available or initiate any Content that contains software viruses, worms, Trojan horses or any other computer code, files or programs that interrupt, destroy or limit the functionality of the Services or the Materials or that may impact the ability of any Cognilab user to access the Services.
+ 
+7. Users will not access the Services through automated methods.  The Services may only be used or accessed through an online portal or browser using an electronic device through manual control at all times.
+ 
+8. Users may not create multiple or fake accounts, fake experiments or upload individual files larger than  5 MB, except audio files which may be up to 5 MB and video files which may be up to 100MB.
+9. Users may not send messages using the Services which do not correctly identify the sender and Users may not alter the attribution of origin in electronic mail messages or postings. 
+ 
+10. Users will not share their password, let anyone else access their account, or do anything that might jeopardize the security of their account. Users will not attempt to or actually access the Services or Materials by any means other than through the interfaces provided by Cognilab. Cognilab is not responsible if a person or entity other than a User accesses a User’s account and modifies, destroys, corrupts, copies or distributes that User’s Content. 
+ 
+11. Users will not attempt to or actually override any security component included in or underlying the Materials or Services.
+ 
+12. Users will not attempt or engage in any action that directly or indirectly interferes with the proper working of or places an unreasonable load on Cognilab’s infrastructure.
+ 
+13. Users will not publish Content, or links to Content, that is:
+ 
+i. Pornographic, sexually explicit, or violent.
+ii. Illegal (including stolen copyrighted material and material that infringes or has the potential to infringe the intellectual property rights of another).
+iii. Reasonably likely to cause harm, or that could be reasonably considered as slander to Cognilab or libel to Cognilab. 
+iv. Breaches another’s privacy.
+ 
+14. Users will not publish Content that is spam, is machine- or randomly-generated, and/or contains unethical or unwanted commercial content designed to drive traffic to third party sites or boost the search engine rankings of third party sites, or to further unlawful acts (such as phishing), or mislead recipients as to the source of the material (such as spoofing). 
+ 
+15. Users verify that their country of residence is the same as their billing address. 
+ 
+Cognilab may determine in its sole discretion whether or not an account is in violation of any of these policies.  Violation of any of these policies may result in user information tracking with such information being stored to identify the offending user.  Offending users may be permanently restricted from holding an account or using the Services.  If Cognilab reasonably determines that User accounts are being used for illegal or fraudulent activity then those accounts may be immediately terminated and data erased.  Cognilab may also report Users to law enforcement officials in the appropriate jurisdictions.
+ 
+E. Content
+Users are legally responsible for all information, data, text, software, music, sound, photographs, graphics, video, messages or other materials uploaded, posted or stored in connection with a User’s use of the Services (“Content”).  Users may share their Content only with other User’s for the purposes of cross-collaboration research only. Cognilab is not responsible for User Content. Users are responsible for any Content that may be lost or unrecoverable through User’s use of the Services.  Users are encouraged to archive their Content regularly and frequently.  
+ 
+As part of the Services, Cognilab may provide Users with templates and sample experiments which may be populated with sample content provided by Cognilab to illustrate how a User’s final experiment might look (“Sample Content”).  Users agree that Users will not make this Sample Content publicly available and that Users will remove all Sample Content from their experiment before permitting any Participants or third party users to access or view a User’s experiment.
+ 
+Cognilab may, but has no obligation to, monitor Content on the Site or experiments created using our Services.  Cognilab may disclose any information necessary or appropriate to satisfy our legal obligations, protect Cognilab or its customers, or operate the Services properly.  Cognilab, in its sole discretion, may refuse to post, remove, or require Users to remove, any Content, in whole or in part, alleged to be unacceptable, undesirable, inappropriate, or in violation of this Agreement.
+ 
+In performing the Services, Cognilab will comply with its Privacy Policy as set out on the Site. The Privacy Policy is subject to change at Cognilab’s discretion.
+ 
+F. Termination and its Effect
+1. Services may be terminated by Cognilab, without cause, at any time.
+ 
+2. Services may be terminated by Users, without cause, by following the cancellation procedures described on the Site.  
+ 
+3. Cognilab may terminate Services at any time, without penalty and without notice, if Users fail to comply with any of the terms of this Agreement or the intellectual property protections applicable to these Services. 
+ 
+4. Notice of termination of Services by Cognilab may be sent to the contact e-mail associated with a User account. Upon termination, Cognilab has the right to delete all data, files, or other information that is stored in a User account.
+ 
+Upon the end of this Agreement or the Services thereunder, a User’s right to access or use the Platform and the Services will terminate. 
+ 
+Provisions that survive termination or expiration of this Agreement are those relating to limitation of liability, infringement indemnity, payment, and others which by their nature are intended to survive. Notwithstanding termination of the Agreement for any reason, such termination will not relieve either party from any obligation or liability that has accrued under the Agreement to the date thereof, or from the performance of its obligations under the Agreement to the date thereof.
+ 
+G. Entire Agreement
+Users agree that this Agreement is the complete agreement for the Services ordered by Users, and that this Agreement supersedes all prior or contemporaneous agreements or representations, written or oral, regarding such Services. If any term of this Agreement is found to be invalid or unenforceable, the remaining provisions will remain effective and such term will be replaced with a term consistent with the purpose and intent of this Agreement. 
+ 
+H. LIMITATION OF LIABILITY
+COGNILAB IS NOT LIABLE TO USERS OR ANY OTHER PERSON FOR DAMAGES OF ANY KIND, INCLUDING WITHOUT LIMITATION ANY PUNITIVE, EXEMPLARY, CONSEQUENTIAL, INCIDENTAL, INDIRECT OR SPECIAL DAMAGES (INCLUDING, WITHOUT LIMITATION, ANY PERSONAL INJURY, LOST PROFITS, BUSINESS INTERRUPTION, LOSS OF PROGRAMS OR OTHER DATA ON YOUR COMPUTER OR OTHERWISE) ARISING FROM OR IN CONNECTION WITH USE OF THE PLATFORM, SITE, THE SERVICES, THE MATERIALS, YOUR CONTENT, THE COMMERCIAL PRODUCTS OR ANY THIRD PARTY USER GENERATED CONTENT AVAILABLE ON OR THROUGH THE SITE, WHETHER UNDER A THEORY OF BREACH OF CONTRACT, NEGLIGENCE, STRICT LIABILITY, MALPRACTICE OR OTHERWISE, EVEN IF COGNILAB HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. USERS HEREBY RELEASE COGNILAB AND HOLD COGNILAB AND ITS PARENTS, SUBSIDIARIES, AFFILIATES, LICENSORS, AND THEIR OFFICERS, DIRECTORS, TRUSTEES, AFFILIATES, SUBCONTRACTORS, AGENTS AND EMPLOYEES, HARMLESS FROM ANY AND ALL CLAIMS, DEMANDS, AND DAMAGES OF EVERY KIND AND NATURE (INCLUDING, WITHOUT LIMITATION, ACTUAL, SPECIAL, INCIDENTAL AND CONSEQUENTIAL), KNOWN AND UNKNOWN, SUSPECTED AND UNSUSPECTED, DISCLOSED AND UNDISCLOSED, ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE USE OF THE SERVICES, MATERIALS, SITE, YOUR CONTENT, COMMERCIAL PRODUCTS OR ANY THIRD PARTY USER GENERATED CONTENT AVAILABLE ON OR THROUGHTHE SITE.  USERS HEREBY WAIVE THE PROVISIONS OF ANY FEDERAL, PROVINCIAL OR LOCAL LAW LIMITING OR PROHIBITING A GENERAL RELEASE.
+ 
+I. EXCLUSIVE REMEDY
+IN THE EVENT OF ANY PROBLEM WITH THE PLATFORM, SITE, THE SERVICES, THE MATERIALS, USERS AGREE THAT A USER’S SOLE AND EXCLUSIVE REMEDY IS TO CEASE USING THE SITE, THE SERVICES AND THE MATERIALS.  UNDER NO CIRCUMSTANCES WILL COGNILAB, ITS AFFILIATES, OR LICENSORS BE LIABLE IN ANY WAY FOR YOUR USE OF THE PLATFORM, SITE, THE SERVICES, THE MATERIALS, YOUR CONTENT, THE COMMERCIAL PRODUCTS OR THIRD PARTY USER GENERATED CONTENT AVAILABLE ON OR THROUGH THE SITE, INCLUDING, BUT NOT LIMITED TO, ANY ERRORS OR OMISSIONS, ANY INFRINGEMENT OF THE INTELLECTUAL PROPERTY RIGHTS OR OTHER RIGHTS OF THIRD PARTIES, OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF, OR RELATED TO, THE USE OF THE SITE, THE SERVICES, THE MATERIALS, YOUR CONTENT, THE COMMERCIAL PRODUCTS OR ANY THIRD PARTY USER GENERATED CONTENT AVAILBALE ON OR THROUGH THE SITE. Certain states and/or jurisdictions do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, so the exclusions set forth above may not apply to Users. 
+ 
+J. DISCLAIMER OF WARRANTY
+THE PLATFORM, SITE, SERVICES AND MATERIALS ARE PROVIDED “AS IS,” “AS AVAILABLE,” “WITH ALL FAULTS” AND WITHOUT ANY WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE UNDER APPLICABLE LAW, COGNILAB AND ITS LICENSORS DISCLAIM ALL WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OF TITLE, MERCHANTIBILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.  WITHOUT LIMITING THE FOREGOING, NEITHER COGNILAB NOR ITS LICENSORS WARRANT THAT ACCESS TO THE SITE, THE MATERIALS AND/OR THE SERVICES AVAILABLE ON OR THROUGH THE SITE WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT DEFECTS, IF ANY, WILL BE CORRECTED; NOR DOES COGNILAB OR ITS LICENSORS MAKE ANY REPRESENTATIONS ABOUT THE ACCURACY, RELIABILITY, CURRENCY, QUALITY, COMPLETENESS, USEFULNESS, PERFORMANCE, SECURITY, LEGALITY OR SUITABILITY OF THE SERVICES, THE MATERIALS OR THE SITE.  USERS EXPRESSLY AGREE THAT YOUR USE OF THE SITE AND YOUR RELIANCE UPON THE SERVICES AND/OR THE MATERIALS IS AT YOUR SOLE RISK. IN ADDITION, COGNILAB IS NOT RESPONSIBLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES FOR THE DELIVERY OF ANY MESSAGES (SUCH AS EMAILS, POSTING OF ANSWERS OR TRANSMISSION OF ANY OTHER USER GENERATED CONTENT) SENT THROUGH THE SITE TO ANYONE. 
+ 
+FURTHER, COGNILAB AND ITS LICENSORS MAKE NO REPRESENTATION OR WARRANTIES THAT THE SERVICES OR THE MATERIALS OR THE SITE ARE APPROPRIATE OR AVAILABLE FOR USE IN ALL GEOGRAPHIC LOCATIONS. IF USERS USE THE SITE, THE SERVICES OR THE MATERIALS OUTSIDE CANADA, USERS ARE SOLELY RESPONSIBLE FOR COMPLIANCE WITH ALL APPLICABLE LAWS, INCLUDING WITHOUT LIMITATION EXPORT AND IMPORT REGULATIONS OF OTHER COUNTRIES. NEITHER COGNILAB NOR ANY THIRD PARTY PROVIDERS, PARTNERS OR AFFILIATES WARRANT THAT THE SITE,ITS SERVERS THE MATERIALS OR THE SERVICES OR ANY E-MAIL SENT FROM THE SITE OR ANY THIRD PARTY PROVIDERS, PARTNERS OR AFFILIATES ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.
+ 
+K. Indemnification
+Users agree to indemnify, hold harmless, and defend Cognilab and its licensors, suppliers, officers, directors, employees, agents, affiliates, subsidiaries, successors and assigns (collectively "Indemnified Parties") from and against any and all liability, loss, claim, damages, expense, or costs (including but not limited to attorneys' fees), incurred by or made against the Indemnified Parties in connection with any claim arising from or related to (i) a User’s use (or anyone using a User’s account’s) use of the Services, the Site or  the Materials, (ii) User Content, or (iii) any Commercial Products Users offer on or through the Site or using our Services.  This includes, but is not limited to, any breach or violation of this Agreement by Users or anyone utilizing a User’s account.  Users agree to fully cooperate at the User’s expense as reasonably required by an Indemnified Party.  Each Indemnified Party may, at its election, assume the defense and control of any matter for which it is indemnified hereunder.  Users will not settle any matter involving an Indemnified Party without the consent of the applicable Indemnified Party.
+ 
+L. Force Majeure
+Cognilab will not be responsible for failure or delay of performance if caused by: an act of war, hostility, or sabotage; act of God; electrical, internet, or telecommunication outage that is not caused by the obligated party; government restrictions (including the denial or cancellation of any export or other license); other event outside the reasonable control of the obligated party. Cognilab both will use reasonable efforts to mitigate the effect of a force majeure event.  If such event continues for more than 30 days Cognilab may cancel unperformed Services upon written notice. This section does not excuse either party’s obligation to take reasonable steps to follow its normal disaster recovery procedures or the User’s obligation to pay for the Services.
+ 
+M. Third Party Web Sites, Content, Products and Services
+The Services may enable Users to add links to Web sites and access to content, products and Services of third parties, including users, advertisers, affiliates and sponsors of such third parties. Cognilab is not responsible for any third party Web sites or third party content provided on or through the Services and Users bear all risks associated with the access and use of such Web sites and third party content, products and Services.
+ 
+N. Miscellaneous 
+1. The Agreement will be construed and governed by the laws of the Province of British Columbia, Canada (and the federal laws of Canada applicable therein) without regard to its conflict of laws rules. 
+ 
+2. Users may not assign this Agreement or give or transfer the Services or an interest in them to another individual or entity. 
+ 
+3. Except for actions for nonpayment or breach of Cognilab’s proprietary rights, no action, regardless of form, arising out of or relating to this Agreement may be brought by either party more than two years after the cause of action has accrued.
+ 
+4. Cognilab reserves the right, in our sole discretion, to modify or replace any part of this Agreement at any time, effective upon the date of the change. In the event of any such change, Cognilab will post a notice on the Site that Cognilab has changed this Agreement.
+ 
+5. The parties are independent contractors.  The Agreement does not create a partnership, joint venture, agency, franchise, fiduciary or employment relationship between the parties.

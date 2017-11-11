@@ -1,0 +1,205 @@
+body {
+  background-color:#e8ebf2;
+  width:100%;
+  padding:0px;
+  margin:0px;
+}
+
+.header{
+  height:50px;
+  background-color:#fa5c74;
+	border-bottom:1px solid #e8ebf2;
+  display: table-cell;
+  vertical-align: middle;
+  width:100vw;
+	position:fixed;
+}
+
+.logo {
+	width: 44px;
+	height: 44px;
+	margin-left:calc(50% - 22px);
+	margin-top:-42px;
+	position:absolute;
+}
+
+.crumbs-container {
+	/*background-color:red;*/
+	color:white;
+	font-size:1.5em;
+	height:44px;
+	width:80%;
+	margin-top:0px;
+	margin-left:10px;
+	vertical-align:middle;
+	/*position:absolute;*/
+	/*text-transform: uppercase;*/
+
+	font-family: Arial, Helvetica, sans-serif;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.jobs-link {
+	color:white;
+	text-decoration:none;
+	line-height: 50px;
+	vertical-align:middle;
+}
+
+.jobs-link:hover {
+	text-decoration:none;
+}
+
+i {
+	line-height: 50px;
+	vertical-align:middle;
+}
+
+
+
+
+.left-pannel {
+  height:94vh;
+	overflow-y:auto;
+  border-right:1px solid #a9a9a9;
+  background-color:#fafafa;
+  background-color:#ffffff;
+}
+.right-pannel {
+  height: 94vh;
+	overflow-y:auto;
+}
+
+.job-posting-container {
+  padding:44px;
+	padding-top:88px;
+}
+
+.search-bar {
+  width:calc(50% + 1px);
+  margin-left:25%;
+  padding:0.5em;
+  background-color:rgba(0,0,0, 0.2);
+  border:0px solid transparent;
+  font-size:1.2em;
+  color:white;
+  outline: none;
+  height:100%;
+}
+.search-bar::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #f193a1;
+}
+.search-bar::-moz-placeholder { /* Firefox 19+ */
+  color: #f193a1;
+}
+.search-bar:-ms-input-placeholder { /* IE 10+ */
+  color: #f193a1;
+}
+.search-bar:-moz-placeholder { /* Firefox 18- */
+  color: #f193a1;
+}
+
+.header-title {
+  display:inline-block;
+  width:calc(66%);
+  text-align:center;
+  color:white;
+}
+
+.nav-bar {
+  background-color:white;
+  height:3em;
+}
+
+
+/*iframe {*/
+  /*width:calc(66vw + 10px);*/
+  /*height:94vh;*/
+	/*padding:0px;*/
+	/*margin:-10px;*/
+/*}*/
+
+* {
+  box-sizing: border-box;
+}
+
+[class*="col-"] {
+  float: left;
+  //border: 1px solid red;
+  width: 100%;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media only screen and (min-width: 320px) {
+  /* For tablets: */
+  .col-s-0 {width: 0%;}
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+
+	.job-posting-container {
+		padding:10px;
+		padding-top:66px;
+	}
+}
+
+@media only screen and (min-width: 737px) {
+  /* For tablets: */
+  .col-m-0 {width: 0%;}
+  .col-m-1 {width: 8.33%;}
+  .col-m-2 {width: 16.66%;}
+  .col-m-3 {width: 25%;}
+  .col-m-4 {width: 33.33%;}
+  .col-m-5 {width: 41.66%;}
+  .col-m-6 {width: 50%;}
+  .col-m-7 {width: 58.33%;}
+  .col-m-8 {width: 66.66%;}
+  .col-m-9 {width: 75%;}
+  .col-m-10 {width: 83.33%;}
+  .col-m-11 {width: 91.66%;}
+  .col-m-12 {width: 100%;}
+
+	.job-posting-container {
+		padding:22px;
+		padding-top:88px;
+	}
+
+}
+
+@media only screen and (min-width: 1025px) {
+  /* For desktop: */
+  .col-0 {width: 0%;}
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+	.job-posting-container {
+		padding:44px;
+		padding-top:88px;
+	}
+}

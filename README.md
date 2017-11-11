@@ -1,2 +1,26 @@
-# demo-emergency-contact-list
-An administrative assistant uses an excel spreadsheet to track the office emergency contact list.  This list is prone to data entry errors, which could cause a problem during an emergency.  The list contains employee name, employee phone, emergency contact name, and emergency contact phone.  Create an application that allows the administrative assistant to maintain this list.
+# Contact List v0.1
+
+
+## Installation
+
+Tested with the following
+```console
+Node 6.9.5
+```
+
+Installing this project is simple, run the following commands:
+
+```console
+$ npm install
+$ sudo mongod &  # start mongodb locally
+$ npm start      # fire up the project!
+```
+
+Open : http://localhost:3000/
+
+**NOTE**: You must have MongoDB installed and working locally in order to run
+this project.
+
+## Questions
+
+Got questions?  Hit me up!  I'm jose@barrios.io

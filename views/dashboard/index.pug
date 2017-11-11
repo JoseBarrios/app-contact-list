@@ -1,0 +1,17 @@
+extends base
+
+block vars
+  - var title = 'Dashboard'
+
+block body
+  h1 Dashboard
+  a(href="user/logout") Logout
+  p.
+    Welcome to your dashboard, #{user.givenName}! You are now logged in.
+
+  h2 User Information
+  p First Name: #{user.givenName}
+  p Last Name:  #{user.familyName}
+  p Email:      #{user.email}
+  p ID:         #{user.identifier}
+  p MODEL:      #{JSON.stringify(user)}

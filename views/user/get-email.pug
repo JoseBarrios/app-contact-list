@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    // Mobile viewport optimized
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no')
+    // Meta Tags - Description for Search Engine purposes
+    meta(name='description', content='Barrios | Get Started')
+    meta(name='keywords', content='Template')
+    meta(name='author', content='Jose Barrios')
+    // Website Title
+    title Barrios | VERIFICATION
+    link(rel='shortcut icon', href='images/favicon.png', type='image/x-icon')
+    link(rel='apple-touch-icon-precomposed', href='images/apple-touch-icon.png')
+    // Google Fonts
+    link(href='https://fonts.googleapis.com/css?family=Raleway:300,400,400i,700,800|Varela+Round', rel='stylesheet')
+  body
+    h1 What's your email?
+    form(action="/user/create" method="post")
+      input(type="text", name="_csrf", value=csrfToken)
+      input(type="email", name="email", value=email)
+      button#submitButton(type='submit') verify
+    p(style="color:red") #{error}

@@ -1,0 +1,11 @@
+{
+	"apiVersion": "2010-12-01",
+	"accessKeyId": "AWS_ACCESS_KEY",
+	"secretAccessKey": "AWS_SECRET_KEY",
+	"region": "eu-west-1",
+	"sender": {
+		"givenName": "Jose",
+		"familyName": "Barrios",
+		"email": "jose@bevisible.soy"
+	}
+}

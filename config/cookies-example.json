@@ -1,0 +1,6 @@
+{
+  "cookieName": "session",
+	"secret": "some_random_gen_code",
+	"duration": 604800,
+	"activeDuration": 3600
+}
