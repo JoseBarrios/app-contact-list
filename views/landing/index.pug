@@ -11,47 +11,248 @@ html(lang='en')
     link(href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' async)
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css' async)
 
-  body(style="background-color:#e8ebf2;padding:0px;margin:0px;font-family:'Roboto',sans-serif;")
+    style.
+
+      body {
+        font-family:'Roboto',sans-serif;
+        background-color:white;
+        padding:0px;
+        margin:0px;
+      }
+
+      .left-pannel {
+        width:100%;
+      }
+
+      .right-pannel {
+        display: none;
+      }
+
+      .roladex-header {
+        padding:0px;
+        margin:0px;
+        width:100%;
+      }
+
+      .roladex-header-text {
+        text-align:center;
+        font-weight:600;
+        font-size:2em;
+        padding:22px;
+        color:black;
+        margin:0px;
+      }
+
+      .roladex-header-add-contact-button {
+        background-color:transparent;
+        border-radius:1em;
+        position:absolute;
+        line-height:2em;
+        font-weight:600;
+        cursor:pointer;
+        font-size:2em;
+        color:#1679f4;
+        padding:0px;
+        border:none;
+        height:2em;
+        width:2em;
+        right:8%;
+        top:6px;
+      }
+
+      .roladex-tab {
+        border-bottom:3px solid gray;
+        display:inline-block;
+        cursor:pointer;
+        width:50%;
+      }
+
+      .roladex-tab-selected {
+        border-bottom:3px solid #1679f4;
+        display:inline-block;
+        cursor:pointer;
+        width:50%;
+      }
+
+      .roladex-tab-text {
+        text-align:center;
+        font-size:1.2em;
+        color:gray;
+      }
+
+      .roladex-tab-text-selected {
+        text-align:center;
+        font-size:1.2em;
+        color:#1679f4;
+      }
+
+
+      .roladex-search-container {
+        background-color:#fbfaff;
+        position:relative;
+        height:88px;
+        width:100%;
+      }
+
+      .roladex-search-input {
+        border: 1px solid #e4e0e1;
+        border-radius:10px;
+        text-indent:28px;
+        font-size:1.2em;
+        padding:11px;
+        margin:5%;
+        width:84%;
+      }
+
+      .roladex-search-input-left-icon {
+        position:absolute;
+        cursor:default;
+        color:#757575;
+        left:35px;
+        top:35px;
+      }
+
+      .roladex-search-input-right-icon {
+        position:absolute;
+        cursor:pointer;
+        color:#757575;
+        right:35px;
+        top:35px;
+      }
+
+      .contact-list-divider{
+        background-color:#f3f3f3;
+        padding-bottom:0.25em;
+        padding-top:0.25em;
+        padding-left:22px;
+        font-size:1.5em;
+        font-weight:700;
+        color:#000;
+        margin:0px;
+        width:100%;
+      }
+
+      .contact-list-person-container {
+        border-bottom:1px solid #f3f3f3;
+        background-color:white;
+        cursor:pointer;
+        width:100%;
+      }
+
+      .contact-list-person-primary-text {
+        display:inline-block;
+        padding-left:22px;
+        font-size:1.5em;
+        font-weight:700;
+      }
+
+      .contact-list-person-secondary-text {
+        display:inline-block;
+        padding-left:8px;
+        font-size:1.5em;
+        font-weight:300;
+      }
+
+      .contact-card-container {
+        width:calc(100% - 20% - 2px);
+        border: 1px solid #d7d8e1;
+        background-color:white;
+        margin-bottom:5%;
+        margin-left:7%;
+        margin-top:4%;
+      }
+
+
+      @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .left-pannel {
+          border-right:1px solid #d7d8e1;
+          box-sizing:border-box;
+          overflow:scroll;
+          height:100vh;
+          float:left;
+          width:50%;
+        }
+        .right-pannel {
+          border-left:1px solid #d7d8e1;
+          background-color:#e8ebf2;
+          box-sizing:border-box;
+          display: inline;
+          overflow:scroll;
+          font-size:1em;
+          height:100vh;
+          float:right;
+          width:50%;
+        }
+      }
+
+
+      @media screen and (min-width: 1024px) {
+        .left-pannel {
+          border-right:1px solid #d7d8e1;
+          box-sizing:border-box;
+          overflow:scroll;
+          height:100vh;
+          float:left;
+          width:30%;
+        }
+        .right-pannel {
+          border-left:1px solid #d7d8e1;
+          background-color:#e8ebf2;
+          box-sizing:border-box;
+          display: inline;
+          overflow:scroll;
+          font-size:1em;
+          height:100vh;
+          float:right;
+          width:70%;
+        }
+      }
+
+
+  body
 
     //------
     //-ROLADEX PANNEL
     //-------
-    div(style="display:inline-block;width:40%;min-width:420px;max-width:500px;height:100vh;border-right:1px solid #d7d8e1;overflow:scroll")
+    div(class="left-pannel")
+
 
       //------
       //-HEADER
       //-------
-      div(style="color:black;background-color:white;padding:11px;margin:0px;height:44px;font-weight:600")
-        span(style="display:inline")
-          button(id="addContactButton" style="color:#1679f4;font-size:2em;font-weight:500;background-color:white;border:0px solid black;float:right;margin-right:15px;cursor:pointer") +
-          p(style="text-align:center;vertical-align:middle;font-size:2em;line-height:44px;position:static;margin:0px;margin-left:44px") Contacts
+      div(id="roladexHeader" class="roladex-header")
+        button(id="roladexHeaderAddContactButton" class="roladex-header-add-contact-button") +
+        p(id="roladexHeaderText" class="roladex-header-text") Contacts
+
 
       //------
       //-TABS
       //-------
       if sortPrimary === 'givenName'
-        div(onclick="window.location.href='/?sort=givenName'" style="width:calc(50%);background-color:white;display:inline-block;border-bottom:3px solid #1679f4;cursor:pointer")
-          p(style="color:white;text-align:center;vertical-align: middle;line-height:11px;background-color:white;color:#1679f4") First name
-        div(onclick="window.location.href='/?sort=familyName'" style="width:calc(50%);background-color:white;display:inline-block;border-bottom:3px solid lightGray; cursor:pointer")
-          p(style="color:white;text-align:center;vertical-align: middle;line-height:11px;color:gray;") Last Name
+        div(id="roladexTabsGivenName" class="roladex-tab-selected" onclick="window.location.href='/?sort=givenName'")
+          p(id="roladexTabsGivenNameText" class="roladex-tab-text-selected") First Name
+        div(id="roladexTabsFamilyName" class="roladex-tab" onclick="window.location.href='/?sort=familyName'")
+          p(id="roladexTabsFamilyNameText" class="roladex-tab-text") Last Name
       if sortPrimary === 'familyName'
-        div(onclick="window.location.href='/?sort=givenName'" style="width:calc(50%);background-color:white;display:inline-block;border-bottom:3px solid lightGray;cursor:pointer")
-          p(style="color:white;text-align:center;vertical-align: middle;line-height:11px;background-color:white;color:gray") First name
-        div(onclick="window.location.href='/?sort=familyName'" style="width:calc(50%);background-color:white;display:inline-block;border-bottom:3px solid #1679f4; cursor:pointer")
-          p(style="color:white;text-align:center;vertical-align: middle;line-height:11px;color:#1679f4;") Last Name
+        div(id="roladexTabsGivenName" class="roladex-tab" onclick="window.location.href='/?sort=givenName'")
+          p(id="roladexTabsGivenNameText" class="roladex-tab-text") First Name
+        div(id="roladexTabsFamilyName" class="roladex-tab-selected" onclick="window.location.href='/?sort=familyName'")
+          p(id="roladexTabsFamilyNameText" class="roladex-tab-text-selected") Last Name
+
 
       //------
       //-SEARCH
       //-------
-      div(style="width:calc(100% - 22px);height:44px;padding-left:22px;padding-top:22px; padding-bottom:22px;background-color:#fbfaff;position:relative;")
-        span(class="fa fa-search" aria-hidden="true" style="position:absolute;top:35px;left:40px;color:#757575;cursor:default")
-        input(id='searchInput' placeholder='Search contacts' style="padding:11px;text-indent:30px;width:calc(100% - 50px);border-radius:10px; border: 1px solid #e4e0e1;font-size:1em")
-        span(id='deleteQueryButton' class="fa fa-times-circle" aria-hidden="true" style="position:absolute;right:40px;top:35px;color:#757579;cursor:pointer")
+      div(id="roladexSearchContainer" class="roladex-search-container")
+        span(id="roladexSearchInputLeftIcon" class="roladex-search-input-left-icon fa fa-search" aria-hidden="true")
+        input(id="roladexSearchInput" class="roladex-search-input" placeholder="Search")
+        span(id="roladexSearchInputRightIcon" class="roladex-search-input-right-icon fa fa-times-circle" aria-hidden="true")
+
 
       //------
       //-LIST
       //-------
-      div(id='allResultsContainer')
+      div(id='contactListContainer' class="contact-list-container")
         each person in people
           - let firstLetter = person[sortPrimary].charAt(0).toUpperCase();
           if alphabet.includes(firstLetter)
@@ -59,35 +260,33 @@ html(lang='en')
             - let char = alphabet.splice(charIndex, 1);
             - alphabet = alphabet.filter(item => item !== char)
             //-DIVIDER
-            p(style="font-weight:700;background-color:#f3f3f3;color:#000;padding:0.25em;padding-left:22px;width:calc(100% - 22px - 0.25em);font-size:1.5em;margin:0px;") #{char}
-          div(id=person._id style="width:100%;background-color:white;border-bottom:1px solid #f3f3f3;cursor:pointer" class="person")
+            p(class="contact-list-divider") #{char}
+          div(id=person._id class="contact-list-person-container")
             span
               if sortPrimary === 'givenName'
-                p(style="display:inline-block;font-size:1.5em;padding-left:22px;font-weight:700;") #{person[sortPrimary]}
-                p(style="display:inline-block;font-size:1.5em;padding-left:10px;font-weight:300") #{person[sortSecondary]}
+                p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]}
+                p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
               if sortPrimary === 'familyName'
-                p(style="display:inline-block;font-size:1.5em;padding-left:22px;font-weight:700;") #{person[sortPrimary]},
-                p(style="display:inline-block;font-size:1.5em;padding-left:10px;font-weight:300") #{person[sortSecondary]}
+                p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]},
+                p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
 
-      div(id='filteredResultsContainer')
-
-
+      div(id='searchResultListContainer' hidden)
 
 
     //------
     //-CONTAINER
     //-------
     - let contact = people[0];
-    div(style="display:inline-block;width:66%;height:100vh;margin:0px;;background-color:#e8ebf2;overflow:scroll;")
+    div(class="right-pannel")
       //------
-      //-CONTACT
+      //-CONTACT CARD
       //-------
-      div(style="width:calc(100% - 20% - 2px);margin-top:4%;margin-left:7%;margin-bottom:5%;border: 1px solid #d7d8e1;background-color:white")
+      div(id="contactCardContainer" class="contact-card-container" style="width:calc(100% - 20% - 2px);margin-top:4%;margin-left:7%;margin-bottom:5%;border: 1px solid #d7d8e1;background-color:white")
         ////////
         //HEADER
         /////////
         div(style="width:100%;padding:0px;margin:0px;background:#fbfaff;border-bottom:1px solid #f3f3f5;cursor:default")
-          p(style="float:left;padding-top:33px;padding-left:44px;margin:0px;font-size:1.6em;color:#1c7ef8;cursor:pointer") Done
+          //-p(style="float:left;padding-top:33px;padding-left:44px;margin:0px;font-size:1.6em;color:#1c7ef8;cursor:pointer") Done
           p(style="float:right;padding-top:33px;padding-right:44px;margin:0px;font-size:1.6em;color:#1c7ef8;cursor:pointer") Edit
           if sortPrimary === 'givenName'
             h1(style="text-align:center;padding-top:63px;margin:0px;font-size:3em") #{people[0][sortPrimary]} #{people[0][sortSecondary]}
@@ -125,13 +324,11 @@ html(lang='en')
 script.
   var people = !{JSON.stringify(people)}
   var search = !{JSON.stringify(search)}
-  var person = document.querySelector('.person');
-  var searchInput = document.querySelector('#searchInput');
-  var deleteQueryButton = document.querySelector('#deleteQueryButton');
-  var allResultsContainer = document.querySelector('#allResultsContainer');
-  var filteredResultsContainer = document.querySelector('#filteredResultsContainer');
-
-  console.log(person);
+  var person = document.querySelector('.contact-list-person-container');
+  var searchInput = document.querySelector('#roladexSearchInput');
+  var deleteQueryButton = document.querySelector('#roladexSearchInputRightIcon');
+  var allResultsContainer = document.querySelector('#contactListContainer');
+  var filteredResultsContainer = document.querySelector('#searchResultListContainer');
 
   deleteQueryButton.addEventListener('click', function(e){
     searchInput.value = '';
