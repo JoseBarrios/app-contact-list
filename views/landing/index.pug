@@ -498,7 +498,7 @@ html(lang='en')
             - let char = alphabet.splice(charIndex, 1);
             - alphabet = alphabet.filter(item => item !== char)
             //-DIVIDER
-            p(class="contact-list-divider") #{char}
+            p(id="contactListDivider" class="contact-list-divider") #{char}
           div(id=person._id class="contact-list-person-container")
             span
               if sortPrimary === 'givenName'
@@ -557,14 +557,76 @@ html(lang='en')
 
 
 script.
+  var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  var sortPrimary = !{JSON.stringify(sortPrimary)}
+  var sortSecondary = !{JSON.stringify(sortSecondary)}
   var people = !{JSON.stringify(people)}
-  var search = !{JSON.stringify(search)}
+  var searchQuery = !{JSON.stringify(search)}
   var person = document.querySelector('.contact-list-person-container');
+  var contactListDivider = document.querySelector('#contactListDivider');
   var searchInput = document.querySelector('#roladexSearchInput');
   var deleteQueryButton = document.querySelector('#roladexSearchInputRightIcon');
   var allResultsContainer = document.querySelector('#contactListContainer');
   var filteredResultsContainer = document.querySelector('#searchResultListContainer');
 
+  var search = function(query, people) {
+    let found = [];
+    people.forEach(person => {
+      var givenName = person.givenName.toLowerCase();
+      var familyName = person.familyName.toLowerCase();
+      query = query.toLowerCase();
+      let fullName = `${givenName} ${familyName}`;
+      if(fullName.includes(query)){
+        found.push(person)
+      }
+    })
+    return found;
+  }
+
+
+  var renderSearchResults = function(results){
+    if(results.length){
+      let newAlphabet = alphabet.slice(0);
+      results.forEach(result => {
+        let firstLetter = result[sortPrimary].charAt(0).toUpperCase();
+        if(newAlphabet.includes(firstLetter)){
+          let charIndex = newAlphabet.indexOf(firstLetter);
+          let char = newAlphabet.splice(charIndex, 1);
+          newAlphabet = newAlphabet.filter(item => item !== char)
+          let divider = contactListDivider.cloneNode(true);
+          divider.innerHTML = firstLetter.toUpperCase();
+          filteredResultsContainer.appendChild(divider);
+        }
+
+        let personClone = person.cloneNode(true);
+        personClone.id = result.id;
+        //Adds comma if primary listing is last name, nothing otherwise
+        let comma = sortPrimary === 'familyName'? ',' : '';
+        personClone.querySelector('#contactListPersonPrimaryText').innerHTML = result[sortPrimary] + comma;
+        personClone.querySelector('#contactListPersonSecondaryText').innerHTML = result[sortSecondary];
+        filteredResultsContainer.appendChild(personClone);
+      })
+    }
+    else {
+      let personClone = person.cloneNode(true);
+      personClone.querySelector('#contactListPersonPrimaryText').innerHTML = 'None Found';
+      personClone.querySelector('#contactListPersonSecondaryText').innerHTML = '';
+      personClone.style.textAlign = 'center';
+      personClone.style.backgroundColor = '#fbfaff';
+      personClone.style.color = '#808080';
+      filteredResultsContainer.appendChild(personClone);
+    }
+  }
+
+
+  ////////////////////////////////////////////////////////////////
+  //
+  // USER INPUT
+  //
+  ///////////////////////////////////////////////////////////////////
+
+
+  //DELETE SEARCH INPUT
   deleteQueryButton.addEventListener('click', function(e){
     searchInput.value = '';
     var event = document.createEvent('Event');
@@ -572,12 +634,9 @@ script.
     searchInput.dispatchEvent(event);
   })
 
-  //////////
-  //SEARCH//
-  //////////
+  //SEARCH INPUT
   searchInput.addEventListener('input', function(e){
-    filteredResultsContainer.innerHTML = null;
-
+    filteredResultsContainer.innerHTML = '';
     if(e.target.value){
       allResultsContainer.style.display = 'none';
       filteredResultsContainer.style.display = 'initial';
@@ -585,38 +644,14 @@ script.
       allResultsContainer.style.display = 'initial';
       filteredResultsContainer.style.display = 'none';
     }
-
-    let found = [];
-    people.forEach(person => {
-      var givenName = person.givenName.toLowerCase();
-      var familyName = person.familyName.toLowerCase();
-      let query = e.target.value.toLowerCase();
-      let fullName = `${givenName} ${familyName}`;
-      if(fullName.includes(query)){
-        found.push(person)
-      }
-    })
-
-    ///////////
-    //RENDER//
-    //////////
-    if(found.length){
-      found.forEach(result => {
-        var pElem = document.createElement("P");
-        var textNode = document.createTextNode(result.givenName+result.familyName);
-        pElem.appendChild(textNode);
-        filteredResultsContainer.appendChild(pElem);
-      })
-    }
-    else{
-      var pElem = document.createElement("P");
-      var textNode = document.createTextNode('None found');
-      pElem.appendChild(textNode);
-      filteredResultsContainer.appendChild(pElem);
-    }
+    let query = e.target.value;
+    let results = search(query, people);
+    renderSearchResults(results);
   })
 
-  searchInput.value = search;
-  var event = document.createEvent('Event');
-  event.initEvent('input', true, true);
-  searchInput.dispatchEvent(event);
+  if(searchQuery){
+    searchInput.value = searchQuery;
+    var event = document.createEvent('Event');
+    event.initEvent('input', true, true);
+    searchInput.dispatchEvent(event);
+  }
