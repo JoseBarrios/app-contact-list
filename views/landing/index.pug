@@ -155,6 +155,13 @@ html(lang='en')
         font-weight:300;
       }
 
+      .contact-list-message-text {
+        color:#838383;
+        text-align:center;
+        font-size:1.5em;
+        font-weight:300;
+      }
+
       .contact-card-container {
         border: 1px solid #d7d8e1;
         background-color:white;
@@ -507,6 +514,7 @@ html(lang='en')
               if sortPrimary === 'familyName'
                 p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]},
                 p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
+        p(id="contactListMessageText" class="contact-list-message-text") #{people.length} Contacts
 
       div(id='searchResultListContainer' hidden)
 
@@ -564,6 +572,7 @@ script.
   var searchQuery = !{JSON.stringify(search)}
   var person = document.querySelector('.contact-list-person-container');
   var contactListDivider = document.querySelector('#contactListDivider');
+  var contactListMessageText = document.querySelector('#contactListMessageText');
   var searchInput = document.querySelector('#roladexSearchInput');
   var deleteQueryButton = document.querySelector('#roladexSearchInputRightIcon');
   var allResultsContainer = document.querySelector('#contactListContainer');
@@ -585,7 +594,6 @@ script.
 
 
   var renderSearchResults = function(results){
-    if(results.length){
       let newAlphabet = alphabet.slice(0);
       results.forEach(result => {
         let firstLetter = result[sortPrimary].charAt(0).toUpperCase();
@@ -606,16 +614,10 @@ script.
         personClone.querySelector('#contactListPersonSecondaryText').innerHTML = result[sortSecondary];
         filteredResultsContainer.appendChild(personClone);
       })
-    }
-    else {
-      let personClone = person.cloneNode(true);
-      personClone.querySelector('#contactListPersonPrimaryText').innerHTML = 'None Found';
-      personClone.querySelector('#contactListPersonSecondaryText').innerHTML = '';
-      personClone.style.textAlign = 'center';
-      personClone.style.backgroundColor = '#fbfaff';
-      personClone.style.color = '#808080';
-      filteredResultsContainer.appendChild(personClone);
-    }
+
+      let message = contactListMessageText.cloneNode(true);
+      message.innerHTML = `${results.length} Contacts Found`
+      filteredResultsContainer.appendChild(message);
   }
 
 
