@@ -15,20 +15,20 @@ html(lang='en')
 
       body {
         font-family:'Roboto',sans-serif;
+        box-sizing:border-box;
         background-color:white;
         padding:0px;
         margin:0px;
       }
 
       .left-pannel {
+        border-right:1px solid #d7d8e1;
+        box-sizing:border-box;
         width:100%;
       }
 
-      .right-pannel {
-        display: none;
-      }
-
       .roladex-header {
+        position:relative;
         padding:0px;
         margin:0px;
         width:100%;
@@ -48,7 +48,7 @@ html(lang='en')
         border-radius:1em;
         position:absolute;
         line-height:2em;
-        font-weight:600;
+        font-weight:300;
         cursor:pointer;
         font-size:2em;
         color:#1679f4;
@@ -56,7 +56,7 @@ html(lang='en')
         border:none;
         height:2em;
         width:2em;
-        right:8%;
+        left:80%;
         top:6px;
       }
 
@@ -96,12 +96,13 @@ html(lang='en')
 
       .roladex-search-input {
         border: 1px solid #e4e0e1;
+        width:calc(100% - 66px);
         border-radius:10px;
+        margin-left:22px;
         text-indent:28px;
+        margin-top:22px;
         font-size:1.2em;
         padding:11px;
-        margin:5%;
-        width:84%;
       }
 
       .roladex-search-input-left-icon {
@@ -109,20 +110,21 @@ html(lang='en')
         cursor:default;
         color:#757575;
         left:35px;
-        top:35px;
+        top:37px;
       }
 
       .roladex-search-input-right-icon {
         position:absolute;
+        color:lightGray;
         cursor:pointer;
-        color:#757575;
         right:35px;
-        top:35px;
+        top:37px;
       }
 
       .contact-list-divider{
         background-color:#f3f3f3;
         padding-bottom:0.25em;
+        box-sizing:border-box;
         padding-top:0.25em;
         padding-left:22px;
         font-size:1.5em;
@@ -154,26 +156,27 @@ html(lang='en')
       }
 
       .contact-card-container {
-        width:calc(100% - 20% - 2px);
         border: 1px solid #d7d8e1;
         background-color:white;
-        margin-bottom:5%;
-        margin-left:7%;
-        margin-top:4%;
+        margin:7%;
+        width:86%;
       }
 
+      .right-pannel {
+        display: none;
+      }
 
-      @media screen and (min-width: 768px) and (max-width: 1024px) {
+      @media screen and (min-width: 768px) and (max-width: 1023px) {
+
         .left-pannel {
-          border-right:1px solid #d7d8e1;
           box-sizing:border-box;
           overflow:scroll;
           height:100vh;
           float:left;
           width:50%;
         }
+
         .right-pannel {
-          border-left:1px solid #d7d8e1;
           background-color:#e8ebf2;
           box-sizing:border-box;
           display: inline;
@@ -183,28 +186,263 @@ html(lang='en')
           float:right;
           width:50%;
         }
+
+        .contact-card-container {
+          border: 1px solid #d7d8e1;
+          width:calc(100% - 44px);
+          background-color:white;
+          margin:22px;
+        }
+
+        .contact-card-header {
+          border-bottom:1px solid #f3f3f5;
+          background:#fbfaff;
+          cursor:default;
+          padding:0px;
+          width:100%;
+          margin:0px;
+        }
+
+        .contact-card-header-left-button {
+          padding-left:44px;
+          padding-top:33px;
+          font-size:1.25em;
+          cursor:pointer;
+          color:#1c7ef8;
+          float:left;
+          margin:0px;
+        }
+
+        .contact-card-header-right-button {
+          padding-right:44px;
+          padding-top:33px;
+          font-size:1.25em;
+          cursor:pointer;
+          color:#1c7ef8;
+          float:right;
+          margin:0px;
+        }
+
+        .contact-card-name {
+          text-align:center;
+          padding-top:88px;
+          font-size:2em;
+          margin:0px;
+        }
+
+        .contact-card-last-updated {
+          padding-bottom:11px;
+          text-align:center;
+          padding-top:5px;
+          font-weight:300;
+          font-size:1em;
+          color:#808080;
+          margin:0px;
+        }
+
+        .contact-card-action-container {
+          justify-content: center;
+          padding-bottom:44px;
+          display: flex;
+        }
+
+        .contact-card-action-button {
+          background-color:#1c7ef8;
+          border-radius:2em;
+          margin-left:14px;
+          cursor:pointer;
+          margin:22px;
+          height:4em;
+          width:4em;
+        }
+
+        .contact-card-action-icon {
+          vertical-align:center;
+          text-align:center;
+          line-height:2em;
+          color:white;
+          height:100%;
+          width:100%;
+        }
+
+        .contact-card-action-text {
+          font-family:'Roboto',sans-serif;
+          text-align:center;
+          margin-top:10px;
+          font-size:1em;
+          cursor:default;
+          color:#1c7ef8;
+          padding:0px;
+        }
+
+        .contact-info-container {
+          width:calc(50% + 60px);
+          padding-bottom:22px;
+          padding-left:55px;
+          font-size:1.4em;
+          padding-top:22px;
+          cursor:default;
+          margin:0px;
+        }
+
+        .contact-info-action-text {
+          color:#3989e0;
+          cursor:pointer;
+        }
+
+        .contact-info-divider {
+          border: 1px solid #f3f3f5;
+        }
+
+        .contact-info-emergency-header {
+          color:lightGray;
+        }
+
+        .contact-info-emergency-action-text {
+          padding-bottom:22px;
+          cursor:pointer;
+          color:#fc3d39;
+        }
       }
 
 
+
+
+
       @media screen and (min-width: 1024px) {
+
         .left-pannel {
-          border-right:1px solid #d7d8e1;
+          display: inline-block;
           box-sizing:border-box;
           overflow:scroll;
           height:100vh;
           float:left;
           width:30%;
         }
+
         .right-pannel {
-          border-left:1px solid #d7d8e1;
           background-color:#e8ebf2;
           box-sizing:border-box;
-          display: inline;
+          display: inline-block;
           overflow:scroll;
           font-size:1em;
           height:100vh;
           float:right;
+          margin:0px;
           width:70%;
+        }
+
+        .contact-card-container {
+          box-sizing:border-box;
+          border: 1px solid #d7d8e1;
+          margin:7%;
+          width:86%;
+        }
+
+        .contact-card-header {
+          border-bottom:1px solid #f3f3f5;
+          box-sizing:border-box;
+          background:#fbfaff;
+          cursor:default;
+        }
+
+        .contact-card-header-left-button {
+          padding-left:44px;
+          padding-top:33px;
+          font-size:1.5em;
+          cursor:pointer;
+          color:#1c7ef8;
+          float:left;
+          margin:0px;
+        }
+
+        .contact-card-header-right-button {
+          padding-right:44px;
+          padding-top:33px;
+          font-size:1.5em;
+          cursor:pointer;
+          color:#1c7ef8;
+          float:right;
+          margin:0px;
+        }
+
+        .contact-card-name {
+          text-align:center;
+          padding-top:33px;
+          font-size:3em;
+          margin:0px;
+        }
+
+        .contact-card-last-updated {
+          padding-bottom:11px;
+          text-align:center;
+          padding-top:5px;
+          font-weight:300;
+          font-size:1.25em;
+          color:#808080;
+          margin:0px;
+        }
+
+        .contact-card-action-container {
+          justify-content: center;
+          padding-bottom:44px;
+          display: flex;
+        }
+
+        .contact-card-action-button {
+          background-color:#1c7ef8;
+          border-radius:2em;
+          cursor:pointer;
+          margin:22px;
+          height:4em;
+          width:4em;
+        }
+
+        .contact-card-action-icon {
+          vertical-align:center;
+          text-align:center;
+          line-height:2em;
+          color:white;
+          height:100%;
+          width:100%;
+        }
+
+        .contact-card-action-text {
+          font-family:'Roboto',sans-serif;
+          text-align:center;
+          margin-top:10px;
+          font-size:1.25em;
+          cursor:default;
+          color:#1c7ef8;
+          padding:0px;
+        }
+
+        .contact-info-container {
+          box-sizing:border-box;
+          padding-left:55px;
+          font-size:1.6em;
+          cursor:default;
+          margin:0px;
+          width:86%;
+        }
+
+        .contact-info-action-text {
+          color:#3989e0;
+          cursor:pointer;
+        }
+
+        .contact-info-divider {
+          border: 1px solid #f3f3f5;
+        }
+
+        .contact-info-emergency-header {
+          color:lightGray;
+        }
+
+        .contact-info-emergency-action-text {
+          padding-bottom:22px;
+          cursor:pointer;
+          color:#fc3d39;
         }
       }
 
@@ -274,51 +512,48 @@ html(lang='en')
 
 
     //------
-    //-CONTAINER
+    //-CARD CONTAINER
     //-------
     - let contact = people[0];
     div(class="right-pannel")
       //------
       //-CONTACT CARD
       //-------
-      div(id="contactCardContainer" class="contact-card-container" style="width:calc(100% - 20% - 2px);margin-top:4%;margin-left:7%;margin-bottom:5%;border: 1px solid #d7d8e1;background-color:white")
+      div(id="contactCardContainer" class="contact-card-container")
         ////////
         //HEADER
         /////////
-        div(style="width:100%;padding:0px;margin:0px;background:#fbfaff;border-bottom:1px solid #f3f3f5;cursor:default")
-          //-p(style="float:left;padding-top:33px;padding-left:44px;margin:0px;font-size:1.6em;color:#1c7ef8;cursor:pointer") Done
-          p(style="float:right;padding-top:33px;padding-right:44px;margin:0px;font-size:1.6em;color:#1c7ef8;cursor:pointer") Edit
+        div(id="contactCardHeader" class="contact-card-header")
+          p(id="contactCardHeaderLeftButton" class="contact-card-header-left-button") Done
+          p(id="contactCardHeaderRightButton" class="contact-card-header-right-button") Edit
           if sortPrimary === 'givenName'
-            h1(style="text-align:center;padding-top:63px;margin:0px;font-size:3em") #{people[0][sortPrimary]} #{people[0][sortSecondary]}
+            h1(id="contactCardName" class="contact-card-name") #{people[0][sortPrimary]} #{people[0][sortSecondary]}
           if sortPrimary === 'familyName'
-            h1(style="text-align:center;padding-top:63px;margin:0px;font-size:3em") #{people[0][sortPrimary]}, #{people[0][sortSecondary]}
-          p(style="text-align:center;padding-top:5px;margin:0px;font-size:1.4em;color:#808080;padding-bottom:11px;font-weight:300;") Updated 3 days ago
+            h1(id="contactCardName" class="contact-card-name") #{people[0][sortPrimary]}, #{people[0][sortSecondary]}
+          p(id="contactCardLastUpdated" class="contact-card-last-updated") Updated 3 days ago
           /////////
           //ACTIONS
           /////////
-          div(style="display: flex; justify-content: center;padding-bottom:55px;padding-top:11px;")
-            div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:22px;margin-left:14px;cursor:pointer")
-              span( class="fa fa-phone fa-2x" style="color:white;width:75%;height:75%;margin-top:0.55em;margin-left:0.62em;")
-              p(style="text-align:center;padding:0px;margin-top:10px;color:#1c7ef8;font-family:'Roboto',sans-serif;font-size:1.4em;cursor:default") home
-            //-div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:22px;margin-left:18px")
-              span( class="fa fa-mobile fa-3x" style="color:white;width:75%;height:75%;margin-top:0.16em;margin-left:0.455em;cursor:pointer")
-              p(style="text-align:center;padding-left:0px;margin-top:20px;color:#1c7ef8;font-family:'Roboto',sans-serif;font-size:1.4em;cursor:default") mobile
-            div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:18px;margin-right:14px")
-              span( class="fa fa-envelope fa-2x" style="color:white;width:75%;height:75%;margin-top:0.5em;margin-left:0.5em;cursor:pointer")
-              p(style="text-align:center;padding-left:4px;margin-top:12px;color:#1c7ef8;font-family:'Roboto',sans-serif;font-size:1.4em;cursor:default") email
-        ////////
-        //CONTACT INFO
+          div(id="contactCardActionContainer" class="contact-card-action-container")
+            div(id="contactCardPhoneButton" class="contact-card-action-button")
+              span(id="contactCardPhoneIcon" class="contact-card-action-icon fa fa-phone fa-2x")
+              p(id="contactCardPhoneText" class="contact-card-action-text") home
+            div(id="contactCardEmailButton" class="contact-card-action-button")
+              span(id="contactCardEmailIcon" class="contact-card-action-icon fa fa-envelope fa-2x")
+              p(id="contactCardPhoneText" class="contact-card-action-text") email
         /////////
-        div(style="width:calc(100% - 132px); font-size:2em;padding:66px;padding-top:11px;padding-bottom:0px;margin:0px;background:white;cursor:default")
+        //INFO
+        /////////
+        div(id="contactInfoContainer" class="contact-info-container")
           p email:
-          p(style="color:#3989e0;cursor:pointer") jose@barrios.io
-          div(style="border: 1px solid #f3f3f5")
+          p(id="contactInfoEmailText" class="contact-info-action-text") jose@barrios.io
+          div(class="contact-info-divider")
           p phone:
-          p(style="color:#3989e0;cursor:pointer;") +1 (250) 588-8968
-          div(style="border: 1px solid #f3f3f5")
-          p(style="color:lightGray") Emergency Contacts:
-          p Camille Graham (spouce)
-          p(style="color:#fc3d39;cursor:pointer") +1 (555) 555-5555
+          p(id="contactInfoPhoneText" class="contact-info-action-text") +1 (250) 588-8968
+          div(class="contact-info-divider")
+          p(class="contact-info-emergency-header") Emergency Contacts:
+          p Camille Graham
+          p(class="contact-info-emergency-action-text") +1 (555) 555-5555
 
 
 script.
