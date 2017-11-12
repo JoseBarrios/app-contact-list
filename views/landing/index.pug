@@ -62,55 +62,64 @@ html(lang='en')
             p(style="font-weight:700;background-color:#f3f3f3;color:#000;padding:0.25em;padding-left:22px;width:calc(100% - 22px - 0.25em);font-size:1.5em;margin:0px;") #{char}
           div(id=person._id style="width:100%;background-color:white;border-bottom:1px solid #f3f3f3;cursor:pointer" class="person")
             span
-              p(style="display:inline-block;font-size:1.5em;padding-left:22px;font-weight:700;") #{person[sortPrimary]}
-              p(style="display:inline-block;font-size:1.5em;padding-left:10px;font-weight:300") #{person[sortSecondary]}
+              if sortPrimary === 'givenName'
+                p(style="display:inline-block;font-size:1.5em;padding-left:22px;font-weight:700;") #{person[sortPrimary]}
+                p(style="display:inline-block;font-size:1.5em;padding-left:10px;font-weight:300") #{person[sortSecondary]}
+              if sortPrimary === 'familyName'
+                p(style="display:inline-block;font-size:1.5em;padding-left:22px;font-weight:700;") #{person[sortPrimary]},
+                p(style="display:inline-block;font-size:1.5em;padding-left:10px;font-weight:300") #{person[sortSecondary]}
+
       div(id='filteredResultsContainer')
 
+
+
+
     //------
-    //-CONTACT CARD
+    //-CONTAINER
     //-------
     - let contact = people[0];
-    div(style="display:inline-block;width:66%;height:100vh;margin:0px;padding;background-color:#e8ebf2;overflow:scroll;")
-      div(style="width:calc(100% - 20% - 2px);margin-top:4%;margin-left:7%;border: 1px solid #d7d8e1;background-color:white")
-
+    div(style="display:inline-block;width:66%;height:100vh;margin:0px;;background-color:#e8ebf2;overflow:scroll;")
+      //------
+      //-CONTACT
+      //-------
+      div(style="width:calc(100% - 20% - 2px);margin-top:4%;margin-left:7%;margin-bottom:5%;border: 1px solid #d7d8e1;background-color:white")
         ////////
         //HEADER
         /////////
-        div(style="width:100%;padding:0px;margin:0px;background:#fbfaff;border-bottom:1px solid #f3f3f5")
-          //-p(style="float:left;padding-top:33px;padding-left:44px;margin:0px;font-size:1.5em;color:#1c7ef8;") Done
-          p(style="float:right;padding-top:44px;padding-right:66px;margin:0px;font-size:1.6em;color:#1c7ef8;") Edit
-          h1(style="text-align:center;padding-top:77px;margin:0px;font-size:3em") #{people[0][sortPrimary]} #{people[0][sortSecondary]}
+        div(style="width:100%;padding:0px;margin:0px;background:#fbfaff;border-bottom:1px solid #f3f3f5;cursor:default")
+          p(style="float:left;padding-top:33px;padding-left:44px;margin:0px;font-size:1.6em;color:#1c7ef8;cursor:pointer") Done
+          p(style="float:right;padding-top:33px;padding-right:44px;margin:0px;font-size:1.6em;color:#1c7ef8;cursor:pointer") Edit
+          if sortPrimary === 'givenName'
+            h1(style="text-align:center;padding-top:63px;margin:0px;font-size:3em") #{people[0][sortPrimary]} #{people[0][sortSecondary]}
+          if sortPrimary === 'familyName'
+            h1(style="text-align:center;padding-top:63px;margin:0px;font-size:3em") #{people[0][sortPrimary]}, #{people[0][sortSecondary]}
           p(style="text-align:center;padding-top:5px;margin:0px;font-size:1.4em;color:#808080;padding-bottom:11px;font-weight:300;") Updated 3 days ago
+          /////////
           //ACTIONS
-          div(style="display: flex; justify-content: center;padding-bottom:66px;padding-top:11px;")
-            div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:22px;margin-left:14px")
+          /////////
+          div(style="display: flex; justify-content: center;padding-bottom:55px;padding-top:11px;")
+            div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:22px;margin-left:14px;cursor:pointer")
               span( class="fa fa-phone fa-2x" style="color:white;width:75%;height:75%;margin-top:0.55em;margin-left:0.62em;")
-              p(style="text-align:center;padding:0px;margin-top:10px;color:#1c7ef8;font-family:'Roboto',sans-serif;font-size:1.4em") home
-            div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:22px;margin-left:18px")
-              span( class="fa fa-mobile fa-3x" style="color:white;width:75%;height:75%;margin-top:0.16em;margin-left:0.455em;")
-              p(style="text-align:center;padding-left:0px;margin-top:20px;color:#1c7ef8;font-family:'Roboto',sans-serif;font-size:1.4em") mobile
+              p(style="text-align:center;padding:0px;margin-top:10px;color:#1c7ef8;font-family:'Roboto',sans-serif;font-size:1.4em;cursor:default") home
+            //-div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:22px;margin-left:18px")
+              span( class="fa fa-mobile fa-3x" style="color:white;width:75%;height:75%;margin-top:0.16em;margin-left:0.455em;cursor:pointer")
+              p(style="text-align:center;padding-left:0px;margin-top:20px;color:#1c7ef8;font-family:'Roboto',sans-serif;font-size:1.4em;cursor:default") mobile
             div(style="background-color:#1c7ef8; height:4em; width:4em;border-radius:2em;margin:18px;margin-right:14px")
-              span( class="fa fa-envelope fa-2x" style="color:white;width:75%;height:75%;margin-top:0.5em;margin-left:0.5em;")
-              p(style="text-align:center;padding-left:4px;margin-top:12px;color:#1c7ef8;font-family:'Roboto',sans-serif;font-size:1.4em") email
+              span( class="fa fa-envelope fa-2x" style="color:white;width:75%;height:75%;margin-top:0.5em;margin-left:0.5em;cursor:pointer")
+              p(style="text-align:center;padding-left:4px;margin-top:12px;color:#1c7ef8;font-family:'Roboto',sans-serif;font-size:1.4em;cursor:default") email
         ////////
         //CONTACT INFO
         /////////
-        div(style="width:calc(100% - 132px); font-size:2em;padding:66px;padding-top:22px;padding-bottom:0px;margin:0px;background:white;")
-          p home:
-          p(style="color:#3989e0;") +1 (250) 588-8968
-          div(style="border: 1px solid #f3f3f5")
-          p mobile:
-          p(style="color:#3989e0;") +1 (250) 588-8968
-          div(style="border: 1px solid #f3f3f5")
+        div(style="width:calc(100% - 132px); font-size:2em;padding:66px;padding-top:11px;padding-bottom:0px;margin:0px;background:white;cursor:default")
           p email:
-          p(style="color:#3989e0;") jose@barrios.io
+          p(style="color:#3989e0;cursor:pointer") jose@barrios.io
+          div(style="border: 1px solid #f3f3f5")
+          p phone:
+          p(style="color:#3989e0;cursor:pointer;") +1 (250) 588-8968
           div(style="border: 1px solid #f3f3f5")
           p(style="color:lightGray") Emergency Contacts:
           p Camille Graham (spouce)
-          p(style="color:#fc3d39;") +1 (555) 555-5555
-          p Sonia Barrios (sister)
-          p(style="color:#fc3d39;") +1 (555) 555-5555
-          div(style="border: 1px solid #f3f3f5")
+          p(style="color:#fc3d39;cursor:pointer") +1 (555) 555-5555
 
 
 script.
