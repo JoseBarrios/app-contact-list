@@ -1,6 +1,7 @@
 var express = require('express');
 var dbController = require(`${global.APP_ROOT}/controllers/database`);
 var router = express.Router();
+var moment = require('moment');
 
 /**
  * Render the home page.
@@ -25,6 +26,10 @@ router.get('/', function(req, res) {
       locals.sortSecondary = sortSecondary;
       locals.search = search;
       locals.people = people;
+			locals.person = people[0];
+			let lastUpdated = moment(parseInt(locals.person.disambiguatingDescription)).fromNow();
+			let isValidDate = lastUpdated !== 'Invalid date';
+			locals.lastUpdated = isValidDate? `Updated ${lastUpdated}` : '';
       locals.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
       res.render("landing/", locals);
     })

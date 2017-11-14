@@ -16,9 +16,12 @@ html(lang='en')
       body {
         font-family:'Roboto',sans-serif;
         box-sizing:border-box;
-        background-color:white;
         padding:0px;
         margin:0px;
+      }
+
+      iFrame {
+        border:none;
       }
 
       .left-pannel {
@@ -211,6 +214,7 @@ html(lang='en')
         }
 
         .contact-card-header-left-button {
+          visibility:hidden;
           padding-left:44px;
           padding-top:33px;
           font-size:1.25em;
@@ -354,6 +358,7 @@ html(lang='en')
         }
 
         .contact-card-header-left-button {
+          visibility:hidden;
           padding-left:44px;
           padding-top:33px;
           font-size:1.5em;
@@ -522,8 +527,9 @@ html(lang='en')
     //------
     //-CARD CONTAINER
     //-------
-    - let contact = people[0];
+    - let person = people[0];
     div(class="right-pannel")
+      iframe(id="iframe" src="/person/5a0a7b54ecc6f43ab2463b86/" style="visibility:hidden;" onload="this.style.visibility = 'visible';" height="100%" width="100%")
       //------
       //-CONTACT CARD
       //-------
@@ -532,13 +538,13 @@ html(lang='en')
         //HEADER
         /////////
         div(id="contactCardHeader" class="contact-card-header")
-          p(id="contactCardHeaderLeftButton" class="contact-card-header-left-button") Done
-          p(id="contactCardHeaderRightButton" class="contact-card-header-right-button") Edit
+          p(id="contactCardHeaderLeftButton" class="contact-card-header-left-button" onclick="window.location.href='/'") Done
+          p(id="contactCardHeaderRightButton" class="contact-card-header-right-button" onclick="window.location.href='/person/"+people[0]._id+"/update'") Edit
           if sortPrimary === 'givenName'
             h1(id="contactCardName" class="contact-card-name") #{people[0][sortPrimary]} #{people[0][sortSecondary]}
           if sortPrimary === 'familyName'
             h1(id="contactCardName" class="contact-card-name") #{people[0][sortPrimary]}, #{people[0][sortSecondary]}
-          p(id="contactCardLastUpdated" class="contact-card-last-updated") Updated 3 days ago
+          p(id="contactCardLastUpdated" class="contact-card-last-updated") #{lastUpdated}
           /////////
           //ACTIONS
           /////////
@@ -553,15 +559,15 @@ html(lang='en')
         //INFO
         /////////
         div(id="contactInfoContainer" class="contact-info-container")
-          p email:
-          p(id="contactInfoEmailText" class="contact-info-action-text") jose@barrios.io
+          p email
+          p(id="contactInfoEmailText" class="contact-info-action-text") #{person.email}
           div(class="contact-info-divider")
-          p phone:
-          p(id="contactInfoPhoneText" class="contact-info-action-text") +1 (250) 588-8968
+          p phone
+          p(id="contactInfoPhoneText" class="contact-info-action-text") #{person.telephone}
           div(class="contact-info-divider")
-          p(class="contact-info-emergency-header") Emergency Contacts:
-          p Camille Graham
-          p(class="contact-info-emergency-action-text") +1 (555) 555-5555
+          p(class="contact-info-emergency-header") Emergency Contacts
+          p #{person.knows[0].givenName} #{person.knows[0].familyName}
+          p(class="contact-info-emergency-action-text") #{person.knows[0].telephone}
 
 
 script.
@@ -577,6 +583,24 @@ script.
   var deleteQueryButton = document.querySelector('#roladexSearchInputRightIcon');
   var allResultsContainer = document.querySelector('#contactListContainer');
   var filteredResultsContainer = document.querySelector('#searchResultListContainer');
+
+  var iFrame = document.querySelector('#iframe');
+  iFrame.addEventListener('load', e => { console.log('LOADED', e) })
+  iFrame.addEventListener('abort', e => { console.log('abort', e) })
+  iFrame.addEventListener('DOMcontentloaded', e => { console.log('DOMCONTENT LOADED', e) })
+  iFrame.addEventListener('cancel', e => { console.log('cancel', e) })
+  iFrame.addEventListener('change', e => { console.log('change', e) })
+  iFrame.addEventListener('close', e => { console.log('close', e) })
+  iFrame.addEventListener('connect', e => { console.log('connect', e) })
+  iFrame.addEventListener('hashchange', e => { console.log('haschange', e) })
+  iFrame.addEventListener('input', e => { console.log('input', e) })
+  iFrame.addEventListener('online', e => { console.log('online', e) })
+  iFrame.addEventListener('open', e => { console.log('open', e) })
+  iFrame.addEventListener('pagehide', e => { console.log('pagehide', e) })
+  iFrame.addEventListener('progress', e => { console.log('progress', e) })
+  iFrame.addEventListener('submit', e => { console.log('submit', e) })
+  //-iFrame.addEventListener('xxx', e => { console.log('xxx', e) })
+
 
   var search = function(query, people) {
     let found = [];
