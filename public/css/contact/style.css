@@ -169,7 +169,7 @@ body {
 		overflow:scroll;
 		height:100vh;
 		float:left;
-		width:50%;
+		width:35%;
 	}
 
 	.right-pannel {
@@ -180,7 +180,7 @@ body {
 		font-size:1em;
 		height:100vh;
 		float:right;
-		width:50%;
+		width:65%;
 	}
 
 	.ui-contact-card-container {
