@@ -1,0 +1,92 @@
+doctype html
+html(lang='en')
+
+  head
+    title #{person.giveName || ''} #{person.familyName}
+    meta(name='description', content='xxx')
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    link(href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' async)
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css' async)
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-loader.js')
+    link(rel="import" href="/ui-contact-card/element/index.html")
+
+
+  body(style="background-color:#e8ebf2;font-family: roboto, sans-serif;")
+    form(action="/person/"+person._id+"/update" method="post")
+      input(id="identifier" name="identifier" type="hidden" value=personID)
+      input(id="givenName" name="givenName" type="hidden")
+      input(id="familyName" name="familyName" type="hidden")
+      input(id="telephone" name="telephone" type="hidden")
+      input(id="email" name="email" type="hidden")
+      input(id="emergencyGivenName" name="emergencyGivenName" type="hidden")
+      input(id="emergencyFamilyName" name="emergencyFamilyName" type="hidden")
+      input(id="emergencyTelephone" name="emergencyTelephone" type="hidden")
+
+    div(style="width:100%;margin:0px;padding:0px;background-color:#e8ebf2")
+      ui-contact-card( person=person)
+      p( id="contacts" style="position:absolute;top:22px;left:32px;color:#1c7ef8;font-size:1.2em; font-weight:500;cursor:pointer") &nbsp; Contacts
+        i(class="fa fa-angle-left" aria-hidden="true" style="float:left")
+
+script.
+  var person = !{JSON.stringify(person)}
+  let $card = document.querySelector('ui-contact-card');
+  let $contacts = document.querySelector('#contacts');
+
+  var $form = document.querySelector('form');
+  var $givenName = document.querySelector("#givenName");
+  var $familyName = document.querySelector("#familyName");
+  var $telephone = document.querySelector("#telephone");
+  var $email = document.querySelector("#email");
+  var $emergencyGivenName = document.querySelector("#emergencyGivenName");
+  var $emergencyFamilyName = document.querySelector("#emergencyFamilyName");
+  var $emergencyTelephone = document.querySelector("#emergencyTelephone");
+
+  $contacts.addEventListener('click', e => {
+    console.log('clicked contacts')
+    window.location.href="/contacts"
+  })
+
+
+  $card.addEventListener('editing', e => {
+    $contacts.hidden = true;
+  })
+
+  $card.addEventListener('update', e => {
+    let person = e.target.person;
+    $contacts.hidden = false;
+    $givenName.value = person.givenName || '';
+    $familyName.value = person.familyName || '';
+    $telephone.value = person.telephone || '';
+    $email.value = person.email || '';
+
+    if(person.knows && person.knows.length){
+      let emergencyContact = person.knows[0];
+      $emergencyGivenName.value = emergencyContact.givenName || '';
+      $emergencyFamilyName.value = emergencyContact.familyName || '';
+      $emergencyTelephone.value = emergencyContact.telephone || '';
+    }
+
+    //ITS AN UPDATE OR DELETE
+    if(person._id){
+      $form.action = '/person/'+person._id+'/update'
+      $form.submit();
+    }
+    else {
+      $form.action = '/person/create'
+      $form.submit();
+    }
+
+  })
+
+  $card.addEventListener('delete', e => {
+    console.log('DELETE');
+    let person = e.target.person;
+    $form.action = '/person/'+person._id+'/delete'
+    $form.submit();
+  })
+
+

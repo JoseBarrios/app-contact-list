@@ -124,8 +124,9 @@ body {
 	cursor:pointer;
 	width:100%;
 }
+
 .selected {
-	background-color: red;
+	border-left:10px solid #2681f5;
 }
 
 .contact-list-person-primary-text {

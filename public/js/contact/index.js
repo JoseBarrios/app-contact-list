@@ -27,7 +27,6 @@ window.addEventListener('WebComponentsReady', function(e) {
 	var $list = document.querySelectorAll('.contact-list-person-container');
 	var $card = document.querySelector('ui-contact-card');
 
-
 	var query = window.location.search.substring(1);
 	query = parseQueryString(query);
 	if(query.select){
@@ -41,6 +40,54 @@ window.addEventListener('WebComponentsReady', function(e) {
 	// ADD EVENT LISTENERS
 	//
 	//////////////////////////////////
+	let regularAction = false;
+	let mobileAction = false;
+	let onMobile = window.innerWidth < 737;
+	if(onMobile) setMobileActions();
+	else setRegularActions();
+	window.onresize = (e) => {
+		onMobile = window.innerWidth < 737;
+		if(onMobile) setMobileActions();
+		else setRegularActions();
+	}
+
+	function setMobileActions(){
+		if(!mobileAction){
+			$list.forEach(item => {
+				item.addEventListener('click', e => {
+					let url = '/person/'+item.id
+					window.location.href = url;
+				});
+			});
+
+			$addContact.addEventListener('click', e => {
+					let url = '/person/create';
+					window.location.href = url;
+			})
+
+		}
+		mobileAction = true;
+		regularAction = false;
+	}
+
+	function setRegularActions(){
+		if(!regularAction){
+
+			$list.forEach(item => {
+				item.addEventListener('click', selectItem);
+			})
+
+			$addContact.addEventListener('click', e => {
+				$card.clear();
+				$card.editing = true;
+			})
+
+		}
+		regularAction = true;
+		mobileAction = false;
+	}
+
+
 
 	//DELETE SEARCH INPUT
 	$deleteQueryButton.addEventListener('click', function(e){
@@ -72,15 +119,6 @@ window.addEventListener('WebComponentsReady', function(e) {
 		$searchInput.dispatchEvent(event);
 	}
 
-
-	$list.forEach(item => {
-		item.addEventListener('click', selectItem);
-	})
-
-	$addContact.addEventListener('click', e => {
-		$card.clear();
-		$card.editing = true;
-	})
 
 	$card.addEventListener('delete', (e) => {
 		let person = e.target.person;

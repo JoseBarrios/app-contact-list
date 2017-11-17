@@ -35,26 +35,29 @@ router.param('personID', function (req, res, next, personID) {
 //
 ////////////////////////////////////
 router.route('/person/create')
+  .get((req, res) =>{
+		let locals = {};
+		locals.person = {};
+    res.render("contact/card", locals);
+	})
   .post((req, res) =>{
-		console.log(req.body)
+    let emergencyContact = {};
+    emergencyContact.givenName = req.body.emergencyGivenName;
+    emergencyContact.familyName = req.body.emergencyFamilyName;
+    emergencyContact.telephone = req.body.emergencyTelephone;
 
-		let emergencyContact = {};
-		emergencyContact.givenName = req.body.emergencyGivenName;
-		emergencyContact.familyName = req.body.emergencyFamilyName;
-		emergencyContact.telephone = req.body.emergencyTelephone;
-
-		let person = {};
-		person.givenName = req.body.givenName;
-		person.familyName = req.body.familyName;
-		person.telephone = req.body.telephone;
-		person.email = req.body.email;
-		person.knows = [];
-		person.knows.push(emergencyContact);
-		dbController.insertOne(COLLECTION, person).then(person => {
-				res.redirect('/contacts?select='+person._id)
-		}).catch(error => {
-			console.log('ERROR', error)
-		})
+    let person = {};
+    person.givenName = req.body.givenName;
+    person.familyName = req.body.familyName;
+    person.telephone = req.body.telephone;
+    person.email = req.body.email;
+    person.knows = [];
+    person.knows.push(emergencyContact);
+    dbController.insertOne(COLLECTION, person).then(person => {
+        res.redirect('/contacts?select='+person._id)
+    }).catch(error => {
+      console.log('ERROR', error)
+    })
   })
 
 
@@ -66,17 +69,16 @@ router.route('/person/create')
 router.route('/person/:personID')
   .get((req, res) =>{
     let locals = {};
-  	locals.sortPrimary = 'givenName';
-  	locals.sortSecondary = 'familyName';
+    locals.sortPrimary = 'givenName';
+    locals.sortSecondary = 'familyName';
     locals.personID = req.personID;
     locals.person = req.person;
-    locals.personClass = Person;
-    locals.csrfToken = req.csrfToken();
+    locals.person._id = req.personID;
+    //locals.csrfToken = req.csrfToken();
     let lastUpdated = moment(parseInt(locals.person.disambiguatingDescription)).fromNow();
     let isValidDate = lastUpdated !== 'Invalid date';
     locals.lastUpdated = isValidDate? `Updated ${lastUpdated}` : '';
-
-    res.render("person/", locals);
+    res.render("contact/card", locals);
   })
 
 
@@ -100,7 +102,7 @@ router.route('/person/:personID/update')
     let id = ObjectID(req.personID);
     dbController.updateDocument(COLLECTION, id, person)
       .then(result => {
-				res.redirect('/contacts?select='+req.personID)
+        res.redirect('/contacts?select='+req.personID)
       })
   })
 
@@ -114,11 +116,11 @@ router.route('/person/:personID/delete')
     let id = ObjectID(req.personID);
     dbController.deleteDocument(COLLECTION, id)
       .then(result => {
-				res.redirect('/contacts')
+        res.redirect('/contacts')
       })
-			.catch(error => {
-				console.log(error);
-			})
+      .catch(error => {
+        console.log(error);
+      })
   })
 
 
