@@ -1,4 +1,4 @@
-const config = require(`${global.APP_ROOT}/config/mongo.json`)
+const config = require(`${global.APP_ROOT}/config/mongo-config.json`)
 const MongoDB = require('api-mongodb');
 const ObjectID = MongoDB.ObjectID;
 const mongo = new MongoDB(config.url);

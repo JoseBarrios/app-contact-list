@@ -1,7 +1,7 @@
 // B R U T E  F O R C E  M O D U L E
 ///////////////////////////////////////////////////////////////////////////////
 const moment = require('moment');
-const mongoConfig = require(`${global.APP_ROOT}/config/mongo-example.json`);
+const mongoConfig = require(`${global.APP_ROOT}/config/mongo-config.json`);
 const Bruteforce = require('express-brute');
 const BruteStore = require('express-brute-mongo')
 const MongoClient = require('mongodb').MongoClient;
