@@ -1,0 +1,108 @@
+doctype html
+html(lang='en')
+
+  head
+    title Barrios | Contacts
+    meta(name='description', content='xxx')
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    link(href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' async)
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css' async)
+    link(href='/css/contact/style.css' rel='stylesheet' type='text/css' async)
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-loader.js')
+    script(src='/js/contact/index.js')
+    link(rel="import" href="/ui-contact-card/element/index.html")
+
+
+  body
+    form(action="" method="post")
+      input(id="identifier" name="identifier" type="hidden" value=personID)
+      input(id="givenName" name="givenName" type="hidden")
+      input(id="familyName" name="familyName" type="hidden")
+      input(id="telephone" name="telephone" type="hidden")
+      input(id="email" name="email" type="hidden")
+      input(id="emergencyGivenName" name="emergencyGivenName" type="hidden")
+      input(id="emergencyFamilyName" name="emergencyFamilyName" type="hidden")
+      input(id="emergencyTelephone" name="emergencyTelephone" type="hidden")
+
+    //------
+    //-ROLADEX PANNEL
+    //-------
+    div(class="left-pannel")
+
+
+      //------
+      //-HEADER
+      //-------
+      div(id="roladexHeader" class="roladex-header")
+        button(id="addContact" class="roladex-header-add-contact-button") +
+        p(id="roladexHeaderText" class="roladex-header-text") Contacts
+
+
+      //------
+      //-TABS
+      //-------
+      if sortPrimary === 'givenName'
+        div(id="roladexTabsGivenName" class="roladex-tab-selected" onclick="window.location.href='/contacts?sort=givenName'")
+          p(id="roladexTabsGivenNameText" class="roladex-tab-text-selected") First Name
+        div(id="roladexTabsFamilyName" class="roladex-tab" onclick="window.location.href='/contacts?sort=familyName'")
+          p(id="roladexTabsFamilyNameText" class="roladex-tab-text") Last Name
+      if sortPrimary === 'familyName'
+        div(id="roladexTabsGivenName" class="roladex-tab" onclick="window.location.href='/contacts?sort=givenName'")
+          p(id="roladexTabsGivenNameText" class="roladex-tab-text") First Name
+        div(id="roladexTabsFamilyName" class="roladex-tab-selected" onclick="window.location.href='/contacts?sort=familyName'")
+          p(id="roladexTabsFamilyNameText" class="roladex-tab-text-selected") Last Name
+
+
+      //------
+      //-SEARCH
+      //-------
+      div(id="roladexSearchContainer" class="roladex-search-container")
+        span(id="roladexSearchInputLeftIcon" class="roladex-search-input-left-icon fa fa-search" aria-hidden="true")
+        input(id="roladexSearchInput" class="roladex-search-input" placeholder="Search")
+        span(id="roladexSearchInputRightIcon" class="roladex-search-input-right-icon fa fa-times-circle" aria-hidden="true")
+
+
+      //------
+      //-LIST
+      //-------
+      div(id='contactListContainer' class="contact-list-container")
+        each person in people
+          - let firstLetter = person[sortPrimary].charAt(0).toUpperCase();
+          if alphabet.includes(firstLetter)
+            - let charIndex = alphabet.indexOf(firstLetter);
+            - let char = alphabet.splice(charIndex, 1);
+            - alphabet = alphabet.filter(item => item !== char)
+            //-DIVIDER
+            p(id="contactListDivider" class="contact-list-divider") #{char}
+          div(id=person._id class="contact-list-person-container")
+            span
+              if sortPrimary === 'givenName'
+                p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]}
+                p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
+              if sortPrimary === 'familyName'
+                p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]},
+                p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
+        p(id="contactListMessageText" class="contact-list-message-text") #{people.length} Contacts
+
+      div(id='searchResultListContainer' hidden)
+
+
+    //------
+    //-CARD CONTAINER
+    //-------
+    - let person = people[0];
+    div(class="right-pannel")
+      //-div(class="ui-contact-card-container")
+      div(style="margin:88px;")
+        ui-contact-card( person=person)
+
+script.
+  var sortPrimary = !{JSON.stringify(sortPrimary) }
+  var sortSecondary = !{JSON.stringify(sortSecondary) }
+  var people = !{JSON.stringify(people)}
+  var searchQuery = !{JSON.stringify(search)}
+  var people = !{JSON.stringify(people)}

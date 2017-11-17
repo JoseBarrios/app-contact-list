@@ -34,8 +34,9 @@
     "morgan": "^1.9.0",
     "pug": "^2.0.0-rc.4",
     "request": "^2.83.0",
+    "socket.io": "^2.0.4",
     "systemjs": "^0.20.19",
-    "ui-contact-card": "0.0.30",
+    "ui-contact-card": "0.0.32",
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {

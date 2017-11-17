@@ -35,10 +35,6 @@ router.param('personID', function (req, res, next, personID) {
 //
 ////////////////////////////////////
 router.route('/person/create')
-  .get((req, res) =>{
-    let locals = {};
-    res.render("person/create", locals);
-  })
   .post((req, res) =>{
 		console.log(req.body)
 
@@ -54,11 +50,8 @@ router.route('/person/create')
 		person.email = req.body.email;
 		person.knows = [];
 		person.knows.push(emergencyContact);
-
-		console.log(person)
-
 		dbController.insertOne(COLLECTION, person).then(person => {
-				res.redirect('/')
+				res.redirect('/contacts?select='+person._id)
 		}).catch(error => {
 			console.log('ERROR', error)
 		})
@@ -93,17 +86,6 @@ router.route('/person/:personID')
 //
 ////////////////////////////////////
 router.route('/person/:personID/update')
-  .get((req, res) =>{
-    let locals = {};
-    locals.personID = req.personID;
-    locals.person = req.person;
-    locals.personClass = Person;
-    locals.csrfToken = req.csrfToken();
-    let lastUpdated = moment(parseInt(locals.person.disambiguatingDescription)).fromNow();
-    let isValidDate = lastUpdated !== 'Invalid date';
-    locals.lastUpdated = isValidDate? `Updated ${lastUpdated}` : '';
-    res.render("person/update", locals);
-  })
   .post((req, res) =>{
     let person = {};
     person.givenName = req.body.givenName;
@@ -118,8 +100,7 @@ router.route('/person/:personID/update')
     let id = ObjectID(req.personID);
     dbController.updateDocument(COLLECTION, id, person)
       .then(result => {
-        console.log(result);
-				res.redirect('/');
+				res.redirect('/contacts?select='+req.personID)
       })
   })
 
@@ -133,9 +114,11 @@ router.route('/person/:personID/delete')
     let id = ObjectID(req.personID);
     dbController.deleteDocument(COLLECTION, id)
       .then(result => {
-        console.log(result);
-				res.redirect('/');
+				res.redirect('/contacts')
       })
+			.catch(error => {
+				console.log(error);
+			})
   })
 
 

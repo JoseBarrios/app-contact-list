@@ -1,755 +1,675 @@
 doctype html
 html(lang='en')
-
   head
-    title Barrios | Contacts
-    meta(name='description', content='xxx')
+    title Barrios I/O
+    meta(name='description', content='Jose Barrios is a serial entrepreneur with a passion for Oxford commas, design, and innovation. Born and raised in México, he immigrated to Canada to study psychology and computer science at  UVic. As an undergrad, Jose lead various teams, including the iOS team at  CARTE. In 2013, he dropped out of university to start  Cognilab, an award-winning research startup. As the CEO, Jose was responsible for securing customers, partnerships, and investments. Today, dozens of universities use  Cognilab  as their primary research platform. Their investors and partners include  Mayo Clinic and  Prolific Academic.')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
     meta(http-equiv='x-ua-compatible', content='ie=edge')
-    link(href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' async)
-    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css' async)
+    // Google Font: Lato
+    link(href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&subset=latin,latin-ext', rel='stylesheet', type='text/css')
+    // FontAwesome
+    link(rel='stylesheet', href='plugins/landing/font-awesome/css/font-awesome.min.css')
+    // Nivo Lightbox
+    link(rel='stylesheet', href='plugins/landing/nivo-lightbox/nivo-lightbox.css')
+    link(rel='stylesheet', href='plugins/landing/nivo-lightbox/themes/default/default.css')
+    // Main CSS
+    link(rel='stylesheet', href='css/landing/main.css')
+    // Themes
+    link(rel='stylesheet', href='css/landing/themes.light.css')
+    // <link rel="stylesheet" href="css/landing/themes.dark.css">
+    // Custom CSS
+    // <link rel="stylesheet" href="css/landing/custom.css">
+    // dense.js (Retina plugin)
+    //-script(src='js/landing/dense.js')
+    // Main JS
+    //-script(src='js/landing/main.js')
 
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-loader.js')
-    link(rel="import" href="/ui-contact-card/element/index.html")
-
-    style.
-
-      body {
-        font-family:'Roboto',sans-serif;
-        box-sizing:border-box;
-        padding:0px;
-        margin:0px;
+    script(type='application/ld+json').
+      {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jose L. Barrios",
+      "givenName": "Jose",
+      "alternateName": "Luis",
+      "familyName": "Barrios",
+      "email": "jose@barrios.io",
+      "jobTitle": "Entrepreneur",
+      "description": "Jose Barrios is a serial entrepreneur with a passion for Oxford commas, design, and innovation. Born and raised in México, he immigrated to Canada to study psychology and computer science at  UVic. As an undergrad, Jose lead various teams, including the iOS team at  CARTE. In 2013, he dropped out of university to start  Cognilab, an award-winning research startup. As the CEO, Jose was responsible for securing customers, partnerships, and investments. Today, dozens of universities use  Cognilab  as their primary research platform. Their investors and partners include  Mayo Clinic and  Prolific Academic.",
+      "image": "http://barrios.io/images/landing/header/JoseBarrios.jpg",
+      "url": "http://www.barrios.io",
+      "sameAs":[
+        "https://www.linkedin.com/in/barriosjose/",
+        "https://www.facebook.com/BarriosJose",
+        "https://twitter.com/barriosjose",
+        "https://www.instagram.com/jose.luis.barrios/",
+        "https://plus.google.com/+JoseBarriosCA"
+        ]
       }
-
-      .left-pannel {
-        border-right:1px solid #d7d8e1;
-        box-sizing:border-box;
-        width:100%;
-      }
-
-      .roladex-header {
-        position:relative;
-        padding:0px;
-        margin:0px;
-        width:100%;
-      }
-
-      .roladex-header-text {
-        text-align:center;
-        font-weight:600;
-        font-size:2em;
-        padding:22px;
-        color:black;
-        margin:0px;
-      }
-
-      .roladex-header-add-contact-button {
-        background-color:transparent;
-        border-radius:1em;
-        position:absolute;
-        line-height:2em;
-        font-weight:300;
-        cursor:pointer;
-        font-size:2em;
-        color:#1679f4;
-        padding:0px;
-        border:none;
-        height:2em;
-        width:2em;
-        left:80%;
-        top:6px;
-      }
-
-      .roladex-tab {
-        border-bottom:3px solid gray;
-        display:inline-block;
-        cursor:pointer;
-        width:50%;
-      }
-
-      .roladex-tab-selected {
-        border-bottom:3px solid #1679f4;
-        display:inline-block;
-        cursor:pointer;
-        width:50%;
-      }
-
-      .roladex-tab-text {
-        text-align:center;
-        font-size:1.2em;
-        color:gray;
-      }
-
-      .roladex-tab-text-selected {
-        text-align:center;
-        font-size:1.2em;
-        color:#1679f4;
-      }
-
-
-      .roladex-search-container {
-        background-color:#fbfaff;
-        position:relative;
-        height:88px;
-        width:100%;
-      }
-
-      .roladex-search-input {
-        border: 1px solid #e4e0e1;
-        width:calc(100% - 66px);
-        border-radius:10px;
-        margin-left:22px;
-        text-indent:28px;
-        margin-top:22px;
-        font-size:1.2em;
-        padding:11px;
-      }
-
-      .roladex-search-input-left-icon {
-        position:absolute;
-        cursor:default;
-        color:#757575;
-        left:35px;
-        top:37px;
-      }
-
-      .roladex-search-input-right-icon {
-        position:absolute;
-        color:lightGray;
-        cursor:pointer;
-        right:35px;
-        top:37px;
-      }
-
-      .contact-list-divider{
-        background-color:#f3f3f3;
-        padding-bottom:0.25em;
-        box-sizing:border-box;
-        padding-top:0.25em;
-        padding-left:22px;
-        font-size:1.5em;
-        font-weight:700;
-        color:#000;
-        margin:0px;
-        width:100%;
-      }
-
-      .contact-list-person-container {
-        border-bottom:1px solid #f3f3f3;
-        background-color:white;
-        cursor:pointer;
-        width:100%;
-      }
-
-      .contact-list-person-primary-text {
-        display:inline-block;
-        padding-left:22px;
-        font-size:1.5em;
-        font-weight:700;
-      }
-
-      .contact-list-person-secondary-text {
-        display:inline-block;
-        padding-left:8px;
-        font-size:1.5em;
-        font-weight:300;
-      }
-
-      .contact-list-message-text {
-        color:#838383;
-        text-align:center;
-        font-size:1.5em;
-        font-weight:300;
-      }
-
-      .ui-contact-card-container {
-        border: 1px solid #d7d8e1;
-        background-color:white;
-        margin:5%;
-        width:90%;
-      }
-
-      .right-pannel {
-        display: none;
-      }
-
-      @media screen and (min-width: 768px) and (max-width: 1023px) {
-
-        .left-pannel {
-          box-sizing:border-box;
-          overflow:scroll;
-          height:100vh;
-          float:left;
-          width:50%;
-        }
-
-        .right-pannel {
-          background-color:#e8ebf2;
-          box-sizing:border-box;
-          display: inline;
-          overflow:scroll;
-          font-size:1em;
-          height:100vh;
-          float:right;
-          width:50%;
-        }
-
-        .ui-contact-card-container {
-          border: 1px solid #d7d8e1;
-          width:calc(100% - 44px);
-          background-color:white;
-          margin:22px;
-        }
-
-        .contact-card-header {
-          border-bottom:1px solid #f3f3f5;
-          background:#fbfaff;
-          cursor:default;
-          padding:0px;
-          width:100%;
-          margin:0px;
-        }
-
-        .contact-card-header-left-button {
-          visibility:hidden;
-          padding-left:44px;
-          padding-top:33px;
-          font-size:1.25em;
-          cursor:pointer;
-          color:#1c7ef8;
-          float:left;
-          margin:0px;
-        }
-
-        .contact-card-header-right-button {
-          padding-right:44px;
-          padding-top:33px;
-          font-size:1.25em;
-          cursor:pointer;
-          color:#1c7ef8;
-          float:right;
-          margin:0px;
-        }
-
-        .contact-card-name {
-          text-align:center;
-          padding-top:88px;
-          font-size:2em;
-          margin:0px;
-        }
-
-        .contact-card-last-updated {
-          padding-bottom:11px;
-          text-align:center;
-          padding-top:5px;
-          font-weight:300;
-          font-size:1em;
-          color:#808080;
-          margin:0px;
-        }
-
-        .contact-card-action-container {
-          justify-content: center;
-          padding-bottom:44px;
-          display: flex;
-        }
-
-        .contact-card-action-button {
-          background-color:#1c7ef8;
-          border-radius:2em;
-          margin-left:14px;
-          cursor:pointer;
-          margin:22px;
-          height:4em;
-          width:4em;
-        }
-
-        .contact-card-action-icon {
-          vertical-align:center;
-          text-align:center;
-          line-height:2em;
-          color:white;
-          height:100%;
-          width:100%;
-        }
-
-        .contact-card-action-text {
-          font-family:'Roboto',sans-serif;
-          text-align:center;
-          margin-top:10px;
-          font-size:1em;
-          cursor:default;
-          color:#1c7ef8;
-          padding:0px;
-        }
-
-        .contact-info-container {
-          width:calc(50% + 60px);
-          padding-bottom:22px;
-          padding-left:55px;
-          font-size:1.4em;
-          padding-top:22px;
-          cursor:default;
-          margin:0px;
-        }
-
-        .contact-info-action-text {
-          color:#3989e0;
-          cursor:pointer;
-        }
-
-        .contact-info-divider {
-          border: 1px solid #f3f3f5;
-        }
-
-        .contact-info-emergency-header {
-          color:lightGray;
-        }
-
-        .contact-info-emergency-action-text {
-          padding-bottom:22px;
-          cursor:pointer;
-          color:#fc3d39;
-        }
-      }
-
-
-
-
-
-      @media screen and (min-width: 1024px) {
-
-        .left-pannel {
-          display: inline-block;
-          box-sizing:border-box;
-          overflow:scroll;
-          height:100vh;
-          float:left;
-          width:30%;
-        }
-
-        .right-pannel {
-          background-color:#e8ebf2;
-          box-sizing:border-box;
-          display: inline-block;
-          overflow:scroll;
-          font-size:1em;
-          height:100vh;
-          float:right;
-          margin:0px;
-          width:70%;
-        }
-
-        .contact-card-container {
-          box-sizing:border-box;
-          border: 1px solid #d7d8e1;
-          margin:7%;
-          width:86%;
-        }
-
-        .contact-card-header {
-          border-bottom:1px solid #f3f3f5;
-          box-sizing:border-box;
-          background:#fbfaff;
-          cursor:default;
-        }
-
-        .contact-card-header-left-button {
-          visibility:hidden;
-          padding-left:44px;
-          padding-top:33px;
-          font-size:1.5em;
-          cursor:pointer;
-          color:#1c7ef8;
-          float:left;
-          margin:0px;
-        }
-
-        .contact-card-header-right-button {
-          padding-right:44px;
-          padding-top:33px;
-          font-size:1.5em;
-          cursor:pointer;
-          color:#1c7ef8;
-          float:right;
-          margin:0px;
-        }
-
-        .contact-card-name {
-          text-align:center;
-          padding-top:33px;
-          font-size:3em;
-          margin:0px;
-        }
-
-        .contact-card-last-updated {
-          padding-bottom:11px;
-          text-align:center;
-          padding-top:5px;
-          font-weight:300;
-          font-size:1.25em;
-          color:#808080;
-          margin:0px;
-        }
-
-        .contact-card-action-container {
-          justify-content: center;
-          padding-bottom:44px;
-          display: flex;
-        }
-
-        .contact-card-action-button {
-          background-color:#1c7ef8;
-          border-radius:2em;
-          cursor:pointer;
-          margin:22px;
-          height:4em;
-          width:4em;
-        }
-
-        .contact-card-action-icon {
-          vertical-align:center;
-          text-align:center;
-          line-height:2em;
-          color:white;
-          height:100%;
-          width:100%;
-        }
-
-        .contact-card-action-text {
-          font-family:'Roboto',sans-serif;
-          text-align:center;
-          margin-top:10px;
-          font-size:1.25em;
-          cursor:default;
-          color:#1c7ef8;
-          padding:0px;
-        }
-
-        .contact-info-container {
-          box-sizing:border-box;
-          padding-left:55px;
-          font-size:1.6em;
-          cursor:default;
-          margin:0px;
-          width:86%;
-        }
-
-        .contact-info-action-text {
-          color:#3989e0;
-          cursor:pointer;
-        }
-
-        .contact-info-divider {
-          border: 1px solid #f3f3f5;
-        }
-
-        .contact-info-emergency-header {
-          color:lightGray;
-        }
-
-        .contact-info-emergency-action-text {
-          padding-bottom:22px;
-          cursor:pointer;
-          color:#fc3d39;
-        }
-      }
-
 
   body
-    form(action="" method="post")
-      input(id="csrfToken" name="_csrf" type="hidden" value=csrfToken)
-      input(id="identifier" name="identifier" type="hidden" value=personID)
-      input(id="givenName" name="givenName" type="hidden")
-      input(id="familyName" name="familyName" type="hidden")
-      input(id="telephone" name="telephone" type="hidden")
-      input(id="email" name="email" type="hidden")
-      input(id="emergencyGivenName" name="emergencyGivenName" type="hidden")
-      input(id="emergencyFamilyName" name="emergencyFamilyName" type="hidden")
-      input(id="emergencyTelephone" name="emergencyTelephone" type="hidden")
 
-    //------
-    //-ROLADEX PANNEL
-    //-------
-    div(class="left-pannel")
+    .c-preloader.js-preloader
+      .c-preloader__spinner.t-preloader__spinner
+    .c-main-container.js-main-container
 
+      // ################################
+      // ############ HEADER ############
+      // ################################
+      section.o-section.o-section--header.t-section.t-section--header
+        .c-header
+          .o-section__header-bg.t-section__header
+          .o-section__content-bg.t-section__content
+          .o-container
+            .o-section__container
+              header.o-section__header.c-header__header.t-section__header
+                .c-header__inner-header
+                  .c-header__avatar
+                    .a-header.c-avatar
+                      img.c-avatar__img(src='images/landing/JoseBarrios.jpg', alt='')
+                    // /c-avatar
+                  // /c-header-avatar
+                // /c-header__inner-header
+              // /o-section__header
+              .o-section__content.c-header__content.t-section__content
+                .c-header__inner-content
+                  .c-header__top
+                    .c-header__brand
+                      .c-brand
+                        h1.c-brand__title.t-title
+                          span.c-brand__sizer
+                            span.a-header.c-brand__first-word.t-title__first-word
+                              | Jose Luis
+                            span.a-header.c-brand__second-word.t-title__second-word
+                              | Barrios
+                        h2.a-header.c-brand__sub-title.t-sub-title
+                          span.c-brand__sizer
+                            | Chief Technology Architect & Entrepreneur
+                      // /c-brand
+                    // /c-header__brand
+                    ul.c-header__social-buttons.c-social-buttons
+                      li.a-header
+                        a.c-social-button.t-social-button(href='https://www.facebook.com/BarriosJose/', target='_blank')
+                          i.fa.fa-lg.fa-facebook
+                      li.a-header
+                        a.c-social-button.t-social-button(href='https://www.linkedin.com/in/barriosjose/', target='_blank')
+                          i.fa.fa-lg.fa-linkedin
+                      li.a-header
+                        a.c-social-button.t-social-button(href='https://twitter.com/barriosjose', target='_blank')
+                          i.fa.fa-lg.fa-twitter
+                      li.a-header
+                        a.c-social-button.t-social-button(href='https://www.instagram.com/jose.luis.barrios', target='_blank')
+                          i.fa.fa-lg.fa-instagram
+                      li.a-header
+                        a.c-social-button.t-social-button(href='https://github.com/JoseBarrios', target='_blank')
+                          i.fa.fa-lg.fa-github
 
-      //------
-      //-HEADER
-      //-------
-      div(id="roladexHeader" class="roladex-header")
-        button(id="roladexHeaderAddContactButton" class="roladex-header-add-contact-button") +
-        p(id="roladexHeaderText" class="roladex-header-text") Contacts
-
-
-      //------
-      //-TABS
-      //-------
-      if sortPrimary === 'givenName'
-        div(id="roladexTabsGivenName" class="roladex-tab-selected" onclick="window.location.href='/?sort=givenName'")
-          p(id="roladexTabsGivenNameText" class="roladex-tab-text-selected") First Name
-        div(id="roladexTabsFamilyName" class="roladex-tab" onclick="window.location.href='/?sort=familyName'")
-          p(id="roladexTabsFamilyNameText" class="roladex-tab-text") Last Name
-      if sortPrimary === 'familyName'
-        div(id="roladexTabsGivenName" class="roladex-tab" onclick="window.location.href='/?sort=givenName'")
-          p(id="roladexTabsGivenNameText" class="roladex-tab-text") First Name
-        div(id="roladexTabsFamilyName" class="roladex-tab-selected" onclick="window.location.href='/?sort=familyName'")
-          p(id="roladexTabsFamilyNameText" class="roladex-tab-text-selected") Last Name
-
-
-      //------
-      //-SEARCH
-      //-------
-      div(id="roladexSearchContainer" class="roladex-search-container")
-        span(id="roladexSearchInputLeftIcon" class="roladex-search-input-left-icon fa fa-search" aria-hidden="true")
-        input(id="roladexSearchInput" class="roladex-search-input" placeholder="Search")
-        span(id="roladexSearchInputRightIcon" class="roladex-search-input-right-icon fa fa-times-circle" aria-hidden="true")
-
-
-      //------
-      //-LIST
-      //-------
-      div(id='contactListContainer' class="contact-list-container")
-        each person in people
-          - let firstLetter = person[sortPrimary].charAt(0).toUpperCase();
-          if alphabet.includes(firstLetter)
-            - let charIndex = alphabet.indexOf(firstLetter);
-            - let char = alphabet.splice(charIndex, 1);
-            - alphabet = alphabet.filter(item => item !== char)
-            //-DIVIDER
-            p(id="contactListDivider" class="contact-list-divider") #{char}
-          div(id=person._id class="contact-list-person-container")
-            span
-              if sortPrimary === 'givenName'
-                p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]}
-                p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
-              if sortPrimary === 'familyName'
-                p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]},
-                p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
-        p(id="contactListMessageText" class="contact-list-message-text") #{people.length} Contacts
-
-      div(id='searchResultListContainer' hidden)
-
-
-    //------
-    //-CARD CONTAINER
-    //-------
-    - let person = people[0];
-    div(class="right-pannel")
-      //-div(class="ui-contact-card-container")
-      div(style="margin:88px;")
-        ui-contact-card( person=person csrf=csrfToken action='/person/create')
-      //------
-      //-CONTACT CARD
-      //-------
-      //-div(id="contactCardContainer" class="contact-card-container")
-        ////////
-        //HEADER
-        /////////
-        div(id="contactCardHeader" class="contact-card-header")
-          p(id="contactCardHeaderLeftButton" class="contact-card-header-left-button" onclick="window.location.href='/'") Done
-          p(id="contactCardHeaderRightButton" class="contact-card-header-right-button" onclick="window.location.href='/person/"+people[0]._id+"/update'") Edit
-          if sortPrimary === 'givenName'
-            h1(id="contactCardName" class="contact-card-name") #{people[0][sortPrimary]} #{people[0][sortSecondary]}
-          if sortPrimary === 'familyName'
-            h1(id="contactCardName" class="contact-card-name") #{people[0][sortPrimary]}, #{people[0][sortSecondary]}
-          p(id="contactCardLastUpdated" class="contact-card-last-updated") #{lastUpdated}
-          /////////
-          //ACTIONS
-          /////////
-          div(id="contactCardActionContainer" class="contact-card-action-container")
-            div(id="contactCardPhoneButton" class="contact-card-action-button")
-              span(id="contactCardPhoneIcon" class="contact-card-action-icon fa fa-phone fa-2x")
-              p(id="contactCardPhoneText" class="contact-card-action-text") home
-            div(id="contactCardEmailButton" class="contact-card-action-button")
-              span(id="contactCardEmailIcon" class="contact-card-action-icon fa fa-envelope fa-2x")
-              p(id="contactCardPhoneText" class="contact-card-action-text") email
-        /////////
-        //INFO
-        /////////
-        div(id="contactInfoContainer" class="contact-info-container")
-          p email
-          p(id="contactInfoEmailText" class="contact-info-action-text") #{person.email}
-          div(class="contact-info-divider")
-          p phone
-          p(id="contactInfoPhoneText" class="contact-info-action-text") #{person.telephone}
-          div(class="contact-info-divider")
-          p(class="contact-info-emergency-header") Emergency Contacts
-          p #{person.knows[0].givenName} #{person.knows[0].familyName}
-          p(class="contact-info-emergency-action-text") #{person.knows[0].telephone}
+                    // /c-header__social-buttons
+                  // /c-header__top
+                  .c-header__contact
+                    hr.a-header.c-header__contact-divider
+                    .o-grid
+                      .o-grid__col-md-3.o-grid__col-sm-6
+                        .a-header.o-content
+                          .o-content__body
+                            h4 Location
+                            address
+                              | Victoria, Canada
+                        // /o-content
+                      // /o-grid__col
+                        // /o-content
+                      // /o-grid__col
+                      .o-grid__col-md-3.o-grid__col-sm-6
+                        .a-header.o-content
+                          .o-content__body
+                            a.t-link-container(href='http://www.barrios.io', target='_blank')
+                              h4 Web
+                              p
+                                span.t-link-container__item--blended
+                                  | barrios.io
+                            // /o-link-container
+                        // /o-content
+                      // /o-grid__col
+                      .o-grid__col-md-3.o-grid__col-sm-6
+                        .a-header.o-content
+                          .o-content__body
+                            a.t-link-container(href='mailto:jose@barrios.io', target='_top')
+                              h4 Email
+                              p
+                                span.t-link-container__item--blended
+                                  | jose@barrios.io
+                            // /o-link-container
+                        // /o-content
+                      // /o-grid__col
+                    // /o-grid
+                  // /c-header__contact
+                // /c-header__inner-content
+              // /o-section__content
+            // /o-section__container
+          // /o-container
+        // /c-header
+      // /o-section
 
 
-script.
-  var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  var sortPrimary = !{JSON.stringify(sortPrimary)}
-  var sortSecondary = !{JSON.stringify(sortSecondary)}
-  var people = !{JSON.stringify(people)}
-  var searchQuery = !{JSON.stringify(search)}
-  var person = document.querySelector('.contact-list-person-container');
-  var contactListDivider = document.querySelector('#contactListDivider');
-  var contactListMessageText = document.querySelector('#contactListMessageText');
-  var searchInput = document.querySelector('#roladexSearchInput');
-  var deleteQueryButton = document.querySelector('#roladexSearchInputRightIcon');
-  var allResultsContainer = document.querySelector('#contactListContainer');
-  var filteredResultsContainer = document.querySelector('#searchResultListContainer');
 
-  window.addEventListener('WebComponentsReady', function(e) {
-    var $form = document.querySelector('form');
-    var $givenName = document.querySelector("#givenName");
-    var $familyName = document.querySelector("#familyName");
-    var $telephone = document.querySelector("#telephone");
-    var $email = document.querySelector("#email");
-    var $emergencyGivenName = document.querySelector("#emergencyGivenName");
-    var $emergencyFamilyName = document.querySelector("#emergencyFamilyName");
-    var $emergencyTelephone = document.querySelector("#emergencyTelephone");
-
-    var $list = document.querySelectorAll('.contact-list-person-container');
-    var $card = document.querySelector('ui-contact-card');
-    console.log($list, $card)
-
-    var people = !{JSON.stringify(people)}
-    let clickedItem = e => {
-      $card.visibility = false;
-      personID = e.target.id;
-      people.forEach(person => {
-        if(person._id === personID){
-          $card.person = person;
-          $card.setAttribute('person', JSON.stringify(person));
-          $card.visibility = true;
-
-        }
-      })
-
-    }
-    $list.forEach(item => { item.addEventListener('click', clickedItem); })
-
-
-    var $roladexHeaderAddContactButton = document.querySelector('#roladexHeaderAddContactButton');
-    $roladexHeaderAddContactButton.addEventListener('click', e => {
-      $card.clear();
-      console.log($card.person, $card.model, $card.emergencyContact)
-    })
-
-    $card.addEventListener('delete', (e) => {
-      console.log('DELETE', e.detail);
-      $form.action = '/person/'+e.detail.model.person._id+'/delete'
-      $form.submit();
-    });
-
-    $card.addEventListener('update', (e) => {
-      let person = e.detail.model.person;
-      let meta = e.detail.meta;
-      let state = e.detail.state;
-
-      $givenName.value = person.givenName || '';
-      $familyName.value = person.familyName || '';
-      $telephone.value = person.telephone || '';
-      $email.value = person.email || '';
-
-      if(person.knows && person.knows.length){
-        let emergencyContact = person.knows[0];
-        console.log(emergencyContact)
-        $emergencyGivenName.value = emergencyContact.givenName || '';
-        $emergencyFamilyName.value = emergencyContact.familyName || '';
-        $emergencyTelephone.value = emergencyContact.telephone || '';
-      }
-
-      //ITS AN UPDATE OR DELETE
-      if(person._id){
-        $form.action = '/person/'+person._id+'/update'
-        $form.submit();
-      }
-      //ITS CREATE
-      else {
-        $form.action = '/person/create'
-        $form.submit();
-      }
-
-    })
-
-  })
+      // ################################
+      // ############ INTRO #############
+      // ################################
+      section.o-section.t-section
+        .o-section__header-bg.t-section__header
+        .o-section__content-bg.t-section__content
+        .o-container
+          .o-section__container
+            header.o-section__header.t-section__header
+              .o-content
+                h2.o-section__heading
+                  | Intro
+                .o-content__body.o-section__description
+                  | What I am all about.
+            // /o-section__header
+            .o-section__content.t-section__content
+              .o-content
+                .c-intro
+                  .o-content__body
+                    p
+                      a(href='https://www.linkedin.com/in/barriosjose/', target='_blank') Jose Barrios
+                      |  is a serial entrepreneur with a passion for Oxford commas, design, and innovation. Born and raised in México, he immigrated to Canada to study psychology and computer science at &nbsp
+                      a(href='http://www.uvic.ca/', target='_blank') UVic
+                      | . As an undergrad, Jose lead various teams, including the iOS team at &nbsp
+                      a(href='https://www.uvic.ca/anniversary/moments/00s/current/carte.php', target='_blank') CARTE
+                      | . In 2013, he dropped out of university to start &nbsp
+                      a(href='http://www.cognilab.com/', target='_blank') Cognilab
+                      | , an award-winning research startup. As the CEO, Jose was responsible for securing customers, partnerships, and investments. Today, dozens of universities use &nbsp
+                      a(href='http://highline.vc/articles/cognilab-ceo-jose-barrios/', target='_blank') Cognilab
+                      | &nbsp as their primary research platform. Their investors and partners include &nbsp
+                      a(href='http://www.mayoclinic.org/', target='_blank') Mayo Clinic
+                      |  and &nbsp
+                      a(href='https://www.prolific.ac/', target='_blank') Prolific Academic.
+                      | In early 2017, Jose joined &nbsp
+                      a(href='https://www.bevisible.soy/', target='_blank') BeVisible
+                      | , a latinx career platform. As the Chief Technology Architect, Jose reports to &nbsp
+                      a(href='https://www.linkedin.com/in/andrea-guendelman-78b32643/', target='_blank') Andrea Guendelman
+                      | : Harvard Law alumnus, founder, and CEO of &nbsp
+                      a(href='http://backstagecapital.com/headliners/bevisible/', target='_blank') BeVisible.
+                    p
+                      | Jose is looking for opportunities as an advisor, or solutions engineer. Think he might be a good fit? &nbsp
+                      a(href='mailto:hello@barrios.io?Subject=Opportunity', target='_top') Click here to get in touch.
+            // /o-section__content
+          // /o-section__container
+        // /o-container
+      // /o-section
 
 
 
 
-  var search = function(query, people) {
-    let found = [];
-    people.forEach(person => {
-      var givenName = person.givenName.toLowerCase();
-      var familyName = person.familyName.toLowerCase();
-      query = query.toLowerCase();
-      let fullName = `${givenName} ${familyName}`;
-      if(fullName.includes(query)){
-        found.push(person)
-      }
-    })
-    return found;
-  }
+      // ################################
+      // ########## EXPERTISE ###########
+      // ################################
+      section#expertise.o-section.t-section
+        .o-section__header-bg.t-section__header
+        .o-section__content-bg.t-section__content
+        .o-container
+          .o-section__container
+            header.o-section__header.t-section__header
+              .o-content
+                h2.o-section__heading
+                  | Expertise
+                .o-content__body.o-section__description
+                  | Batman would be jealous.
+            // /o-section__header
+            .o-section__content.t-section__content
+              .o-grid
+                .o-grid__col-sm-6
+                  .o-media.o-media--block.o-content
+                    .o-media__figure
+                      .c-number.t-primary-color
+                        | 01
+                    .o-media__body.o-content__body
+                      h3 Business Development
+                      p
+                        | Skilled at identifying tasks and implementing revenue growth opportunities within, and between organizations.
+                  // /o-media o-content
+                // /o-grid__col
+                .o-grid__col-sm-6
+                  .o-media.o-media--block.o-content
+                    .o-media__figure
+                      .c-number.t-primary-color
+                        | 02
+                    .o-media__body.o-content__body
+                      h3 Partnerships
+                      p
+                        | Successful at negotiating international partnerships, including intellectual property, revenue sharing, and investment contracts.
+                  // /o-media o-content
+                // /o-grid__col
+                .o-grid__col-sm-6
+                  .o-media.o-media--block.o-content
+                    .o-media__figure
+                      .c-number.t-primary-color
+                        | 03
+                    .o-media__body.o-content__body
+                      h3 Collaboration
+                      p
+                        | Able to understand complex business challenges, and translate them into tangible technical solutions.
+                  // /o-media o-content
+                // /o-grid__col
+                .o-grid__col-sm-6
+                  .o-media.o-media--block.o-content
+                    .o-media__figure
+                      .c-number.t-primary-color
+                        | 04
+                    .o-media__body.o-content__body
+                      h3 ENTREPRENEURSHIP
+                      p
+                        | Experienced at seeing around corners and identifying opportunities or issues before they arise.
+                  // /o-media o-content
+                // /o-grid__col
+                .o-grid__col-sm-6
+                  .o-media.o-media--block.o-content
+                    .o-media__figure
+                      .c-number.t-primary-color
+                        | 05
+                    .o-media__body.o-content__body
+                      h3 Project Managment
+                      p
+                        | Lead half a dozen developer teams using a wide range of technologies. From complex science-based psychosis and autism intervention tools, to social networking platforms.
+                  // /o-media o-content
+                // /o-grid__col
+                .o-grid__col-sm-6
+                  .o-media.o-media--block.o-content
+                    .o-media__figure
+                      .c-number.t-primary-color
+                        | 06
+                    .o-media__body.o-content__body
+                      h3 Software Development
+                      p
+                        |  Senior web developer with advanced technical skills in Javascript, Node, and non-relational databases. Competent with APIs, ECMAScript6, and CSS.
+                  // /o-media o-content
+                // /o-grid__col
+              // /o-grid
+            // /o-section__content
+          // /o-section__container
+        // /o-container
+      // /o-section
 
 
-  var renderSearchResults = function(results){
-      let newAlphabet = alphabet.slice(0);
-      results.forEach(result => {
-        let firstLetter = result[sortPrimary].charAt(0).toUpperCase();
-        if(newAlphabet.includes(firstLetter)){
-          let charIndex = newAlphabet.indexOf(firstLetter);
-          let char = newAlphabet.splice(charIndex, 1);
-          newAlphabet = newAlphabet.filter(item => item !== char)
-          let divider = contactListDivider.cloneNode(true);
-          divider.innerHTML = firstLetter.toUpperCase();
-          filteredResultsContainer.appendChild(divider);
-        }
 
-        let personClone = person.cloneNode(true);
-        personClone.id = result.id;
-        //Adds comma if primary listing is last name, nothing otherwise
-        let comma = sortPrimary === 'familyName'? ',' : '';
-        personClone.querySelector('#contactListPersonPrimaryText').innerHTML = result[sortPrimary] + comma;
-        personClone.querySelector('#contactListPersonSecondaryText').innerHTML = result[sortSecondary];
-        filteredResultsContainer.appendChild(personClone);
-      })
+      // ################################
+      // ########## EXPERIENCE ##########
+      // ################################
+      section#experience.o-section.t-section
+        .o-section__header-bg.t-section__header
+        .o-section__content-bg.t-section__content
+        .o-container
+          .o-section__container
+            header.o-section__header.t-section__header
+              .o-content
+                h2.o-section__heading
+                  | Experience
+                .o-content__body.o-section__description
+                  | Yes. I've been around.
+            // /o-section__header
+            .o-section__content.t-section__content.u-pb-0
+              .a-experience-timeline.c-timeline.t-border-color
+                .c-timeline__item
+                  .c-timeline__point.t-timeline__point.t-primary-bg
+                  .o-content
+                    .o-grid
+                      .o-grid__col-md-5
+                        .c-work__timeframe
+                          | 2017 – Present
+                        h3.c-work__heading
+                          | BeVisible
+                        h4.c-work__title
+                          | Chief Technology Architect
+                        .c-work__location
+                          | Boulder, Colorado (remote)
+                      .o-grid__col-md-7
+                        p
+                          | A latinx career networking platform founded by Andrea Guendelman; Harvard Law alumnus and latina role model. BeVisible allows companies to recruit highly-skilled latino talent, and diversify their workforce.
+                    // /o-grid
+                  // /o-content
+                // /c-timeline__item
+                .c-timeline__item
+                  .c-timeline__point.t-timeline__point.t-primary-bg
+                  .o-content
+                    .o-grid
+                      .o-grid__col-md-5
+                        .c-work__timeframe
+                          | 2013 – 2017
+                        h3.c-work__heading
+                          | Cognilab
+                        h4.c-work__title
+                          | Co-Founder & CEO
+                        .c-work__location
+                          | Vancouver, Canada
+                      .o-grid__col-md-7
+                        p
+                          | An integrated assessment platform for conducting remote clinical assessments and advanced cognitive research. Cognilab's online laboratory delivers value-based healthcare wherever it is needed. From off-site psychiatric assessments to behavioral research, their solution has been used to collect data on more than 24,000 participants worldwide.
+                    // /o-grid
+                  // /o-content
+                // /c-timeline__item
+                .c-timeline__item
+                  .c-timeline__point.t-timeline__point.t-primary-bg
+                  .o-content
+                    .o-grid
+                      .o-grid__col-md-5
+                        .c-work__timeframe
+                          | 2013 – 2013
+                        h3.c-work__heading
+                          | Island Health (VIHA)
+                        h4.c-work__title
+                          | Technical Advisor
+                        .c-work__location
+                          | Victoria, Canada
+                      .o-grid__col-md-7
+                        p
+                          | Assisted in the design and development of an intervention tool for early psychosis patients. The mobile application allows patients to manage their symptoms using personalized cognitive behavioral therapy. In addition, the intervention tool tracks the users’ progress and helps them keep in contact with peer support, hospital personnel and emergency services.
+                    // /o-grid
+                  // /o-content
+                // /c-timeline__item
+                .c-timeline__item
+                  .c-timeline__point.t-timeline__point.t-primary-bg
+                  .o-content
+                    .o-grid
+                      .o-grid__col-md-5
+                        .c-work__timeframe
+                          | 2012 – 2013
+                        h3.c-work__heading
+                          | Vanderbilt University
+                        h4.c-work__title
+                          | Lead Software Engineer
+                        .c-work__location
+                          | Nashville, Tennessee (remote)
+                      .o-grid__col-md-7
+                        p
+                          | Designed, tested and implemented an easy to use web interface allowing researchers to create, publish and collect experiment data online. The platform is now being used to collect data on tens of thousands of participants worldwide..
+                    // /o-grid
+                  // /o-content
+                // /c-timeline__item
+                .c-timeline__item
+                  .c-timeline__point.t-timeline__point.t-primary-bg
+                  .o-content
+                    .o-grid
+                      .o-grid__col-md-5
+                        .c-work__timeframe
+                          | 2011 – 2013
+                        h3.c-work__heading
+                          | Center for Autism Research
+                        h4.c-work__title
+                          | Lead Software Engineer
+                        .c-work__location
+                          | Victoria, Canada
+                      .o-grid__col-md-7
+                        p
+                          | Led the development of an evidence-based iOS app that enhanced the socio-emotional skills of children with Autism Spectrum Disorder (ASD). This intervention platform was modeled by researchers, and made a reality by our programming team.
+                    // /o-grid
+                  // /o-content
+                // /c-timeline__item
 
-      let message = contactListMessageText.cloneNode(true);
-      message.innerHTML = `${results.length} Contacts Found`
-      filteredResultsContainer.appendChild(message);
-  }
+
+                .c-timeline__item
+                  .c-timeline__point.t-timeline__point.t-primary-bg
+                  .o-content
+                    .o-grid
+                      .o-grid__col-md-5
+                        .c-work__timeframe
+                          | 2011 – 2013
+                        h3.c-work__heading
+                          | Center for Autism Research
+                        h4.c-work__title
+                          | Jr. Software Engineer
+                        .c-work__location
+                          | Victoria, Canada
+                      .o-grid__col-md-7
+                        p
+                          | Assisted in the creation, implementation, and analysis of online psychology experiments under the direction of Dr. James Tanaka. Our team aimed to answer questions regarding cognitive perception, facial recognition, and racial bias. The data collection was conducted using behavioral tests, computer experiments, and electroencephalography (EEG).
+                    // /o-grid
+                  // /o-content
+                // /c-timeline__item
+              // /c-timeline
+            // /o-section__content
+          // /o-section__container
+        // /o-container
+      // /o-section
 
 
-  ////////////////////////////////////////////////////////////////
-  //
-  // USER INPUT
-  //
-  ///////////////////////////////////////////////////////////////////
+
+      // ################################
+      // ########### EDUCATION ##########
+      // ################################
+      section#education.o-section.t-section
+        .o-section__header-bg.t-section__header
+        .o-section__content-bg.t-section__content
+        .o-container
+          .o-section__container
+            header.o-section__header.t-section__header
+              .o-content
+                h2.o-section__heading
+                  | Education
+                .o-content__body.o-section__description
+                  | Proud university dropout.
+            // /o-section__header
+            .o-section__content.t-section__content.u-pt-0
+              .o-content
+                .a-education-timeline.c-timeline.t-border-color.o-section__full-top-space
+                  .c-timeline__end.t-border-color
+                  .c-timeline__item
+                    .c-timeline__point.t-timeline__point.t-primary-bg
+                    .o-content
+                      .o-grid
+                        .o-grid__col-md-5
+                          .c-work__timeframe
+                            | 2016 – 2016
+                          h3.c-work__heading
+                            | Stanford University
+                          h4.c-work__title
+                            | SLELP Executive Program (93%)
+                          .c-work__location
+                            | Palo Alto, California
+                        .o-grid__col-md-7
+                          p
+                            | To be considered for this program, the preferred criteria for applicants is to have either generated $1 million in revenue or have raised $1 million in funding. The immersive six-week program provides participants with valuable concepts and frameworks, enhanced access to capital, personal mentorship from successful entrepreneurs and investors, and a better understanding of the capital resources necessary to grow their businesses, create jobs, and build a stronger economy. The course is thought by two Stanford Professors, Huggy Rao and Bob Sutton, who are internationally recognized as experts in scaling businesses.
+                      // /o-grid
+                    // /o-content
+                  // /c-timeline__item
+                  .c-timeline__item
+                    .c-timeline__point.t-timeline__point.t-primary-bg
+                    .o-content
+                      .o-grid
+                        .o-grid__col-md-5
+                          .c-work__timeframe
+                            | 2008 – 2013
+                          h3.c-work__heading
+                            | University of Victoria
+                          h4.c-work__title
+                            | B.Sc Psychology of Computer Science (dropout)
+                          .c-work__location
+                            | Victoria, Canada
+                        .o-grid__col-md-7
+                          p
+                            | Computer Science and Psychology is an interdepartmental major designed for students interested in integrating work in these two fields. Each area provides tools and theories that can be applied to problems in the other. Examples of this interaction include cognitive science, UI/UX, artificial intelligence, and biological perception. Completed 54/60 credits, and dropped out to start Cognilab.
+                      // /o-grid
+                    // /o-content
+                  // /c-timeline__item
+                // /c-timeline
+              // /o-content
+            // /o-section__content
+          // /o-section__container
+        // /o-container
+      // /o-section
 
 
-  //DELETE SEARCH INPUT
-  deleteQueryButton.addEventListener('click', function(e){
-    searchInput.value = '';
-    var event = document.createEvent('Event');
-    event.initEvent('input', true, true);
-    searchInput.dispatchEvent(event);
-  })
 
-  //SEARCH INPUT
-  searchInput.addEventListener('input', function(e){
-    filteredResultsContainer.innerHTML = '';
-    if(e.target.value){
-      allResultsContainer.style.display = 'none';
-      filteredResultsContainer.style.display = 'initial';
-    } else{
-      allResultsContainer.style.display = 'initial';
-      filteredResultsContainer.style.display = 'none';
-    }
-    let query = e.target.value;
-    let results = search(query, people);
-    renderSearchResults(results);
-  })
 
-  if(searchQuery){
-    searchInput.value = searchQuery;
-    var event = document.createEvent('Event');
-    event.initEvent('input', true, true);
-    searchInput.dispatchEvent(event);
-  }
+      // ################################
+      // ########### PROFILES ###########
+      // ################################
+      section#profiles.o-section.t-section
+        .o-section__header-bg.t-section__header
+        .o-section__content-bg.t-section__content
+        .o-container
+          .o-section__container
+            header.o-section__header.t-section__header
+              .o-content
+                h2.o-section__heading
+                  | Profiles
+                .o-content__body.o-section__description
+                  | Busy as usual.
+            // /o-section__header
+            .o-section__content.t-section__content
+              .o-grid
+                .o-grid__col-xl-4.o-grid__col-sm-6
+                  .o-content
+                    a.t-link-container(href='https://github.com/JoseBarrios', target='_blank')
+                      .o-media.o-media--block
+                        .o-media__figure
+                          .c-profile__icon
+                            i.fa.fa-lg.fa-github-alt
+                        .o-media__body.o-content__body
+                          h3.t-link-container__item
+                            | Github
+                          p
+                            | I also create and mantain open-source projects.
+                      // /o-media
+                    // /t-link-container
+                  // /o-content
+                // /o-grid__col
+                .o-grid__col-xl-4.o-grid__col-sm-6
+                  .o-content
+                    a.t-link-container(href='https://medium.com/@josebarrios', target='_blank')
+                      .o-media.o-media--block
+                        .o-media__figure
+                          .c-profile__icon
+                            i.fa.fa-lg.fa-medium
+                        .o-media__body.o-content__body
+                          h3.t-link-container__item
+                            | Medium
+                          p
+                            | Yes. I'm also a wannabe cinema critic.
+                      // /o-media
+                    // /t-link-container
+                  // /o-content
+                // /o-grid__col
+                // /o-grid__col
+              // /o-grid
+            // /o-section__content
+          // /o-section__container
+        // /o-container
+      // /o-section
+
+
+
+
+      // ################################
+      // ############ AWARDS ############
+      // ################################
+      section#awards.o-section.t-section
+        .o-section__header-bg.t-section__header
+        .o-section__content-bg.t-section__content
+        .o-container
+          .o-section__container
+            header.o-section__header.t-section__header
+              .o-content
+                h2.o-section__heading
+                  | Awards
+                .o-content__body.o-section__description
+                  | Happy times!
+            // /o-section__header
+            .o-section__content.t-section__content
+              .o-grid
+                .o-grid__col-md-4.o-grid__col-sm-6
+                  .o-content
+                    hr.c-deco-line.t-primary-color-line
+                    .o-content__body
+                      h3
+                        span
+                          a(href="http://techtransfercentral.com/2016/05/04/mayo-clinic-invites-international-companies-to-collaborate-on-tech-transfer-projects/") Mayo Clinic Global Medical Business Program (2016)
+                      p
+                        | An invitation-only program that brings health care entrepreneurs to Mayo Clinic. The program's goal is to identify business development, and collaboration opportunities.
+                  // /o-content
+                // /o-grid__col
+                .o-grid__col-md-4.o-grid__col-sm-6
+                  .o-content
+                    hr.c-deco-line.t-primary-color-line
+                    .o-content__body
+                      h3
+                        span
+                          a(href="http://hitconsultant.net/2015/07/08/canadas-top-20-digital-health-startups-to-watch/3/") 20 Promising Canadian Digital Health Companies to Watch (2016)
+                      p
+                        | Named one of the most innovative Canadian statartups by HITConsultant, a UK-based healthcare technology magazine.
+                  // /o-content
+                // /o-grid__col
+                .o-grid__col-md-4.o-grid__col-sm-6
+                  .o-content
+                    hr.c-deco-line.t-primary-color-line
+                    .o-content__body
+                      h3
+                        span
+                          a(href="http://www.theglobeandmail.com/report-on-business/small-business/startups/start-up-visa-program-starting-to-gain-traction/article24692163/") Government of Canada Startup Visa Program (2015)
+                      p
+                        | Canada's Start-up Visa Program targets immigrant entrepreneurs with the skills and potential to build world-class businesses in Canada.
+                  // /o-content
+                // /o-grid__col
+              // /o-grid
+            // /o-section__content
+          // /o-section__container
+        // /o-container
+      // /o-section
+
+
+
+      // ################################
+      // ############ CONTACT ############
+      // ################################
+      section#contact.o-section.t-section.o-section--footer
+        .o-section__header-bg.t-section__header
+        .o-section__content-bg.t-section__content
+        .o-container
+          .o-section__container
+            header.o-section__header.t-section__header
+              .o-content
+                h2.o-section__heading
+                  | Contact
+                .o-content__body.o-section__description
+                  | Call me, maybe.
+            // /o-section__header
+            .o-section__content.t-section__content
+              .c-footer__contact
+                .o-grid
+                  .o-grid__col-md-3.o-grid__col-sm-6
+                    .o-content
+                      .o-content__body
+                        h4 Location
+                        address
+                          | Victoria, Canada
+                    // /o-content
+                  // /o-grid__col
+                  .o-grid__col-md-3.o-grid__col-sm-6
+                    .o-content
+                      .o-content__body
+                        a.t-link-container(href='http://www.barrios.io', target='_blank')
+                          h4 Web
+                          p
+                            span.t-link-container__item--blended
+                              | barrios.io
+                        // /o-link-container
+                    // /o-content
+                  // /o-grid__col
+                  .o-grid__col-md-3.o-grid__col-sm-6
+                    .o-content
+                      .o-content__body
+                        a.t-link-container(href='mailto:jose@barrios.io', target='_top')
+                          h4 Email
+                          p
+                            span.t-link-container__item--blended
+                              | hello@barrios.io
+                        // /o-link-container
+                    // /o-content
+                  // /o-grid__col
+                // /o-grid
+              // /c-footer__contact
+          // /o-section__container
+        // /o-container
+      // /o-section
+    // /c-main-container

@@ -20,7 +20,7 @@ const fs = require('fs');
 const userRoutes = require(`${global.APP_ROOT}/routes/user`)
 const landingRoutes = require(`${global.APP_ROOT}/routes/landing`)
 const personRoutes = require(`${global.APP_ROOT}/routes/person`)
-
+const contactRoutes = require(`${global.APP_ROOT}/routes/contact`)
 const dashboardRoutes = require(`${global.APP_ROOT}/routes/dashboard`)
 const emailRoutes = require(`${global.APP_ROOT}/routes/email`)
 const errorRoutes = require(`${global.APP_ROOT}/routes/error`)
@@ -71,11 +71,12 @@ module.exports.initApplication = function() {
   //app.use(authenticationMiddleware);
 
 	//CSRF ROUTES
-	app.use(csrf());
+	//app.use(csrf());
   app.use(landingRoutes);
   app.use(emailRoutes);
   app.use(userRoutes);
   app.use(personRoutes);
+  app.use(contactRoutes);
   app.use(dashboardRoutes);
   app.use(errorRoutes);
 
@@ -85,3 +86,5 @@ module.exports.initApplication = function() {
 
   return app;
 };
+
+
