@@ -24,6 +24,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 	var $emergencyGivenName = document.querySelector("#emergencyGivenName");
 	var $emergencyFamilyName = document.querySelector("#emergencyFamilyName");
 	var $emergencyTelephone = document.querySelector("#emergencyTelephone");
+
 	var $list = document.querySelectorAll('.contact-list-person-container');
 	var $card = document.querySelector('ui-contact-card');
 
@@ -57,7 +58,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 		if(!mobileAction){
 			//ADD
 			$addContact.addEventListener('click', mobileCreate);
-			$list.forEach(item => { item.addEventListener('click', mobileUpdate); console.log(item) });
+			$list.forEach(item => { item.addEventListener('click', mobileUpdate); });
 			//REMOVE
 			$addContact.removeEventListener('click', desktopCreate);
 			$list.forEach(item => { item.removeEventListener('click', selectItem); })
@@ -81,8 +82,11 @@ window.addEventListener('WebComponentsReady', function(e) {
 	}
 
 	function mobileUpdate(e){
-		if(!mobileAction || !e.target.id) return;
-		let url = '/person/'+e.target.id
+		let id = e.target.id;
+		if(!mobileAction) return;
+		let clickedOnName = (id === "contactListPersonPrimaryText" || id === "contactListPersonSecondaryText");
+		id = clickedOnName? e.target.parentElement.id : id;
+		let url = '/person/'+id
 		window.location.href = url;
 	}
 
