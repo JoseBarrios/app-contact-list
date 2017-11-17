@@ -57,7 +57,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 		if(!mobileAction){
 			//ADD
 			$addContact.addEventListener('click', mobileCreate);
-			$list.forEach(item => { item.addEventListener('click', mobileUpdate); });
+			$list.forEach(item => { item.addEventListener('click', mobileUpdate); console.log(item) });
 			//REMOVE
 			$addContact.removeEventListener('click', desktopCreate);
 			$list.forEach(item => { item.removeEventListener('click', selectItem); })
@@ -81,7 +81,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 	}
 
 	function mobileUpdate(e){
-		if(!mobileAction) return;
+		if(!mobileAction || !e.target.id) return;
 		let url = '/person/'+e.target.id
 		window.location.href = url;
 	}
@@ -205,10 +205,10 @@ window.addEventListener('WebComponentsReady', function(e) {
 
 	function selectItem(e){
 		deselectAll();
-		e.target.classList.add('selected')
 		let personID = e.target.id;
 		people.forEach(person => {
 			if(person._id === personID){
+				e.target.classList.add('selected')
 				renderCard(person);
 			}
 		})
@@ -281,6 +281,5 @@ window.addEventListener('WebComponentsReady', function(e) {
 		}
 		return query_string;
 	}
-
 
 })

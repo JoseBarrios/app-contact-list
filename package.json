@@ -36,7 +36,7 @@
     "request": "^2.83.0",
     "socket.io": "^2.0.4",
     "systemjs": "^0.20.19",
-    "ui-contact-card": "0.0.33",
+    "ui-contact-card": "0.0.34",
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {

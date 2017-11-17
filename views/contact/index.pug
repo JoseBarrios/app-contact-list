@@ -79,13 +79,12 @@ html(lang='en')
             //-DIVIDER
             p(id="contactListDivider" class="contact-list-divider") #{char}
           div(id=person._id class="contact-list-person-container")
-            span
-              if sortPrimary === 'givenName'
-                p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]}
-                p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
-              if sortPrimary === 'familyName'
-                p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]},
-                p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
+            if sortPrimary === 'givenName'
+              p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]}
+              p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
+            if sortPrimary === 'familyName'
+              p(id="contactListPersonPrimaryText" class="contact-list-person-primary-text") #{person[sortPrimary]},
+              p(id="contactListPersonSecondaryText" class="contact-list-person-secondary-text") #{person[sortSecondary]}
         p(id="contactListMessageText" class="contact-list-message-text") #{people.length} Contacts
 
       div(id='searchResultListContainer' hidden)
