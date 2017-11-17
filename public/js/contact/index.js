@@ -248,7 +248,11 @@ window.addEventListener('WebComponentsReady', function(e) {
 			let comma = sortPrimary === 'familyName'? ',' : '';
 			personClone.querySelector('#contactListPersonPrimaryText').innerHTML = result[sortPrimary] + comma;
 			personClone.querySelector('#contactListPersonSecondaryText').innerHTML = result[sortSecondary];
-			personClone.addEventListener('click', selectItem);
+			if(onMobile){
+				personClone.addEventListener('click', mobileUpdate);
+			} else {
+				personClone.addEventListener('click', selectItem);
+			}
 			$filteredResultsContainer.appendChild(personClone);
 		})
 
