@@ -80,13 +80,13 @@ window.addEventListener('WebComponentsReady', function(e) {
 		mobileAction = false;
 	}
 
-	function mobileCreate(e){
+	function mobileUpdate(e){
 		if(!mobileAction) return;
 		let url = '/person/'+e.target.id
 		window.location.href = url;
 	}
 
-	function mobileUpdate(e){
+	function mobileCreate(e){
 		if(!mobileAction) return;
 		let url = '/person/create';
 		window.location.href = url;
