@@ -40,11 +40,13 @@ window.addEventListener('WebComponentsReady', function(e) {
 	// ADD EVENT LISTENERS
 	//
 	//////////////////////////////////
-	let regularAction = false;
+	let desktopAction = false;
 	let mobileAction = false;
 	let onMobile = window.innerWidth < 737;
+
 	if(onMobile) setMobileActions();
 	else setRegularActions();
+
 	window.onresize = (e) => {
 		onMobile = window.innerWidth < 737;
 		if(onMobile) setMobileActions();
@@ -53,39 +55,49 @@ window.addEventListener('WebComponentsReady', function(e) {
 
 	function setMobileActions(){
 		if(!mobileAction){
-			$list.forEach(item => {
-				item.addEventListener('click', e => {
-					let url = '/person/'+item.id
-					window.location.href = url;
-				});
-			});
-
-			$addContact.addEventListener('click', e => {
-					let url = '/person/create';
-					window.location.href = url;
-			})
-
+			//ADD
+			$addContact.addEventListener('click', mobileCreate);
+			$list.forEach(item => { item.addEventListener('click', mobileUpdate); });
+			//REMOVE
+			$addContact.removeEventListener('click', desktopCreate);
+			$list.forEach(item => { item.removeEventListener('click', selectItem); })
 		}
 		mobileAction = true;
-		regularAction = false;
+		desktopAction = false;
 	}
 
 	function setRegularActions(){
-		if(!regularAction){
-
-			$list.forEach(item => {
-				item.addEventListener('click', selectItem);
-			})
-
-			$addContact.addEventListener('click', e => {
-				$card.clear();
-				$card.editing = true;
-			})
+		if(!desktopAction){
+			//ADD
+			$list.forEach(item => { item.addEventListener('click', selectItem); })
+			$addContact.addEventListener('click', desktopCreate);
+			//REMOVE
+			$addContact.removeEventListener('click', mobileCreate);
+			$list.forEach(item => { item.removeEventListener('click', mobileUpdate); });
 
 		}
-		regularAction = true;
+		desktopAction = true;
 		mobileAction = false;
 	}
+
+	function mobileCreate(e){
+		if(!mobileAction) return;
+		let url = '/person/'+e.target.id
+		window.location.href = url;
+	}
+
+	function mobileUpdate(e){
+		if(!mobileAction) return;
+		let url = '/person/create';
+		window.location.href = url;
+	}
+
+	function desktopCreate(e){
+		if(!desktopAction) return;
+		$card.editing = true;
+		$card.clear();
+	}
+
 
 
 
