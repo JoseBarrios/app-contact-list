@@ -53,6 +53,13 @@ router.route('/person/create')
     person.email = req.body.email;
     person.knows = [];
     person.knows.push(emergencyContact);
+
+		let hasName = person.givenName || person.familyName;
+		let hasInfo = person.telephone || person.email;
+		let hasContact = emergencyContact.givenName || emergencyContact.familyName || emergencyContact.telephone;
+		let isValid = (hasName || hasInfo || hasContact);
+		if(!isValid) return;
+
     dbController.insertOne(COLLECTION, person).then(person => {
         res.redirect('/contacts?select='+person._id)
     }).catch(error => {
