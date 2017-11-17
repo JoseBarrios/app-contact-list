@@ -35,6 +35,7 @@
     "pug": "^2.0.0-rc.4",
     "request": "^2.83.0",
     "systemjs": "^0.20.19",
+    "ui-contact-card": "0.0.11",
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {

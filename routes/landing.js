@@ -27,9 +27,8 @@ router.get('/', function(req, res) {
       locals.search = search;
       locals.people = people;
 			locals.person = people[0];
-			let lastUpdated = moment(parseInt(locals.person.disambiguatingDescription)).fromNow();
-			let isValidDate = lastUpdated !== 'Invalid date';
-			locals.lastUpdated = isValidDate? `Updated ${lastUpdated}` : '';
+			//let isValidDate = lastUpdated !== 'Invalid date';
+			//locals.lastUpdated = isValidDate? `Updated ${lastUpdated}` : '';
       locals.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
       res.render("landing/", locals);
     })

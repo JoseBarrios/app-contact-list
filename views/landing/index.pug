@@ -11,6 +11,9 @@ html(lang='en')
     link(href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' async)
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css' async)
 
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-loader.js')
+    link(rel="import" href="/ui-contact-card/element/index.html")
+
     style.
 
       body {
@@ -18,10 +21,6 @@ html(lang='en')
         box-sizing:border-box;
         padding:0px;
         margin:0px;
-      }
-
-      iFrame {
-        border:none;
       }
 
       .left-pannel {
@@ -165,11 +164,11 @@ html(lang='en')
         font-weight:300;
       }
 
-      .contact-card-container {
+      .ui-contact-card-container {
         border: 1px solid #d7d8e1;
         background-color:white;
-        margin:7%;
-        width:86%;
+        margin:5%;
+        width:90%;
       }
 
       .right-pannel {
@@ -197,7 +196,7 @@ html(lang='en')
           width:50%;
         }
 
-        .contact-card-container {
+        .ui-contact-card-container {
           border: 1px solid #d7d8e1;
           width:calc(100% - 44px);
           background-color:white;
@@ -529,11 +528,13 @@ html(lang='en')
     //-------
     - let person = people[0];
     div(class="right-pannel")
-      iframe(id="iframe" src="/person/5a0a7b54ecc6f43ab2463b86/" style="visibility:hidden;" onload="this.style.visibility = 'visible';" height="100%" width="100%")
+      //-div(class="ui-contact-card-container")
+      div(style="margin:88px;")
+        ui-contact-card( person=person )
       //------
       //-CONTACT CARD
       //-------
-      div(id="contactCardContainer" class="contact-card-container")
+      //-div(id="contactCardContainer" class="contact-card-container")
         ////////
         //HEADER
         /////////
@@ -584,22 +585,39 @@ script.
   var allResultsContainer = document.querySelector('#contactListContainer');
   var filteredResultsContainer = document.querySelector('#searchResultListContainer');
 
-  var iFrame = document.querySelector('#iframe');
-  iFrame.addEventListener('load', e => { console.log('LOADED', e) })
-  iFrame.addEventListener('abort', e => { console.log('abort', e) })
-  iFrame.addEventListener('DOMcontentloaded', e => { console.log('DOMCONTENT LOADED', e) })
-  iFrame.addEventListener('cancel', e => { console.log('cancel', e) })
-  iFrame.addEventListener('change', e => { console.log('change', e) })
-  iFrame.addEventListener('close', e => { console.log('close', e) })
-  iFrame.addEventListener('connect', e => { console.log('connect', e) })
-  iFrame.addEventListener('hashchange', e => { console.log('haschange', e) })
-  iFrame.addEventListener('input', e => { console.log('input', e) })
-  iFrame.addEventListener('online', e => { console.log('online', e) })
-  iFrame.addEventListener('open', e => { console.log('open', e) })
-  iFrame.addEventListener('pagehide', e => { console.log('pagehide', e) })
-  iFrame.addEventListener('progress', e => { console.log('progress', e) })
-  iFrame.addEventListener('submit', e => { console.log('submit', e) })
-  //-iFrame.addEventListener('xxx', e => { console.log('xxx', e) })
+  window.addEventListener('WebComponentsReady', function(e) {
+    var $list = document.querySelectorAll('.contact-list-person-container');
+    var $card = document.querySelector('ui-contact-card');
+    console.log($list, $card)
+
+    var people = !{JSON.stringify(people)}
+    let clickedItem = e => {
+      $card.visibility = false;
+      personID = e.target.id;
+      people.forEach(person => {
+        if(person._id === personID){
+          $card.person = person;
+          $card.setAttribute('person', JSON.stringify(person));
+          $card.visibility = true;
+
+        }
+      })
+
+    }
+    $list.forEach(item => { item.addEventListener('click', clickedItem); })
+
+
+  })
+
+  //-window.addEventListener('WebComponentsReady', function(e) {
+    //-let contactCard = document.querySelector('ui-contact-card');
+      //-contactCard.addEventListener('update', e => {
+      //-console.log('UPDATE', e.detail);
+    //-})
+    //-contactCard.person = people[0];
+  //-})
+
+
 
 
   var search = function(query, people) {
