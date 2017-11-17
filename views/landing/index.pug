@@ -2,7 +2,7 @@ doctype html
 html(lang='en')
 
   head
-    title xxx | xxx
+    title Barrios | Contacts
     meta(name='description', content='xxx')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
@@ -459,6 +459,16 @@ html(lang='en')
 
 
   body
+    form(action="" method="post")
+      input(id="csrfToken" name="_csrf" type="hidden" value=csrfToken)
+      input(id="identifier" name="identifier" type="hidden" value=personID)
+      input(id="givenName" name="givenName" type="hidden")
+      input(id="familyName" name="familyName" type="hidden")
+      input(id="telephone" name="telephone" type="hidden")
+      input(id="email" name="email" type="hidden")
+      input(id="emergencyGivenName" name="emergencyGivenName" type="hidden")
+      input(id="emergencyFamilyName" name="emergencyFamilyName" type="hidden")
+      input(id="emergencyTelephone" name="emergencyTelephone" type="hidden")
 
     //------
     //-ROLADEX PANNEL
@@ -530,7 +540,7 @@ html(lang='en')
     div(class="right-pannel")
       //-div(class="ui-contact-card-container")
       div(style="margin:88px;")
-        ui-contact-card( person=person )
+        ui-contact-card( person=person csrf=csrfToken action='/person/create')
       //------
       //-CONTACT CARD
       //-------
@@ -586,6 +596,15 @@ script.
   var filteredResultsContainer = document.querySelector('#searchResultListContainer');
 
   window.addEventListener('WebComponentsReady', function(e) {
+    var $form = document.querySelector('form');
+    var $givenName = document.querySelector("#givenName");
+    var $familyName = document.querySelector("#familyName");
+    var $telephone = document.querySelector("#telephone");
+    var $email = document.querySelector("#email");
+    var $emergencyGivenName = document.querySelector("#emergencyGivenName");
+    var $emergencyFamilyName = document.querySelector("#emergencyFamilyName");
+    var $emergencyTelephone = document.querySelector("#emergencyTelephone");
+
     var $list = document.querySelectorAll('.contact-list-person-container');
     var $card = document.querySelector('ui-contact-card');
     console.log($list, $card)
@@ -607,15 +626,50 @@ script.
     $list.forEach(item => { item.addEventListener('click', clickedItem); })
 
 
-  })
+    var $roladexHeaderAddContactButton = document.querySelector('#roladexHeaderAddContactButton');
+    $roladexHeaderAddContactButton.addEventListener('click', e => {
+      $card.clear();
+      console.log($card.person, $card.model, $card.emergencyContact)
+    })
 
-  //-window.addEventListener('WebComponentsReady', function(e) {
-    //-let contactCard = document.querySelector('ui-contact-card');
-      //-contactCard.addEventListener('update', e => {
-      //-console.log('UPDATE', e.detail);
-    //-})
-    //-contactCard.person = people[0];
-  //-})
+    $card.addEventListener('delete', (e) => {
+      console.log('DELETE', e.detail);
+      $form.action = '/person/'+e.detail.model.person._id+'/delete'
+      $form.submit();
+    });
+
+    $card.addEventListener('update', (e) => {
+      let person = e.detail.model.person;
+      let meta = e.detail.meta;
+      let state = e.detail.state;
+
+      $givenName.value = person.givenName || '';
+      $familyName.value = person.familyName || '';
+      $telephone.value = person.telephone || '';
+      $email.value = person.email || '';
+
+      if(person.knows && person.knows.length){
+        let emergencyContact = person.knows[0];
+        console.log(emergencyContact)
+        $emergencyGivenName.value = emergencyContact.givenName || '';
+        $emergencyFamilyName.value = emergencyContact.familyName || '';
+        $emergencyTelephone.value = emergencyContact.telephone || '';
+      }
+
+      //ITS AN UPDATE OR DELETE
+      if(person._id){
+        $form.action = '/person/'+person._id+'/update'
+        $form.submit();
+      }
+      //ITS CREATE
+      else {
+        $form.action = '/person/create'
+        $form.submit();
+      }
+
+    })
+
+  })
 
 
 

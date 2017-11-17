@@ -40,14 +40,28 @@ router.route('/person/create')
     res.render("person/create", locals);
   })
   .post((req, res) =>{
-    req.body.identifier = 'Person';
-    let person = new Person(req.body);
-    let document = Person.assignedProperties(person);
-    dbController.insertOne(COLLECTION, document).then(person => {
-        res.redirect(`/person/${person._id}`)
-    }).catch(error => {
-      console.log('ERROR', error)
-    })
+		console.log(req.body)
+
+		let emergencyContact = {};
+		emergencyContact.givenName = req.body.emergencyGivenName;
+		emergencyContact.familyName = req.body.emergencyFamilyName;
+		emergencyContact.telephone = req.body.emergencyTelephone;
+
+		let person = {};
+		person.givenName = req.body.givenName;
+		person.familyName = req.body.familyName;
+		person.telephone = req.body.telephone;
+		person.email = req.body.email;
+		person.knows = [];
+		person.knows.push(emergencyContact);
+
+		console.log(person)
+
+		dbController.insertOne(COLLECTION, person).then(person => {
+				res.redirect('/')
+		}).catch(error => {
+			console.log('ERROR', error)
+		})
   })
 
 
@@ -92,23 +106,38 @@ router.route('/person/:personID/update')
   })
   .post((req, res) =>{
     let person = {};
-    person.disambiguatingDescription = req.body.personDisambiguatingDescription;
-    person.givenName = req.body.personGivenName;
-    person.familyName = req.body.personFamilyName;
-    person.email = req.body.personEmail;
-    person.telephone = req.body.personTelephone;
+    person.givenName = req.body.givenName;
+    person.familyName = req.body.familyName;
+    person.email = req.body.email;
+    person.telephone = req.body.telephone;
     person.knows = [];
     person.knows[0] = {};
-    person.knows[0].givenName = req.body['personKnows0GivenName'];
-    person.knows[0].familyName = req.body['personKnows0FamilyName'];
-    person.knows[0].telephone = req.body['personKnows0Telephone'];
+    person.knows[0].givenName = req.body.emergencyGivenName;
+    person.knows[0].familyName = req.body.emergencyFamilyName;
+    person.knows[0].telephone = req.body.emergencyTelephone;
     let id = ObjectID(req.personID);
     dbController.updateDocument(COLLECTION, id, person)
       .then(result => {
         console.log(result);
-				res.redirect('/person/'+req.personID);
+				res.redirect('/');
       })
   })
+
+/////////////////////////////////////
+//
+//  DELETE
+//
+////////////////////////////////////
+router.route('/person/:personID/delete')
+  .post((req, res) =>{
+    let id = ObjectID(req.personID);
+    dbController.deleteDocument(COLLECTION, id)
+      .then(result => {
+        console.log(result);
+				res.redirect('/');
+      })
+  })
+
 
 
 /**
