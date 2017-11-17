@@ -61,4 +61,4 @@ config/mongo.js
 .DS_Store
 
 config/mongo.json
-config/mongo.json
+config/mongo-config.json
