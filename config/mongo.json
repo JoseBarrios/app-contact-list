@@ -1,5 +1,0 @@
-{
-  "hostname": "localhost",
-  "url": "mongodb://localhost:27017/test",
-  "port": "27017"
-}
