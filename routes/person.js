@@ -61,7 +61,7 @@ router.route('/person/create')
 		if(!isValid) return;
 
     dbController.insertOne(COLLECTION, person).then(person => {
-        res.redirect('/contacts?select='+person._id)
+			res.redirect('/person/'+person._id)
     }).catch(error => {
       console.log('ERROR', error)
     })
@@ -94,7 +94,7 @@ router.route('/person/:personID')
 //  UPDATE
 //
 ////////////////////////////////////
-router.route('/person/:personID/update')
+router.route('/person/:personID/update/:display?')
   .post((req, res) =>{
     let person = {};
     person.givenName = req.body.givenName;
@@ -109,7 +109,11 @@ router.route('/person/:personID/update')
     let id = ObjectID(req.personID);
     dbController.updateDocument(COLLECTION, id, person)
       .then(result => {
-        res.redirect('/contacts?select='+req.personID)
+				if(req.params.display === "mobile"){
+					res.redirect('/person/'+req.personID)
+				} else {
+					res.redirect('/contacts?select='+req.personID)
+				}
       })
   })
 

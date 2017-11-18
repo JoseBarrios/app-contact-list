@@ -449,7 +449,7 @@ html(lang='en')
         /////////
         div(id="contactCardHeader" class="contact-card-header")
           p(id="contactCardHeaderLeftButton" class="contact-card-header-left-button" onclick="window.location.href='/'") Done
-          p(id="contactCardHeaderRightButton" class="contact-card-header-right-button" onclick="window.location.href='/person/"+personID+"/update'") Edit
+          p(id="contactCardHeaderRightButton" class="contact-card-header-right-button" onclick="window.location.href='/person/"+person._id+"/update'") Edit
           if sortPrimary === 'givenName'
             h1(id="contactCardName" class="contact-card-name") #{person[sortPrimary]} #{person[sortSecondary]}
           if sortPrimary === 'familyName'

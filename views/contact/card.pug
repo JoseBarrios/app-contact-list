@@ -32,6 +32,10 @@ html(lang='en')
         i(class="fa fa-angle-left" aria-hidden="true" style="float:left")
 
 script.
+  let onMobile = window.innerWidth < 737;
+  window.onresize = (e) => { onMobile = window.innerWidth < 737; }
+
+
   var person = !{JSON.stringify(person)}
   let $card = document.querySelector('ui-contact-card');
   let $contacts = document.querySelector('#contacts');
@@ -72,7 +76,8 @@ script.
 
     //ITS AN UPDATE OR DELETE
     if(person._id){
-      $form.action = '/person/'+person._id+'/update'
+      let display = onMobile? "mobile" : "desktop";
+      $form.action = `/person/${person._id}/update/${display}`
       $form.submit();
     }
     else {

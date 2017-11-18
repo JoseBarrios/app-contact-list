@@ -103,8 +103,6 @@ window.addEventListener('WebComponentsReady', function(e) {
 	}
 
 
-
-
 	//DELETE SEARCH INPUT
 	$deleteQueryButton.addEventListener('click', function(e){
 		$searchInput.value = '';
@@ -158,7 +156,9 @@ window.addEventListener('WebComponentsReady', function(e) {
 
 		//ITS AN UPDATE OR DELETE
 		if(person._id){
-			$form.action = '/person/'+person._id+'/update'
+			let display = onMobile? "mobile" : "desktop";
+			console.log('UPDATE', display)
+			$form.action = `/person/${person._id}/update/${display}`
 			$form.submit();
 		}
 		//ITS CREATE
