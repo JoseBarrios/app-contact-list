@@ -34,7 +34,7 @@ router.param('personID', function (req, res, next, personID) {
 //  CREATE
 //
 ////////////////////////////////////
-router.route('/person/create')
+router.route('/person/create/:display?')
   .get((req, res) =>{
 		let locals = {};
 		locals.person = {};
@@ -61,7 +61,11 @@ router.route('/person/create')
 		if(!isValid) return;
 
     dbController.insertOne(COLLECTION, person).then(person => {
-			res.redirect('/person/'+person._id)
+			if(req.params.display === "mobile"){
+				res.redirect('/person/'+person._id)
+			} else {
+				res.redirect('/contacts?select='+person._id)
+			}
     }).catch(error => {
       console.log('ERROR', error)
     })

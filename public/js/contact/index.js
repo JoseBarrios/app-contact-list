@@ -41,67 +41,46 @@ window.addEventListener('WebComponentsReady', function(e) {
 	// ADD EVENT LISTENERS
 	//
 	//////////////////////////////////
-	let desktopAction = false;
-	let mobileAction = false;
 	let onMobile = window.innerWidth < 737;
+	window.onresize = (e) => { onMobile = window.innerWidth < 737; }
 
-	if(onMobile) setMobileActions();
-	else setRegularActions();
 
-	window.onresize = (e) => {
-		onMobile = window.innerWidth < 737;
-		if(onMobile) setMobileActions();
-		else setRegularActions();
-	}
+	$list.forEach(item => { item.addEventListener('click', getPerson); });
+	$addContact.addEventListener('click', create);
 
-	function setMobileActions(){
-		if(!mobileAction){
-			//ADD
-			$addContact.addEventListener('click', mobileCreate);
-			$list.forEach(item => { item.addEventListener('click', mobileUpdate); });
-			//REMOVE
-			$addContact.removeEventListener('click', desktopCreate);
-			$list.forEach(item => { item.removeEventListener('click', selectItem); })
+
+	function getPerson(e){
+		let personID = e.target.id;
+		let clickedOnName = (personID === "contactListPersonPrimaryText" || personID === "contactListPersonSecondaryText");
+		personID = clickedOnName? e.target.parentElement.id : personID;
+
+		if(onMobile){
+			let url = '/person/'+personID
+			window.location.href = url;
 		}
-		mobileAction = true;
-		desktopAction = false;
-	}
-
-	function setRegularActions(){
-		if(!desktopAction){
-			//ADD
-			$list.forEach(item => { item.addEventListener('click', selectItem); })
-			$addContact.addEventListener('click', desktopCreate);
-			//REMOVE
-			$addContact.removeEventListener('click', mobileCreate);
-			$list.forEach(item => { item.removeEventListener('click', mobileUpdate); });
-
+		//DESKTOP
+		else {
+			deselectAll();
+			let target = clickedOnName? e.target.parentElement : e.target;
+			people.forEach(person => {
+				if(person._id === personID){
+					target.classList.add('selected')
+					renderCard(person);
+				}
+			})
 		}
-		desktopAction = true;
-		mobileAction = false;
 	}
 
-	function mobileUpdate(e){
-		let id = e.target.id;
-		if(!mobileAction) return;
-		let clickedOnName = (id === "contactListPersonPrimaryText" || id === "contactListPersonSecondaryText");
-		id = clickedOnName? e.target.parentElement.id : id;
-		let url = '/person/'+id
-		window.location.href = url;
-	}
 
-	function mobileCreate(e){
-		if(!mobileAction) return;
-		let url = '/person/create';
-		window.location.href = url;
+	function create(e){
+		if(onMobile){
+			let url = '/person/create/mobile';
+			window.location.href = url;
+		} else {
+			$card.clear();
+			$card.editing = true;
+		}
 	}
-
-	function desktopCreate(e){
-		if(!desktopAction) return;
-		$card.editing = true;
-		$card.clear();
-	}
-
 
 	//DELETE SEARCH INPUT
 	$deleteQueryButton.addEventListener('click', function(e){
@@ -256,7 +235,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 			personClone.querySelector('#contactListPersonPrimaryText').innerHTML = result[sortPrimary] + comma;
 			personClone.querySelector('#contactListPersonSecondaryText').innerHTML = result[sortSecondary];
 			if(onMobile){
-				personClone.addEventListener('click', mobileUpdate);
+				personClone.addEventListener('click', getPerson);
 			} else {
 				personClone.addEventListener('click', selectItem);
 			}
