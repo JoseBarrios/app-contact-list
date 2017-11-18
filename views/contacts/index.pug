@@ -19,6 +19,7 @@ html(lang='en')
 
   body
     form(action="" method="post")
+      input(id="csrfToken" name="_csrf" type="hidden" value=csrfToken)
       input(id="identifier" name="identifier" type="hidden" value=personID)
       input(id="givenName" name="givenName" type="hidden")
       input(id="familyName" name="familyName" type="hidden")

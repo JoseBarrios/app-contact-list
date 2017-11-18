@@ -71,7 +71,7 @@ module.exports.initApplication = function() {
   //app.use(authenticationMiddleware);
 
 	//CSRF ROUTES
-	//app.use(csrf());
+	app.use(csrf());
   app.use(landingRoutes);
   app.use(emailRoutes);
   app.use(userRoutes);
