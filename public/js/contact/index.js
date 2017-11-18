@@ -136,8 +136,12 @@ window.addEventListener('WebComponentsReady', function(e) {
 
 	$card.addEventListener('delete', (e) => {
 		let person = e.target.person;
-		$form.action = '/person/'+person._id+'/delete'
-		$form.submit();
+		if(person._id){
+      $form.action = '/person/'+person._id+'/delete'
+      $form.submit();
+    } else {
+			window.location.href = '/contacts'
+    }
 	});
 
 	$card.addEventListener('update', (e) => {
@@ -157,7 +161,6 @@ window.addEventListener('WebComponentsReady', function(e) {
 		//ITS AN UPDATE OR DELETE
 		if(person._id){
 			let display = onMobile? "mobile" : "desktop";
-			console.log('UPDATE', display)
 			$form.action = `/person/${person._id}/update/${display}`
 			$form.submit();
 		}

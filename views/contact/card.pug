@@ -37,6 +37,7 @@ script.
 
 
   var person = !{JSON.stringify(person)}
+  var previouslySelected = {};
   let $card = document.querySelector('ui-contact-card');
   let $contacts = document.querySelector('#contacts');
 
@@ -88,10 +89,14 @@ script.
   })
 
   $card.addEventListener('delete', e => {
-    console.log('DELETE');
     let person = e.target.person;
-    $form.action = '/person/'+person._id+'/delete'
-    $form.submit();
+    if(person._id){
+      $form.action = '/person/'+person._id+'/delete'
+      $form.submit();
+    } else {
+      $card.clear();
+      window.location.href = '/contacts'
+    }
   })
 
 
