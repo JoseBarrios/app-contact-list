@@ -16,7 +16,8 @@ html(lang='en')
 
 
   body(style="background-color:#e8ebf2;font-family: roboto, sans-serif;")
-    form(action="/person/"+person._id+"/update" method="post")
+    form(action="/contacts/"+person._id+"/update" method="post")
+			input(id="csrfToken" name="_csrf" type="hidden" value=csrfToken)
       input(id="identifier" name="identifier" type="hidden" value=personID)
       input(id="givenName" name="givenName" type="hidden")
       input(id="familyName" name="familyName" type="hidden")
@@ -75,14 +76,14 @@ script.
       $emergencyTelephone.value = emergencyContact.telephone || '';
     }
 
+    var display = onMobile? "mobile" : "desktop";
     //ITS AN UPDATE OR DELETE
     if(person._id){
-      let display = onMobile? "mobile" : "desktop";
-      $form.action = `/person/${person._id}/update/${display}`
+      $form.action = `/contacts/${person._id}/update/${display}`
       $form.submit();
     }
     else {
-      $form.action = '/person/create'
+      $form.action = `/contacts/create/${display}`
       $form.submit();
     }
 
@@ -91,7 +92,7 @@ script.
   $card.addEventListener('delete', e => {
     let person = e.target.person;
     if(person._id){
-      $form.action = '/person/'+person._id+'/delete'
+      $form.action = '/contacts/'+person._id+'/delete'
       $form.submit();
     } else {
       $card.clear();

@@ -60,5 +60,5 @@ typings/
 config/mongo.js
 .DS_Store
 
-config/mongo.json
-config/mongo-config.json
+config/mongo-secret.json
+config/cookies-secret.json

@@ -3,7 +3,6 @@ var express = require('express');
 var router = express.Router();
 var moment = require('moment');
 
-var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const COLLECTION = 'people';
 
 /////////////////////////////////////
@@ -15,7 +14,8 @@ router.param('personID', function (req, res, next, personID) {
   let _id = dbController.ObjectID(personID);
 	dbController.getDocumentByID(COLLECTION, _id)
 		.then(person => {
-			if(req.person._id){ delete req.person._id; }
+			if(person._id){ delete person._id; }
+			person.identifier = personID;
 			req.personID = personID;
 			req.person = person;
 			next();
@@ -76,15 +76,17 @@ router.route('/contacts/create/:display?')
 		let isValid = (hasName || hasInfo || hasContact);
 
 		if(isValid) {
-			let _id = new dbController.ObjectID();
+			let _id = dbController.ObjectID();
 			person._id = _id;
 			person.identifier = _id.toString();
-
 			dbController.insertOne(COLLECTION, person)
 				.then(person => {
+					console.log(person)
+					let locals = {};
 					locals.person = person;
-					locals.personID = person;
-					req.onMobile?  res.render("contacts/card", locals) : res.redirect('/contacts?select='+personID)
+					locals.personID = person.identifer;
+					locals.csrfToken = req.csrfToken();
+					req.onMobile?  res.render("contacts/card", locals) : res.redirect('/contacts?select='+person.identifier)
 				})
 				//DB Error
 				.catch(error => {
@@ -131,13 +133,13 @@ router.get('/contacts', function(req, res) {
 					locals.search = search;
 					locals.people = people;
 					locals.person = people[0];
-					locals.alphabet = alphabet;
+					console.log(locals)
 					res.render("contacts/", locals);
 				})
 		})
 		.catch(error => {
 			//TODO: return error page
-			console.log('500 error: /contacts/create', error)
+			console.log('500 error: /contacts', error)
 			res.sendStatus(500);
 		})
 });
@@ -149,7 +151,7 @@ router.route('/contacts/:personID')
     locals.personID = req.personID;
     locals.person = req.person;
     locals.csrfToken = req.csrfToken();
-    res.render("contact/card", locals);
+    res.render("contacts/card", locals);
   })
 
 
@@ -174,14 +176,17 @@ router.route('/contacts/:personID/update/:display?')
     emergencyContact.telephone = req.body.emergencyTelephone;
 		person.knows.unshift(emergencyContact);
 
-    let id = ObjectID(req.personID);
+		person.meta = {};
+		person.meta.updatedOn = Date.now();
+
+    let id = dbController.ObjectID(req.personID);
     dbController.updateDocument(COLLECTION, id, person)
       .then(result => {
 				req.onMobile?  res.redirect('/contacts/'+req.personID) : res.redirect('/contacts?select='+req.personID)
       })
 			.catch(error => {
 				//TODO: return error page
-				console.log('500 error: /contacts/create', error)
+				console.log('500 error: /contacts/update', error)
 				res.sendStatus(500);
 			})
   })
@@ -194,15 +199,14 @@ router.route('/contacts/:personID/update/:display?')
 ////////////////////////////////////
 router.route('/contacts/:personID/delete')
   .post((req, res) =>{
-    let id = ObjectID(req.personID);
+    let id = dbController.ObjectID(req.personID);
     dbController.deleteDocument(COLLECTION, id)
       .then(result => {
-				res.sendStatus(200);
         res.redirect('/contacts');
       })
 			.catch(error => {
 				//TODO: return error page
-				console.log('500 error: /contacts/create', error)
+				console.log('500 error: /contacts/delete', error)
 				res.sendStatus(500);
 			})
   })

@@ -55,7 +55,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 		personID = clickedOnName? e.target.parentElement.id : personID;
 
 		if(onMobile){
-			let url = '/person/'+personID
+			let url = '/contacts/'+personID
 			window.location.href = url;
 		}
 		//DESKTOP
@@ -74,7 +74,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 
 	function create(e){
 		if(onMobile){
-			let url = '/person/create/mobile';
+			let url = '/contacts/create/mobile';
 			window.location.href = url;
 		} else {
 			$card.clear();
@@ -116,7 +116,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 	$card.addEventListener('delete', (e) => {
 		let person = e.target.person;
 		if(person._id){
-      $form.action = '/person/'+person._id+'/delete'
+      $form.action = '/contacts/'+person._id+'/delete'
       $form.submit();
     } else {
 			window.location.href = '/contacts'
@@ -140,12 +140,12 @@ window.addEventListener('WebComponentsReady', function(e) {
 		//ITS AN UPDATE OR DELETE
 		if(person._id){
 			let display = onMobile? "mobile" : "desktop";
-			$form.action = `/person/${person._id}/update/${display}`
+			$form.action = `/contacts/${person._id}/update/${display}`
 			$form.submit();
 		}
 		//ITS CREATE
 		else {
-			$form.action = '/person/create'
+			$form.action = '/contacts/create'
 			$form.submit();
 		}
 	})
