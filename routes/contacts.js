@@ -14,7 +14,6 @@ router.param('personID', function (req, res, next, personID) {
 	let _id = dbController.ObjectID(personID);
 	dbController.getDocumentByID(COLLECTION, _id)
 		.then(person => {
-			if(person._id){ delete person._id; }
 			person.identifier = personID;
 			req.personID = personID;
 			req.person = person;
@@ -44,6 +43,7 @@ router.route('/contacts/create/:display?')
 //Client only requests this page if its mobile
 	.get((req, res) =>{
 		let locals = {};
+		locals.csrfToken = req.csrfToken();
 		locals.person = {};
 		//Sends mobile-first view
 		res.render("contacts/card", locals);

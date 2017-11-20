@@ -77,9 +77,10 @@ script.
     }
 
     var display = onMobile? "mobile" : "desktop";
+    console.log(person)
     //ITS AN UPDATE OR DELETE
-    if(person._id){
-      $form.action = `/contacts/${person._id}/update/${display}`
+    if(person.identifier){
+      $form.action = `/contacts/${person.identifier}/update/${display}`
       $form.submit();
     }
     else {
