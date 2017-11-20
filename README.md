@@ -1,4 +1,4 @@
-# :blue_book: Contacts v1 | [demo](barrios.io/contacts)
+# :blue_book: Contacts v1 | [demo](http://barrios.io/contacts)
 
 ![image](https://cdn.filestackcontent.com/fVsKX5xcSqqYr8VUZtbb)
 
@@ -9,7 +9,7 @@
 
 
 ## Description
-Contacts is an open-sourced, web-based application for managing a contact list. It was built using NodeJS, MongoDB and web-elements. To see a demo go to: [barrios.io/contacts ](barrios.io/contacts)
+Contacts is an open-sourced, web-based application for managing a contact list. It was built using NodeJS, MongoDB and web-elements. To see a demo go to: [barrios.io/contacts ](http://barrios.io/contacts)
 
 ## Installation
 
