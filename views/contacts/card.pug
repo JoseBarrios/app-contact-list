@@ -17,7 +17,7 @@ html(lang='en')
 
   body(style="background-color:#e8ebf2;font-family: roboto, sans-serif;")
     form(action="/contacts/"+person._id+"/update" method="post")
-			input(id="csrfToken" name="_csrf" type="hidden" value=csrfToken)
+      input(id="csrfToken" name="_csrf" type="hidden" value=csrfToken)
       input(id="identifier" name="identifier" type="hidden" value=personID)
       input(id="givenName" name="givenName" type="hidden")
       input(id="familyName" name="familyName" type="hidden")
