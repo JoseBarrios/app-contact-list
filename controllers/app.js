@@ -27,40 +27,40 @@ const errorRoutes = require(`${global.APP_ROOT}/routes/errors`)
  */
 module.exports.initApplication = function() {
 
-  var app = express();
+	var app = express();
 	//TODO
 	//const sslOptions = {
-		//key: fs.readFileSync(`${global.APP_ROOT}/config/privkey.pem`),
-		//cert: fs.readFileSync(`${global.APP_ROOT}/config/fullchain.pem`),
+	//key: fs.readFileSync(`${global.APP_ROOT}/config/privkey.pem`),
+	//cert: fs.readFileSync(`${global.APP_ROOT}/config/fullchain.pem`),
 	//};
 
 	//TODO
 	const server = http.createServer(app);
 	//const secureServer = https.createServer(sslOptions, app);
 
-  // settings
-  app.set('view engine', 'pug');
+	// settings
+	app.set('view engine', 'pug');
 
-  // MIDDLEWARE
-  app.use(bodyParser.urlencoded({ extended: true }));
+	// MIDDLEWARE
+	app.use(bodyParser.urlencoded({ extended: true }));
 
 	if(process.env.NODE === 'production'){ app.use(forceSSL) };
 
-  app.use(session(cookieConfig));
-  app.use(helmet());
-  app.use(express.static('public'))
+	app.use(session(cookieConfig));
+	app.use(helmet());
+	app.use(express.static('public'))
 	let nodeModulesURL = `${global.APP_ROOT}/node_modules`;
 	app.use(express.static(nodeModulesURL));
 
 	//CSRF ROUTES
 	app.use(csrf());
-  app.use(landingRoutes);
-  app.use(contactRoutes);
-  app.use(errorRoutes);
+	app.use(landingRoutes);
+	app.use(contactRoutes);
+	app.use(errorRoutes);
 
 	server.listen(3000)
 	//secureServer.listen(4000)
 	console.log('Server listening in port 3000 (http), and 4000 (https)');
 
-  return app;
+	return app;
 };
