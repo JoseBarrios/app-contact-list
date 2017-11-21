@@ -21,12 +21,17 @@ Mongo 3.2.10
 
 Installing this project is simple, run the following commands:
 
-```console
+```bash
 $ git clone https://github.com/JoseBarrios/app-contact-list.git
 $ cd app-contact-list
+# Install dependencies
 $ npm install
+# Run MongoDB locally
 $ sudo mongod &  # start mongodb locally
-$ npm start      # fire up the project!
+# Create config files, see examples in the config folder
+$ touch config/mongo-secret.json config/cookies-secret.json 
+# Fire up the project!
+$ npm start      
 ```
 
 Open : http://localhost:3000/contacts
