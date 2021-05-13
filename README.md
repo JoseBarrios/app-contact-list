@@ -45,4 +45,4 @@ Open : http://localhost:3000/contacts
 
 ## Questions
 
-Got questions? Reach me at jose@barrios.io
+Got questions? Reach me at contacts@barrios.io
