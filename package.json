@@ -21,7 +21,7 @@
     "express": "^4.16.1",
     "express-force-ssl": "^0.3.2",
     "helmet": "^3.8.2",
-    "pug": "^2.0.0-rc.4",
+    "pug": "^3.0.1",
     "ui-contact-card": "0.0.38"
   },
   "devDependencies": {
