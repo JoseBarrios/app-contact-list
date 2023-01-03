@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "forever": "^0.15.3",
-    "babelify": "^7.3.0",
+    "babelify": "^10.0.0",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "mocha": "^3.5.3"
